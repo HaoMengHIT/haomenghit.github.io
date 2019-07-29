@@ -56,32 +56,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -100,7 +100,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -124,16 +124,16 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2019-07-29 20:51:19</span></span>
+        <span class="attr">发布于：<span>2019-07-29 20:51:19</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
         
         <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
         <span>/</span>
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -171,7 +171,9 @@
 
 <h3 id="3-编译过程"><a href="#3-编译过程" class="headerlink" title="3. 编译过程"></a>3. 编译过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd LLVM_Test/</span><br><span class="line">mkdir build</span><br><span class="line">cd build/</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
 
-<p>编译出来的.so文件在LLVM_Test/build/src目录下。具体过程如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/7858045-fd7bf728b20f901a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>编译出来的.so文件在LLVM_Test/build/src目录下。具体过程如下图所示：</p>
+<img src="/2019/07/29/LLVM-Pass工程建立过程/example2.png">
+
 <h3 id="4-Pass调用"><a href="#4-Pass调用" class="headerlink" title="4. Pass调用"></a>4. Pass调用</h3><p>利用该工程编译之后，我们就可以调用相应的Pass了，具体调用过程如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opt -load LLVM_Test/build/src/libTest.so -MyTest test.ll</span><br></pre></td></tr></table></figure>
 
@@ -179,7 +181,7 @@
         
             <div class="donate-container">
     <div class="donate-button">
-        <button id="donate-button">donate</button>
+        <button id="donate-button">赞赏</button>
     </div>
     <div class="donate-img-container hide" id="donate-img-container">
         <img id="donate-img" src="" data-src="/img/donate.jpg">
