@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-环境安装"><span class="toc-text">1. 环境安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LLVM-Pass工程目录"><span class="toc-text">2. LLVM Pass工程目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-编译过程"><span class="toc-text">3. 编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Pass调用"><span class="toc-text">4. Pass调用</span></a></li></ol>
 </div>
     
 </div>
@@ -139,13 +139,12 @@
     </div>
     <div class="post-content ">
         <p>一般的Pass工程建立方法需要利用LLVM源码目录进行编译，本文介绍了另一种Pass工程建立和编译方法，与cmake相结合进行Pass编译。</p>
-<p>###1. 环境安装</p>
-<ul>
+<h3 id="1-环境安装"><a href="#1-环境安装" class="headerlink" title="1. 环境安装"></a>1. 环境安装</h3><ul>
 <li>安装LLVM和clang编译器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install clang</span><br><span class="line">sudo apt-get install clang++</span><br><span class="line">sudo apt-get install llvm</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>###2. LLVM Pass工程目录<br>该测试工程LLVM_Test主要包含两个文件夹cmake和src，其具体文件组织形式如下图所示。<strong>需要注意的是，利用该工程编译Pass时只需要在src目录下添加相应的Pass源码即可，其他文件不需要修改</strong>。<br><img src="https://upload-images.jianshu.io/upload_images/7858045-ed4ca3ed88a15bc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="2-LLVM-Pass工程目录"><a href="#2-LLVM-Pass工程目录" class="headerlink" title="2. LLVM Pass工程目录"></a>2. LLVM Pass工程目录</h3><p>该测试工程LLVM_Test主要包含两个文件夹cmake和src，其具体文件组织形式如下图所示。<strong>需要注意的是，利用该工程编译Pass时只需要在src目录下添加相应的Pass源码即可，其他文件不需要修改</strong>。<br><img src="https://upload-images.jianshu.io/upload_images/7858045-ed4ca3ed88a15bc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>具体内容如下：</p>
 <ul>
 <li><p>cmake目录中的FindLLVM.cmake</p>
@@ -162,12 +161,13 @@
 
 </li>
 </ul>
-<p>###3. 编译过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd LLVM_Test/</span><br><span class="line">mkdir build</span><br><span class="line">cd build/</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<h3 id="3-编译过程"><a href="#3-编译过程" class="headerlink" title="3. 编译过程"></a>3. 编译过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd LLVM_Test/</span><br><span class="line">mkdir build</span><br><span class="line">cd build/</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
 
 <p>编译出来的.so文件在LLVM_Test/build/src目录下。具体过程如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/7858045-fd7bf728b20f901a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>###4. Pass调用<br>利用该工程编译之后，我们就可以调用相应的Pass了，具体调用过程如下：</p>
+<h3 id="4-Pass调用"><a href="#4-Pass调用" class="headerlink" title="4. Pass调用"></a>4. Pass调用</h3><p>利用该工程编译之后，我们就可以调用相应的Pass了，具体调用过程如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opt -load LLVM_Test/build/src/libTest.so -MyTest test.ll</span><br></pre></td></tr></table></figure>
+
+
         
         <br />
         <div id="comment-container">
