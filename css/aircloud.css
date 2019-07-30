@@ -1,6 +1,6 @@
 /*varibles*/
 * {
-  font-family: "italic", Helvetica, Arial, "Heiti SC", "Microsoft YaHei";
+  font-family: "italic", Helvetica, Arial, "Heiti SC", "Times New Roman";
 }
 body,
 html {
@@ -728,7 +728,7 @@ body {
 }
 .index-about i {
   font-size: 15px;
-  font-family: "italic" !important;
+  font-family: "times new roman" !important;
   font-weight: 300;
   color: #444444;
 }
@@ -799,7 +799,7 @@ body {
   }
   .index-about-mobile i {
     font-size: 15px;
-    font-family: "italic" !important;
+    font-family: "times new roman" !important;
     font-weight: 300;
     color: #444444;
   }
