@@ -609,7 +609,7 @@ body {
   margin-left: 5px;
 }
 .post-content {
-  line-height: 20px;
+  line-height: 10px;
   font-size: 15px;
   text-indent: 2em;
   color: #333333;
@@ -1189,7 +1189,7 @@ pre .javascript .function {
 }
 .toc-article li a {
   display: block;
-  line-height: 10px;
+  line-height: 20px;
   margin-bottom: 10px;
   text-decoration: none;
   color: #999999;
