@@ -609,7 +609,7 @@ body {
   margin-left: 5px;
 }
 .post-content {
-  line-height: 20px;
+  line-height: 10px;
   font-size: 15px;
   text-indent: 2em;
   color: #333333;
@@ -643,7 +643,7 @@ body {
 .post-content p {
   color: #404040;
   font-size: 14px;
-  line-height: 30px;
+  line-height: 10px;
   text-indent: 2em;
   letter-spacing: 1px;
 }
@@ -659,7 +659,7 @@ body {
   list-style: none;
   color: #404040;
   font-size: 14px;
-  line-height: 30px;
+  line-height: 20px;
   text-indent: 2em;
   letter-spacing: 1px;
   margin-bottom: 5px;
