@@ -1,6 +1,6 @@
 /*varibles*/
 * {
-  font-family: "italic", Helvetica, Arial, "Heiti SC", "Times New Roman";
+  font-family: "italic", Helvetica, "Times New Roman", "Heiti SC", "Times New Roman";
 }
 body,
 html {
@@ -609,7 +609,7 @@ body {
   margin-left: 5px;
 }
 .post-content {
-  line-height: 10px;
+  line-height: 20px;
   font-size: 15px;
   text-indent: 2em;
   color: #333333;
@@ -728,7 +728,7 @@ body {
 }
 .index-about i {
   font-size: 15px;
-  font-family: "times new roman" !important;
+  font-family: "italic" !important;
   font-weight: 300;
   color: #444444;
 }
@@ -799,7 +799,7 @@ body {
   }
   .index-about-mobile i {
     font-size: 15px;
-    font-family: "times new roman" !important;
+    font-family: "italic" !important;
     font-weight: 300;
     color: #444444;
   }
