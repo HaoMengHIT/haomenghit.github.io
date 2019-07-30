@@ -674,7 +674,7 @@ body {
   padding: 10px;
 }
 .post-content pre code {
-  line-height: 175%;
+  line-height: 100%;
 }
 .post-content h1 {
   color: #333333;
