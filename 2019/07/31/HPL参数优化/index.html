@@ -291,7 +291,8 @@
 <ul>
 <li><p>P and Q - the number of rows and columns in the process grid, respectively.<br>P*Q must be the number of MPI processes that HPL is using.<br>Choose P ≤ Q.</p>
 </li>
-<li><p>NB - the block size of the data distribution.<br>The table below shows recommended values of NB for different Intel® processors:<br><img src="https://upload-images.jianshu.io/upload_images/7858045-a0cc297cd004b223.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="KNL推荐配置"></p>
+<li><p>NB - the block size of the data distribution.<br>The table below shows recommended values of NB for different Intel® processors:</p>
+<img src="/2019/07/31/HPL参数优化/HPL.png" title="KNL推荐配置">
 </li>
 <li><p>N - the problem size:<br>For homogeneous runs, choose N divisible by NB*LCM(P,Q), where LCM is the least common multiple of the two numbers.<br>For heterogeneous runs, see Heterogeneous Support in the Inte；l Optimized MP LINPACK Benchmark for how to choose N.</p>
 </li>
