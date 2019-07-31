@@ -146,11 +146,12 @@
 <p><strong><em>需要优化的主要有N，NB，PxQ等</em></strong></p>
 <h3 id="3-根据内存情况，获取理论最优的N值"><a href="#3-根据内存情况，获取理论最优的N值" class="headerlink" title="3. 根据内存情况，获取理论最优的N值"></a>3. 根据内存情况，获取理论最优的N值</h3><p>根据KNL的MCDRAM为16G，N<em>N</em>8=16G，得到N约为46000<br>从46000左右开始设置N值，进行测试。</p>
 <ul>
-<li><p>log信息提取命令</p>
+<li>log信息提取命令</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F: <span class="string">'/WR/'</span> knl003_hpl.o31829 &gt; 30000_128_8_8.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>阶段性结果</p>
-</li>
+
+<ul>
+<li>阶段性结果</li>
 </ul>
 <table>
 <thead>
@@ -260,19 +261,33 @@
 <td>8</td>
 <td>1.111e+03</td>
 </tr>
-<tr>
-<td>更改运行脚本</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+<p>更改运行脚本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/bash</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#PBS -N knl003_hpl</span></span><br><span class="line"><span class="comment">#PBS -l nodes=1,walltime=01:00:00</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">cd</span> /home/asc0146/haomeng/code/hpl/bin/Linux_Intel64/test1/</span><br><span class="line"><span class="built_in">export</span> KMP_AFFINITY=scatter,verbose</span><br><span class="line"><span class="built_in">export</span> OMP_NUM_THREADS=4</span><br><span class="line"><span class="built_in">export</span> MKL_NUM_THREADS=4</span><br><span class="line">mpiexec -np 64 ./xhpl | tee HPL.out</span><br></pre></td></tr></table></figure>
 
-<p>进行实验<br>|N    |NB|    Ps|    Qs|    Result（Gflops）|<br>|—–|—–|—–|—–|—–|<br>|35000|    128|    8    |8    |效果很差|</p>
+<p>进行实验</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>NB</th>
+<th>Ps</th>
+<th>Qs</th>
+<th>Result（Gflops）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>35000</td>
+<td>128</td>
+<td>8</td>
+<td>8</td>
+<td>效果很差</td>
+</tr>
+</tbody></table>
 <ul>
-<li><p>参数选择指导<br>参考<a href="https://software.intel.com/en-us/mkl-linux-developer-guide-configuring-parameters" target="_blank" rel="noopener">Developer Guide for Intel</a>.<br>The most significant parameters in HPL.dat are P, Q, NB, and N. Specify them as follows:</p>
+<li>参数选择指导</li>
+</ul>
+<p>参考<a href="https://software.intel.com/en-us/mkl-linux-developer-guide-configuring-parameters" target="_blank" rel="noopener">Developer Guide for Intel</a>.<br>The most significant parameters in HPL.dat are P, Q, NB, and N. Specify them as follows:</p>
 <ul>
 <li><p>P and Q - the number of rows and columns in the process grid, respectively.<br>P*Q must be the number of MPI processes that HPL is using.<br>Choose P ≤ Q.</p>
 </li>
@@ -281,9 +296,9 @@
 <li><p>N - the problem size:<br>For homogeneous runs, choose N divisible by NB*LCM(P,Q), where LCM is the least common multiple of the two numbers.<br>For heterogeneous runs, see Heterogeneous Support in the Inte；l Optimized MP LINPACK Benchmark for how to choose N.</p>
 </li>
 </ul>
-</li>
-<li><p><strong>NOTE*</strong><br>Increasing N usually increases performance, but the size of N is bounded by memory. In general, you can compute the memory required to store the matrix (which does not count internal buffers) as 8<em>N</em>N/(P*Q) bytes, where N is the problem size and P and Q are the process grids in HPL.dat. A general rule of thumb is to choose a problem size that fills 80% of memory. When offloading to Intel Xeon Phi coprocessors, you may choose a problem size that fills 70% of memory, to leave room for additional buffers needed for offloading. Choose N and NB such that N &gt; &gt; NB.</p>
-</li>
+<p><strong><em>NOTE</em></strong></p>
+<p>Increasing N usually increases performance, but the size of N is bounded by memory. In general, you can compute the memory required to store the matrix (which does not count internal buffers) as 8<em>N</em>N/(P*Q) bytes, where N is the problem size and P and Q are the process grids in HPL.dat. A general rule of thumb is to choose a problem size that fills 80% of memory. When offloading to Intel Xeon Phi coprocessors, you may choose a problem size that fills 70% of memory, to leave room for additional buffers needed for offloading. Choose N and NB such that N &gt; &gt; NB.</p>
+<ul>
 <li><p>最新优化情况</p>
 <ul>
 <li>优化结果</li>
