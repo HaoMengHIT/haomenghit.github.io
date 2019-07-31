@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        HPC性能评测 - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -112,97 +116,54 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装RAPL模块/">
-                <h3>
-                    PAPI安装RAPL模块
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        HPC性能评测
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/RAPL介绍/">
-                <h3>
-                    RAPL介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-07-31 20:37:25</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#并行" title="并行">并行</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/OpenMP编译成LLVM-IR/">
-                <h3>
-                    OpenMP编译成LLVM IR
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/LLVM-Pass工程建立过程/">
-                <h3>
-                    LLVM Pass工程建立过程
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-</div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/">&larr; Newer Posts</a>
-    </li>
-    
-    
+    <div class="post-content no-indent">
+        <p>高性能计算集群的性能评测大致分为机器级、算法级和程序级的性能评测。</p>
+<ul>
+<li><p>机器级</p>
+<p>机器级的性能评测主要包括CPU和存储器的某些基本性能指标、并行通讯开销以及机器的成本、价格和性/价比，有些是由厂商在销售时直接提供给用户的，是广大用户对并行计算机的第一印象，是引进和购买并行计算机时最主要的选择依据。</p>
+</li>
 </ul>
+<ul>
+<li><p>算法级</p>
+<p>算法级的性能评测主要包括加速、效率和可扩展性等，最初是为了评价并行算法的性能提出的，用在并行机性能评测主要是测并行系统的加速比和可扩展性。并行系统的加速比是指对于一个给定的应用，并行算法（或并行程序）的执行速度相对于串行算法的执行速度加快了多少倍。<strong><em>可扩展性是在确定的应用背景下，并行系统性能随处理器数的增加而按比例提高的能力</em></strong>。</p>
+</li>
+<li><p>程序级</p>
+<p>程序级的性能评测主要是使用一组基准测试来测试和评价并行系统的各种性能，包括基本测试、数学库测试和并行测试程序等。</p>
+</li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -261,12 +222,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 

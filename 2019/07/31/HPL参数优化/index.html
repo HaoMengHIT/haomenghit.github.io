@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meng Hao&#39;s Homepage">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        HPL参数优化 - Meng Hao&#39;s Homepage
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Meng Hao</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-实验平台KNL配置"><span class="toc-text">1. 实验平台KNL配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-HPL-dat文件中需要优化的参数"><span class="toc-text">2. HPL.dat文件中需要优化的参数</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        HPL参数优化
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-07-31 20:38:09</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#并行" title="并行">并行</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="1-实验平台KNL配置"><a href="#1-实验平台KNL配置" class="headerlink" title="1. 实验平台KNL配置"></a>1. 实验平台KNL配置</h3><p>Intel Xeon Phi Processor 7210 ( 16GB, 1.30 GHz, 64 core )<br>Processor name : Intel(R) Xeon Phi(TM) 7210<br>Packages (sockets) : 1<br>Cores : 64<br>Processors (CPUs) : 256<br>Cores per package : 64<br>Threads per core : 4</p>
+<p>RAM: 96GB<br>MCDRAM: 16 GB</p>
+<p>理论峰值<br><strong>n 1<em>64</em>1.3*32=2662.4 Gflops</strong></p>
+<h3 id="2-HPL-dat文件中需要优化的参数"><a href="#2-HPL-dat文件中需要优化的参数" class="headerlink" title="2. HPL.dat文件中需要优化的参数"></a>2. HPL.dat文件中需要优化的参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">HPLinpack benchmark input file</span><br><span class="line">Innovative Computing Laboratory, University of Tennessee</span><br><span class="line">HPL.out      output file name (if any)</span><br><span class="line">6            device out (6=stdout,7=stderr,file)</span><br><span class="line">1            # of problems sizes (N)</span><br><span class="line">50000 100000 150000 200000  Ns</span><br><span class="line">10            # of NBs</span><br><span class="line">1 2 4 8 16 32 64 128 256 512     NBs</span><br><span class="line">0            PMAP process mapping (0=Row-,1=Column-major)</span><br><span class="line">1            # of process grids (P x Q)</span><br><span class="line">1            Ps</span><br><span class="line">1            Qs</span><br><span class="line">16.0         threshold</span><br><span class="line">3            # of panel fact</span><br><span class="line">0 1 2        PFACTs (0=left, 1=Crout, 2=Right)</span><br><span class="line">2            # of recursive stopping criterium</span><br><span class="line">2 4          NBMINs (&gt;= 1)</span><br><span class="line">1            # of panels in recursion</span><br><span class="line">2            NDIVs</span><br><span class="line">3            # of recursive panel fact.</span><br><span class="line">0 1 2        RFACTs (0=left, 1=Crout, 2=Right)</span><br><span class="line">1            # of broadcast</span><br><span class="line">0            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)</span><br><span class="line">1            # of lookahead depth</span><br><span class="line">0            DEPTHs (&gt;=0)</span><br><span class="line">2            SWAP (0=bin-exch,1=long,2=mix)</span><br><span class="line">64           swapping threshold</span><br><span class="line">0            L1 in (0=transposed,1=no-transposed) form</span><br><span class="line">0            U  in (0=transposed,1=no-transposed) form</span><br><span class="line">1            Equilibration (0=no,1=yes)</span><br><span class="line">8            memory alignment in double (&gt; 0)</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>需要优化的主要有N，NB，PxQ等</em></strong></p>
+<p>###3. 根据内存情况，获取理论最优的N值<br>根据KNL的MCDRAM为16G，N<em>N</em>8=16G，得到N约为46000<br>从46000左右开始设置N值，进行测试。</p>
+<ul>
+<li><p>log信息提取命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F: &apos;/WR/&apos; knl003_hpl.o31829 &gt; 30000_128_8_8.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>阶段性结果</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>NB</th>
+<th>Ps</th>
+<th>Qs</th>
+<th>Result（Gflops）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>30000</td>
+<td>128</td>
+<td>8</td>
+<td>16</td>
+<td>9.435e+02</td>
+</tr>
+<tr>
+<td>30000</td>
+<td>128</td>
+<td>16</td>
+<td>16</td>
+<td>9.086e+01</td>
+</tr>
+<tr>
+<td>30000</td>
+<td>256</td>
+<td>8</td>
+<td>16</td>
+<td>6.042e+02</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>128</td>
+<td>8</td>
+<td>16</td>
+<td>1.034e+03</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>64</td>
+<td>8</td>
+<td>16</td>
+<td>8.820e+02</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>128</td>
+<td>14</td>
+<td>14</td>
+<td>6.002e+02</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>128</td>
+<td>1</td>
+<td>128</td>
+<td>6.019e+02</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>128</td>
+<td>10</td>
+<td>16</td>
+<td>7.427e+02</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>128</td>
+<td>8</td>
+<td>8</td>
+<td>1.149e+03</td>
+</tr>
+<tr>
+<td>35000</td>
+<td>128</td>
+<td>8</td>
+<td>10</td>
+<td>8.718e+02</td>
+</tr>
+<tr>
+<td>39200</td>
+<td>128</td>
+<td>8</td>
+<td>8</td>
+<td>1.227e+03</td>
+</tr>
+<tr>
+<td>39200</td>
+<td>175</td>
+<td>8</td>
+<td>8</td>
+<td>1.208e+03</td>
+</tr>
+<tr>
+<td>41600</td>
+<td>128</td>
+<td>8</td>
+<td>8</td>
+<td>1.074e+03</td>
+</tr>
+<tr>
+<td>32768</td>
+<td>128</td>
+<td>8</td>
+<td>8</td>
+<td>1.111e+03</td>
+</tr>
+<tr>
+<td>更改运行脚本</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/bash</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#PBS -N knl003_hpl</span><br><span class="line">#PBS -l nodes=1,walltime=01:00:00</span><br><span class="line"> </span><br><span class="line">cd /home/asc0146/haomeng/code/hpl/bin/Linux_Intel64/test1/</span><br><span class="line">export KMP_AFFINITY=scatter,verbose</span><br><span class="line">export OMP_NUM_THREADS=4</span><br><span class="line">export MKL_NUM_THREADS=4</span><br><span class="line">mpiexec -np 64 ./xhpl | tee HPL.out</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>进行实验<br>N    |NB|    Ps|    Qs|    Result（Gflops）<br>|—–|—–|—–|—–|—–|<br>|35000|    128|    8    |8    |效果很差</p>
+<ul>
+<li><p>参数选择指导<br>参考<a href="https://software.intel.com/en-us/mkl-linux-developer-guide-configuring-parameters" target="_blank" rel="noopener">Developer Guide for Intel</a>.<br>The most significant parameters in HPL.dat are P, Q, NB, and N. Specify them as follows:</p>
+<ul>
+<li><p>P and Q - the number of rows and columns in the process grid, respectively.<br>P*Q must be the number of MPI processes that HPL is using.<br>Choose P ≤ Q.</p>
+</li>
+<li><p>NB - the block size of the data distribution.<br>The table below shows recommended values of NB for different Intel® processors:<br><img src="https://upload-images.jianshu.io/upload_images/7858045-a0cc297cd004b223.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="KNL推荐配置"></p>
+</li>
+<li><p>N - the problem size:<br>For homogeneous runs, choose N divisible by NB*LCM(P,Q), where LCM is the least common multiple of the two numbers.<br>For heterogeneous runs, see Heterogeneous Support in the Inte；l Optimized MP LINPACK Benchmark for how to choose N.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>NOTE*</strong><br>Increasing N usually increases performance, but the size of N is bounded by memory. In general, you can compute the memory required to store the matrix (which does not count internal buffers) as 8<em>N</em>N/(P*Q) bytes, where N is the problem size and P and Q are the process grids in HPL.dat. A general rule of thumb is to choose a problem size that fills 80% of memory. When offloading to Intel Xeon Phi coprocessors, you may choose a problem size that fills 70% of memory, to leave room for additional buffers needed for offloading. Choose N and NB such that N &gt; &gt; NB.</p>
+</li>
+<li><p>最新优化情况</p>
+<ul>
+<li>优化结果</li>
+</ul>
+</li>
+</ul>
+<p>N|    NB|    Ps|    Qs    |Result（Gflops）<br>|—-|—-|—-|—–|—–|<br>3920    |128    |8    |16    |9.435e+02</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/HaoMengHIT">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.researchgate.net/profile/Meng_Hao3">Meng Hao&#39;s ResearchGate</a></span>
+        <span>/</span>
+        
+        <span><a href="http://www.hit.edu.cn/">Harbin Institute of Technology</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
