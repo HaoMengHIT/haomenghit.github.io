@@ -155,12 +155,10 @@
 <p>本文探索了调整系统设置以最小化应用能耗的学习方法。具体来说，我们调整插槽（Socket）分配，使用HyperThreads和处理器DVFS。学习组件为这些资源的组合选择设置，使得在应用程序执行期间的任何时刻，系统都在其最节能的状态下运行。</p>
 <p>本文的目标是让学习器在不需要任何应用程序级别更改的情况下进行最节能的设置。因此，我们使用现有的硬件性能计数器作为特征（Features）。然后，学习器确定相应的函数来将这些特征的一些子集映射到最节能系统设置。但是，现代计算节点中的系统设置具有非常复杂的交互关系，因此尽管存在这种复杂性，但使用能够生成准确映射的学习机制至关重要。 </p>
 <img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure1.png" title="[20] [20]">
-
 <p>我们只使用两个特征 - 性能计数器POWER_DRAM（内存使用量度量）和EXEC（CPU使用量度量）来简单地说明这种复杂性。图1a显示了关于标准化性能计数器值的训练数据（21个常见HPC基准）的行为。每个数据点是在我们的评估系统上以单一资源配置运行的训练应用程序的平均记录POWER_DRAM和EXEC行为。有88种独特的资源配置或可能的标签，它们考虑了Socket计数S的不同组合，是否使用了HyperThreads HT，以及DVFS频率（例如2.1 GHz）。属于特定应用的所有88个数据点被分配相同的标签 - 具有该应用的最佳能量效率的资源配置;即，应用程序的所有88个数据点具有相同的颜色。通过这种标记，一个好的学习器将识别次优行为并产生最节能的设置来代替使用。<strong><em>问题显然很复杂，并没有出现直观的模式将CPU和内存使用情况映射到最节能的系统设置中</em></strong>。</p>
 <p>为了成功地将这些特征映射到准确的预测中，学习器必须能够处理这种复杂性，而不是所有机器学习机制都可以。考虑图1b表示使用线性内核的支持向量机（SVM）分类器的准确性。阴影区域表示SVM分类器预测的标签（系统设置），在训练集上的召回率仅为45.6%，这清楚地表明该分类器没有效果。相比之下，图1c展示了一个具有径向基函数（RBF）内核的SVM，它可以实现71.0％的召回率，但可能还有进一步改进的余地。</p>
 <h2 id="系统设置的分类"><a href="#系统设置的分类" class="headerlink" title="系统设置的分类"></a>系统设置的分类</h2><p>我们建议在运行时预测能量有效设置，而不是在产生结果之前估计所有可能系统设置的行为。与许多先前在HPC系统中管理功率/能量的工作一样，我们使用硬件性能计数器来测量应用和系统行为。</p>
 <img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure2.png" title="[20] [20]">
-
 <p>图2展示了我们提出的方法。当应用程序在计算节点上运行时，硬件性能计数器会在后台定期轮询。对于我们的实验，我们使用PCM工具收集性能计数器数据。对数据进行缩放，然后使用主成分分析（PCA）进行处理，以确定哪些特征与能量效率相关。我们还使用特征选择来限制分类器使用的硬件计数器的数量，以减少运行时开销。该分类器预测要使用的最节能的设置，然后在系统上启动。该过程在下一个间隔重复进行。</p>
 <h4 id="训练数据"><a href="#训练数据" class="headerlink" title="训练数据"></a>训练数据</h4><p>在使用之前必须训练一个分类器。为了收集训练数据，我们通过在所有可能的设置中运行基准应用程序并收集硬件性能计数器结果来描述基准应用程序在目标平台上的行为。换句话说，如果存在N个不同的可接受的设置，则每个应用程序执行N次，或者在每个设置中执行一次。对于M训练应用，训练集中有$N\times M$个特征向量。</p>
 <p>训练数据的获取可能非常耗时，但只需要对每个平台进行一次，并且可以通过缩短应用程序执行时间来在合理的时间内完成。选择能够代表将在系统上使用的应用程序的基准测试程序可以提高分类器在运行时期间准确预测设置的可能性。此外，应将训练集中的基准测试程序以不同的模式运行,以涵盖硬件计数器的各种可能的用例。</p>
@@ -228,6 +226,24 @@
 
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --!>
 
 </body>
 

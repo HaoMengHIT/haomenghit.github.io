@@ -152,33 +152,26 @@
 <li>安装Qt4或Qt5</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt4-default</span><br><span class="line">sudo apt-get install qt5-default</span><br><span class="line">sudo apt-get install qt4-dev-tools</span><br><span class="line">sudo apt-get install qt5-dev-tools</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>安装python3</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>安装PyQt</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install pyqt4-dev-tools</span><br><span class="line">sudo apt-get install pyqt5-dev-tools</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>安装Cube </li>
 </ul>
 <p>下载Cube源码包cube-4.3.tar.gz</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make all</span><br></pre></td></tr></table></figure>
-
 <p>使用QT5的话编译过程中会出现一些问题，选用Qt4能正常编译</p>
 <ul>
 <li>安装 MatPlotLib</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3-pip</span><br><span class="line">sudo python -m pip install -U pip</span><br><span class="line">sudo python -m pip install -U matplotlib</span><br></pre></td></tr></table></figure>
-
 <h4 id="编译Extra-P"><a href="#编译Extra-P" class="headerlink" title="编译Extra-P"></a>编译Extra-P</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">../configure --with-cube=/opt/cube CPPFLAGS=<span class="string">"-I/usr/include/python3.6m/"</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
 <h3 id="score-P配置安装"><a href="#score-P配置安装" class="headerlink" title="score-P配置安装"></a>score-P配置安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">../configure </span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
 
         
         <br />
@@ -242,6 +235,24 @@
 
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --!>
 
 </body>
 
