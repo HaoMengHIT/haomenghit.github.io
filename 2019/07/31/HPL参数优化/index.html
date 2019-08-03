@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-实验平台knl配置"><span class="toc-text">¶1. 实验平台KNL配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-hpl-dat文件中需要优化的参数"><span class="toc-text">¶2. HPL.dat文件中需要优化的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-根据内存情况-获取理论最优的n值"><span class="toc-text">¶3. 根据内存情况，获取理论最优的N值</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-实验平台KNL配置"><span class="toc-text">1. 实验平台KNL配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-HPL-dat文件中需要优化的参数"><span class="toc-text">2. HPL.dat文件中需要优化的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-根据内存情况，获取理论最优的N值"><span class="toc-text">3. 根据内存情况，获取理论最优的N值</span></a></li></ol>
 </div>
     
 </div>
@@ -138,24 +138,12 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h3 id="1-实验平台knl配置"><a class="header-anchor" href="#1-实验平台knl配置">¶</a>1. 实验平台KNL配置</h3>
-<p>Intel Xeon Phi Processor 7210 ( 16GB, 1.30 GHz, 64 core )<br>
-Processor name : Intel® Xeon Phi™ 7210<br>
-Packages (sockets) : 1<br>
-Cores : 64<br>
-Processors (CPUs) : 256<br>
-Cores per package : 64<br>
-Threads per core : 4</p>
-<p>RAM: 96GB<br>
-MCDRAM: 16 GB</p>
-<p>理论峰值<br>
-<em><em>n 1</em>64</em>1.3<em>32=2662.4 Gflops</em>*</p>
-<h3 id="2-hpl-dat文件中需要优化的参数"><a class="header-anchor" href="#2-hpl-dat文件中需要优化的参数">¶</a>2. HPL.dat文件中需要优化的参数</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">HPLinpack benchmark input file</span><br><span class="line">Innovative Computing Laboratory, University of Tennessee</span><br><span class="line">HPL.out      output file name (<span class="keyword">if</span> any)</span><br><span class="line">6            device out (6=stdout,7=stderr,file)</span><br><span class="line">1            <span class="comment"># of problems sizes (N)</span></span><br><span class="line">50000 100000 150000 200000  Ns</span><br><span class="line">10            <span class="comment"># of NBs</span></span><br><span class="line">1 2 4 8 16 32 64 128 256 512     NBs</span><br><span class="line">0            PMAP process mapping (0=Row-,1=Column-major)</span><br><span class="line">1            <span class="comment"># of process grids (P x Q)</span></span><br><span class="line">1            Ps</span><br><span class="line">1            Qs</span><br><span class="line">16.0         threshold</span><br><span class="line">3            <span class="comment"># of panel fact</span></span><br><span class="line">0 1 2        PFACTs (0=left, 1=Crout, 2=Right)</span><br><span class="line">2            <span class="comment"># of recursive stopping criterium</span></span><br><span class="line">2 4          NBMINs (&gt;= 1)</span><br><span class="line">1            <span class="comment"># of panels in recursion</span></span><br><span class="line">2            NDIVs</span><br><span class="line">3            <span class="comment"># of recursive panel fact.</span></span><br><span class="line">0 1 2        RFACTs (0=left, 1=Crout, 2=Right)</span><br><span class="line">1            <span class="comment"># of broadcast</span></span><br><span class="line">0            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)</span><br><span class="line">1            <span class="comment"># of lookahead depth</span></span><br><span class="line">0            DEPTHs (&gt;=0)</span><br><span class="line">2            SWAP (0=bin-exch,1=long,2=mix)</span><br><span class="line">64           swapping threshold</span><br><span class="line">0            L1 <span class="keyword">in</span> (0=transposed,1=no-transposed) form</span><br><span class="line">0            U  <span class="keyword">in</span> (0=transposed,1=no-transposed) form</span><br><span class="line">1            Equilibration (0=no,1=yes)</span><br><span class="line">8            memory alignment <span class="keyword">in</span> double (&gt; 0)</span><br></pre></td></tr></table></figure>
+        <h3 id="1-实验平台KNL配置"><a href="#1-实验平台KNL配置" class="headerlink" title="1. 实验平台KNL配置"></a>1. 实验平台KNL配置</h3><p>Intel Xeon Phi Processor 7210 ( 16GB, 1.30 GHz, 64 core )<br>Processor name : Intel(R) Xeon Phi(TM) 7210<br>Packages (sockets) : 1<br>Cores : 64<br>Processors (CPUs) : 256<br>Cores per package : 64<br>Threads per core : 4</p>
+<p>RAM: 96GB<br>MCDRAM: 16 GB</p>
+<p>理论峰值<br><strong>n 1<em>64</em>1.3*32=2662.4 Gflops</strong></p>
+<h3 id="2-HPL-dat文件中需要优化的参数"><a href="#2-HPL-dat文件中需要优化的参数" class="headerlink" title="2. HPL.dat文件中需要优化的参数"></a>2. HPL.dat文件中需要优化的参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">HPLinpack benchmark input file</span><br><span class="line">Innovative Computing Laboratory, University of Tennessee</span><br><span class="line">HPL.out      output file name (<span class="keyword">if</span> any)</span><br><span class="line">6            device out (6=stdout,7=stderr,file)</span><br><span class="line">1            <span class="comment"># of problems sizes (N)</span></span><br><span class="line">50000 100000 150000 200000  Ns</span><br><span class="line">10            <span class="comment"># of NBs</span></span><br><span class="line">1 2 4 8 16 32 64 128 256 512     NBs</span><br><span class="line">0            PMAP process mapping (0=Row-,1=Column-major)</span><br><span class="line">1            <span class="comment"># of process grids (P x Q)</span></span><br><span class="line">1            Ps</span><br><span class="line">1            Qs</span><br><span class="line">16.0         threshold</span><br><span class="line">3            <span class="comment"># of panel fact</span></span><br><span class="line">0 1 2        PFACTs (0=left, 1=Crout, 2=Right)</span><br><span class="line">2            <span class="comment"># of recursive stopping criterium</span></span><br><span class="line">2 4          NBMINs (&gt;= 1)</span><br><span class="line">1            <span class="comment"># of panels in recursion</span></span><br><span class="line">2            NDIVs</span><br><span class="line">3            <span class="comment"># of recursive panel fact.</span></span><br><span class="line">0 1 2        RFACTs (0=left, 1=Crout, 2=Right)</span><br><span class="line">1            <span class="comment"># of broadcast</span></span><br><span class="line">0            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)</span><br><span class="line">1            <span class="comment"># of lookahead depth</span></span><br><span class="line">0            DEPTHs (&gt;=0)</span><br><span class="line">2            SWAP (0=bin-exch,1=long,2=mix)</span><br><span class="line">64           swapping threshold</span><br><span class="line">0            L1 <span class="keyword">in</span> (0=transposed,1=no-transposed) form</span><br><span class="line">0            U  <span class="keyword">in</span> (0=transposed,1=no-transposed) form</span><br><span class="line">1            Equilibration (0=no,1=yes)</span><br><span class="line">8            memory alignment <span class="keyword">in</span> double (&gt; 0)</span><br></pre></td></tr></table></figure>
 <p><strong><em>需要优化的主要有N，NB，PxQ等</em></strong></p>
-<h3 id="3-根据内存情况-获取理论最优的n值"><a class="header-anchor" href="#3-根据内存情况-获取理论最优的n值">¶</a>3. 根据内存情况，获取理论最优的N值</h3>
-<p>根据KNL的MCDRAM为16G，N<em>N</em>8=16G，得到N约为46000<br>
-从46000左右开始设置N值，进行测试。</p>
+<h3 id="3-根据内存情况，获取理论最优的N值"><a href="#3-根据内存情况，获取理论最优的N值" class="headerlink" title="3. 根据内存情况，获取理论最优的N值"></a>3. 根据内存情况，获取理论最优的N值</h3><p>根据KNL的MCDRAM为16G，N<em>N</em>8=16G，得到N约为46000<br>从46000左右开始设置N值，进行测试。</p>
 <ul>
 <li>log信息提取命令</li>
 </ul>
@@ -163,6 +151,7 @@ MCDRAM: 16 GB</p>
 <ul>
 <li>阶段性结果</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -274,9 +263,11 @@ MCDRAM: 16 GB</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>更改运行脚本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/bash</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#PBS -N knl003_hpl</span></span><br><span class="line"><span class="comment">#PBS -l nodes=1,walltime=01:00:00</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">cd</span> /home/asc0146/haomeng/code/hpl/bin/Linux_Intel64/test1/</span><br><span class="line"><span class="built_in">export</span> KMP_AFFINITY=scatter,verbose</span><br><span class="line"><span class="built_in">export</span> OMP_NUM_THREADS=4</span><br><span class="line"><span class="built_in">export</span> MKL_NUM_THREADS=4</span><br><span class="line">mpiexec -np 64 ./xhpl | tee HPL.out</span><br></pre></td></tr></table></figure>
 <p>进行实验</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -297,38 +288,30 @@ MCDRAM: 16 GB</p>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>参数选择指导</li>
 </ul>
-<p>参考<a href="https://software.intel.com/en-us/mkl-linux-developer-guide-configuring-parameters" target="_blank" rel="noopener">Developer Guide for Intel</a>.<br>
-The most significant parameters in HPL.dat are P, Q, NB, and N. Specify them as follows:</p>
+<p>参考<a href="https://software.intel.com/en-us/mkl-linux-developer-guide-configuring-parameters" target="_blank" rel="noopener">Developer Guide for Intel</a>.<br>The most significant parameters in HPL.dat are P, Q, NB, and N. Specify them as follows:</p>
 <ul>
-<li>
-<p>P and Q - the number of rows and columns in the process grid, respectively.<br>
-P*Q must be the number of MPI processes that HPL is using.<br>
-Choose P ≤ Q.</p>
+<li><p>P and Q - the number of rows and columns in the process grid, respectively.<br>P*Q must be the number of MPI processes that HPL is using.<br>Choose P ≤ Q.</p>
 </li>
-<li>
-<p>NB - the block size of the data distribution.<br>
-The table below shows recommended values of NB for different Intel® processors:</p>
-</li>
-</ul>
+<li><p>NB - the block size of the data distribution.<br>The table below shows recommended values of NB for different Intel® processors:</p>
 <img src="/2019/07/31/HPL参数优化/HPL.png" title="KNL推荐配置">
-<ul>
-<li>N - the problem size:<br>
-For homogeneous runs, choose N divisible by NB*LCM(P,Q), where LCM is the least common multiple of the two numbers.<br>
-For heterogeneous runs, see Heterogeneous Support in the Inte；l Optimized MP LINPACK Benchmark for how to choose N.</li>
+</li>
+<li><p>N - the problem size:<br>For homogeneous runs, choose N divisible by NB*LCM(P,Q), where LCM is the least common multiple of the two numbers.<br>For heterogeneous runs, see Heterogeneous Support in the Inte；l Optimized MP LINPACK Benchmark for how to choose N.</p>
+</li>
 </ul>
 <p><strong><em>NOTE</em></strong></p>
 <p>Increasing N usually increases performance, but the size of N is bounded by memory. In general, you can compute the memory required to store the matrix (which does not count internal buffers) as 8<em>N</em>N/(P*Q) bytes, where N is the problem size and P and Q are the process grids in HPL.dat. A general rule of thumb is to choose a problem size that fills 80% of memory. When offloading to Intel Xeon Phi coprocessors, you may choose a problem size that fills 70% of memory, to leave room for additional buffers needed for offloading. Choose N and NB such that N &gt; &gt; NB.</p>
 <ul>
-<li>
-<p>最新优化情况</p>
+<li><p>最新优化情况</p>
 <ul>
 <li>优化结果</li>
 </ul>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -349,6 +332,7 @@ For heterogeneous runs, see Heterogeneous Support in the Inte；l Optimized MP L
 </tr>
 </tbody>
 </table>
+</div>
 
         
         <br />

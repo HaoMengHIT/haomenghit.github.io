@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">模型评估</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -144,10 +144,8 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
-<p>随着功率限制和成本的增加，能效在高性能计算（HPC）中变得越来越重要。工作负载和系统特性构成了一个复杂的优化搜索空间，其中能效和性能的最佳设置通常不同。因此，我们必须确定性能和能效的权衡选择，以找到它们之间的理想平衡。我们提出了一种创新的统计模型，该模型仅使用用户可控参数准确预测帕累托最优性能和能效折衷选项。我们的方法也可以容忍测量和模型误差。我们使用多个HPC内核研究模型训练和验证，然后探索将模型应用于更复杂的工作负载（包括AMG和LAMMPS）的可行性。我们可以从最少12次运行校准精确模型，预测误差小于10％。我们的结果确定了权衡选项，能够以低于20％的性能损失为代价，将能效提高40％。对于AMG，我们将所需的样品测量时间从13小时减少到74分钟（约90％）。</p>
-<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
-<p>目前，功率限制限制了超级计算机中CPU核心和计算节点的数量。我们必须开发创新方法来预测并行计算的性能和能源使用之间的关系。根据情况，在应用开发和部署中，性能和能效之间的可用权衡选择至关重要。系统资源管理必须通过在运行时正确配置应用程序来最大限度地满足给定功率预算。此外，程序员需要实用的工具来有效地识别和选择权衡选项，以优化其并行应用程序的能源效率。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>随着功率限制和成本的增加，能效在高性能计算（HPC）中变得越来越重要。工作负载和系统特性构成了一个复杂的优化搜索空间，其中能效和性能的最佳设置通常不同。因此，我们必须确定性能和能效的权衡选择，以找到它们之间的理想平衡。我们提出了一种创新的统计模型，该模型仅使用用户可控参数准确预测帕累托最优性能和能效折衷选项。我们的方法也可以容忍测量和模型误差。我们使用多个HPC内核研究模型训练和验证，然后探索将模型应用于更复杂的工作负载（包括AMG和LAMMPS）的可行性。我们可以从最少12次运行校准精确模型，预测误差小于10％。我们的结果确定了权衡选项，能够以低于20％的性能损失为代价，将能效提高40％。对于AMG，我们将所需的样品测量时间从13小时减少到74分钟（约90％）。</p>
+<h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>目前，功率限制限制了超级计算机中CPU核心和计算节点的数量。我们必须开发创新方法来预测并行计算的性能和能源使用之间的关系。根据情况，在应用开发和部署中，性能和能效之间的可用权衡选择至关重要。系统资源管理必须通过在运行时正确配置应用程序来最大限度地满足给定功率预算。此外，程序员需要实用的工具来有效地识别和选择权衡选项，以优化其并行应用程序的能源效率。</p>
 <p>不幸的是，许多因素影响了权衡。这些因素包括应用程序特征，如计算强度，内存和通信访问模式，以及系统因素，如缓存设计，内存和网络带宽。因此，优化这种多目标问题的工具[4]必须搜索大而复杂的空间。</p>
 <p><strong><em>帕累托边界通常代表能源使用与性能之间的权衡选择</em></strong>。因此，可以通过预测帕累托前沿的最佳配置的模型来估计权衡选项。我们提出了一种回归建模技术，可以预测帕累托最优能量效率和性能权衡选项，但不需要完整的遍历搜索空间。</p>
 <p>与现有的基于模型的方法[5]，[6]，[7]，[8]相比，我们的技术具有一些优势，可以提高并行计算的能效。首先，它只需要一组最小的输入变量，超级计算机用户可以自己简单地访问和控制。相比之下，大多数现有模型[5]，[6]建立在几个直接反映能效的运行时测量上，例如计算强度，高速缓存未命中率，停顿周期，存储器访问次数和网络通信量。虽然这些模型提供了有价值的见解，但这些参数对于应用程序用户来说很难控制。获取这些测量值的过程也增加了将这些模型自动化为实用工具的难度。其次，我们的模型在预测的权衡选项中考虑样本测量误差和模型预测误差。第三，大多数现有模型不直接给出帕累托效率配置。</p>
@@ -157,18 +155,11 @@
 <p>（2）一种从少量输入测量中预测能效和性能权衡选项的实用方法;</p>
 <p>（3）准确预测并行应用响应的多目标能效和性能模型;</p>
 <p>（4）在给定测量和/或建模误差的情况下，权衡区方法可改善Pareto优化。</p>
-<h2 id="研究方法"><a class="header-anchor" href="#研究方法">¶</a>研究方法</h2>
-<h4 id="模型预测器"><a class="header-anchor" href="#模型预测器">¶</a>模型预测器</h4>
-<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png">
-<p>初始步骤选择模型输入参数或预测器，可以准确地模拟我们的响应：系统能效和性能。之前的工作[29]表明系统特性，工作负载特性，并发性，CPU频率缩放和观察到的系统响应之间存在复杂的关系。我们使用表I中的定义来表达这些关系，如等式1和2所示。<br>
-$$<br>
-E(w_n,s_m)=F_e(n_i,c_j,f_k)\tag{1}<br>
-$$</p>
-<p>$$<br>
-P(w_n,s_m)=F_p(n_i,c_j,f_k)\tag{2}<br>
-$$</p>
-<h4 id="模型形式化"><a class="header-anchor" href="#模型形式化">¶</a>模型形式化</h4>
-<p>为了制定多元回归模型，我们首先使用节点数量，核心数量和CPU频率设置作为模型输入来分析一组代表性软件内核的响应。观察到的曲线性能和能量效率响应意味着模型需要多项式项。</p>
+<h2 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h2><h4 id="模型预测器"><a href="#模型预测器" class="headerlink" title="模型预测器"></a>模型预测器</h4><img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png">
+<p>初始步骤选择模型输入参数或预测器，可以准确地模拟我们的响应：系统能效和性能。之前的工作[29]表明系统特性，工作负载特性，并发性，CPU频率缩放和观察到的系统响应之间存在复杂的关系。我们使用表I中的定义来表达这些关系，如等式1和2所示。</p>
+<script type="math/tex; mode=display">
+E(w_n,s_m)=F_e(n_i,c_j,f_k)\tag{1}</script><script type="math/tex; mode=display">
+P(w_n,s_m)=F_p(n_i,c_j,f_k)\tag{2}</script><h4 id="模型形式化"><a href="#模型形式化" class="headerlink" title="模型形式化"></a>模型形式化</h4><p>为了制定多元回归模型，我们首先使用节点数量，核心数量和CPU频率设置作为模型输入来分析一组代表性软件内核的响应。观察到的曲线性能和能量效率响应意味着模型需要多项式项。</p>
 <p>多项式的不灵活性可以极大地影响基本多项式拟合。它可能导致预测响应中的不期望的振荡，或者由小样本子集过度影响的总响应形状。为了最小化这种不灵活性的影响，我们从使用普通最小二乘回归的B样条分段多项式模型开始。我们发现样条在我们的实验中始终优于基本多项式。</p>
 <p>样条函数用于沿一系列点或节点拟合平滑曲线。我们构造了从多项式函数中连接每一对点或样条的曲线。B样条或基本样条函数可改善结的连续性，否则可能会影响模型的连续性。</p>
 <p>我们有几种配置选项可以调整模型的准确性和效率。我们考虑包括样条的多项式度和自由度的选项。增加这些模型参数允许样条曲线拟合更复杂的曲线。我们还考虑了项，线性和非线性项之间的相互作用，转换以减少数据分布偏差的影响，以及采样方法。</p>
@@ -181,26 +172,17 @@ $$</p>
 <p>（6）频率和节点数没有交互项;</p>
 <p>（7）响应的自然对数变换。</p>
 <p>为了通过实验评估模型设置，我们使用迭代方法来评估数据分布和相关性，模型拟合度和系数量值。例如，我们通过实验将模型拟合与CPU频率作为多项式或线性项进行比较，发现线性项选项在我们的研究测试案例中提供了平均RMS误差的轻微改善（2.3％）。我们还通过实验确定了模型欠拟合和过度拟合之间的过渡点处的最优多项式项顺序和B样条自由度。例如，核心数量和频率交互项的近零系数证实我们可以将其从模型中移除而几乎没有影响。</p>
-<p>因此，我们在均匀HPC群集上运行的并行应用的能效和性能统计模型使用公式3和4。<br>
-$$<br>
-log_e(e_\eta)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{3}<br>
-$$</p>
-<p>$$<br>
-log_e(p_\mu)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{4}<br>
-$$</p>
-<p>这些方程基于Wilkinson符号，它被回归分析工具（如MAT LAB，或R和Python编程库）所接受。所使用的运算符&quot;~&quot;表示模型的构成，“+”表示在模型中添加项，“:”表示两项之前的交互关系。</p>
-<p>除了能效和性能率之外，模型还可以基于等式5和6来获取例如总能量和总时间的累积响应。<br>
-$$<br>
-log_e(e_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{5}<br>
-$$</p>
-<p>$$<br>
-log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}<br>
-$$</p>
-<p>我们将自然指数应用于模型预测以反转对数变换。</p>
+<p>因此，我们在均匀HPC群集上运行的并行应用的能效和性能统计模型使用公式3和4。</p>
+<script type="math/tex; mode=display">
+log_e(e_\eta)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{3}</script><script type="math/tex; mode=display">
+log_e(p_\mu)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{4}</script><p>这些方程基于Wilkinson符号，它被回归分析工具（如MAT LAB，或R和Python编程库）所接受。所使用的运算符”~”表示模型的构成，“+”表示在模型中添加项，“:”表示两项之前的交互关系。</p>
+<p>除了能效和性能率之外，模型还可以基于等式5和6来获取例如总能量和总时间的累积响应。</p>
+<script type="math/tex; mode=display">
+log_e(e_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{5}</script><script type="math/tex; mode=display">
+log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}</script><p>我们将自然指数应用于模型预测以反转对数变换。</p>
 <p>公式7显示了方程3到6的右侧扩展。每个模型有20个预测项（1个截距，1个线性项，2$\times$3个样条B样条项，1$\times$3个样条B样条$\times$3个样条B- 样条相互作用项，1$\times$3样条B样条$\times$1个线性项。我们收集预测因子和响应训练数据，然后使用最小二乘回归来确定各项系数，$\beta_1$ 到$\beta_{19}$。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure2.png">
-<h4 id="模型评估"><a class="header-anchor" href="#模型评估">¶</a>模型评估</h4>
-
+<h4 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h4>
         
         <br />
         <div id="comment-container">
