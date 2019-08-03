@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -157,6 +157,16 @@
 <p>（2）一种从少量输入测量中预测能效和性能权衡选项的实用方法;</p>
 <p>（3）准确预测并行应用响应的多目标能效和性能模型;</p>
 <p>（4）在给定测量和/或建模误差的情况下，权衡区方法可改善Pareto优化。</p>
+<h2 id="研究方法"><a class="header-anchor" href="#研究方法">¶</a>研究方法</h2>
+<h4 id="模型预测器"><a class="header-anchor" href="#模型预测器">¶</a>模型预测器</h4>
+<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png" title="[20] [20]">
+<p>初始步骤选择模型输入参数或预测器，可以准确地模拟我们的响应：系统能效和性能。之前的工作[29]表明系统特性，工作负载特性，并发性，CPU频率缩放和观察到的系统响应之间存在复杂的关系。我们使用表I中的定义来表达这些关系，如等式1和2所示。<br>
+$$<br>
+E(w_n,s_m)=F_e(n_i,c_j,f_k)\tag{1}<br>
+$$</p>
+<p>$$<br>
+P(w_n,s_m)=F_p(n_i,c_j,f_k)\tag{2}<br>
+$$</p>
 
         
         <br />
