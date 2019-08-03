@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -196,6 +196,21 @@ $$</p>
 <p>$$<br>
 log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}<br>
 $$</p>
+<p>我们将自然指数应用于模型预测以反转对数变换。</p>
+<p>公式7显示了方程3到6的右侧扩展。每个模型有20个预测项（1个截距，1个线性项，2$\times$3个样条B样条项，1$\times$3个样条B样条$\times$3个样条B- 样条相互作用项，1$\times$3样条B样条$\times$1个线性项。我们收集预测因子和响应训练数据，然后使用最小二乘回归来确定各项系数，$\beta_1$ 到$\beta_{19}$。<br>
+$$<br>
+\beta_0+\beta_1\cdot f_k\<br>
++\beta_2\cdot bs_2(n_i)+\beta_3\cdot bs_3(n_i)+\beta_4\cdot bs_4(n_i)\<br>
++\beta_5\cdot bs_2(c_i)+\beta_6\cdot bs_3(c_i)+\beta_7\cdot bs_4(c_i)\<br>
++\beta_8\cdot bs_1(n_i)\cdot bs_1(c_j)+\beta_9\cdot bs_2(n_i)\cdot bs_1(c_j)\<br>
++\beta_{10}\cdot bs_3(n_i)\cdot bs_1(c_j)+\beta_{11}\cdot bs_1(n_i)\cdot bs_2(c_j)\<br>
++\beta_{12}\cdot bs_2(n_i)\cdot bs_2(c_j)+\beta_{13}\cdot bs_3(n_i)\cdot bs_2(c_j)\<br>
++\beta_{14}\cdot bs_1(n_i)\cdot bs_3(c_j)+\beta_{15}\cdot bs_2(n_i)\cdot bs_3(c_j)\<br>
++\beta_{16}\cdot bs_3(n_i)\cdot bs_3(c_j)\<br>
++\beta_{17}\cdot bs_1(c_j)\cdot f_k+\beta_{18}\cdot bs_2(c_j)\cdot f_k\<br>
++\beta_{19}\cdot bs_3(c_j)\cdot f_k<br>
+$$</p>
+<h4 id="模型评估"><a class="header-anchor" href="#模型评估">¶</a>模型评估</h4>
 
         
         <br />
