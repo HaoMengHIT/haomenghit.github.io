@@ -159,7 +159,7 @@
 <p>（4）在给定测量和/或建模误差的情况下，权衡区方法可改善Pareto优化。</p>
 <h2 id="研究方法"><a class="header-anchor" href="#研究方法">¶</a>研究方法</h2>
 <h4 id="模型预测器"><a class="header-anchor" href="#模型预测器">¶</a>模型预测器</h4>
-<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png" title="[20] [20]">
+<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png">
 <p>初始步骤选择模型输入参数或预测器，可以准确地模拟我们的响应：系统能效和性能。之前的工作[29]表明系统特性，工作负载特性，并发性，CPU频率缩放和观察到的系统响应之间存在复杂的关系。我们使用表I中的定义来表达这些关系，如等式1和2所示。<br>
 $$<br>
 E(w_n,s_m)=F_e(n_i,c_j,f_k)\tag{1}<br>
@@ -198,7 +198,7 @@ log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}<br>
 $$</p>
 <p>我们将自然指数应用于模型预测以反转对数变换。</p>
 <p>公式7显示了方程3到6的右侧扩展。每个模型有20个预测项（1个截距，1个线性项，2$\times$3个样条B样条项，1$\times$3个样条B样条$\times$3个样条B- 样条相互作用项，1$\times$3样条B样条$\times$1个线性项。我们收集预测因子和响应训练数据，然后使用最小二乘回归来确定各项系数，$\beta_1$ 到$\beta_{19}$。</p>
-<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure2.png" title="[10] [10]">
+<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure2.png">
 <h4 id="模型评估"><a class="header-anchor" href="#模型评估">¶</a>模型评估</h4>
 
         
