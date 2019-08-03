@@ -188,7 +188,14 @@ $$</p>
 <p>$$<br>
 log_e(p_\mu)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{4}<br>
 $$</p>
-<p>这些方程基于Wilkinson符号，它被回归分析工具（如MAT LAB，或R和Python编程库）所接受。所使用的运算符&quot;~&quot;表示模型，“+”表示在模型中添加项，“:”表示两项之前的交互关系。</p>
+<p>这些方程基于Wilkinson符号，它被回归分析工具（如MAT LAB，或R和Python编程库）所接受。所使用的运算符&quot;~&quot;表示模型的构成，“+”表示在模型中添加项，“:”表示两项之前的交互关系。</p>
+<p>除了能效和性能率之外，模型还可以基于等式5和6来获取例如总能量和总时间的累积响应。<br>
+$$<br>
+log_e(e_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{5}<br>
+$$</p>
+<p>$$<br>
+log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}<br>
+$$</p>
 
         
         <br />
