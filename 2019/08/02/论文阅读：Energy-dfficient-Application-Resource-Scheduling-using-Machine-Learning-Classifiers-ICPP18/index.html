@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何最大化能源效率"><span class="toc-text">¶如何最大化能源效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习能源效率"><span class="toc-text">¶学习能源效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统设置的分类"><span class="toc-text">¶系统设置的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#训练数据"><span class="toc-text">¶训练数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能计数器"><span class="toc-text">¶性能计数器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验设计"><span class="toc-text">¶实验设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用于训练的应用程序"><span class="toc-text">¶用于训练的应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用于评估的应用程序"><span class="toc-text">¶用于评估的应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分类算法"><span class="toc-text">¶分类算法</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何最大化能源效率"><span class="toc-text">¶如何最大化能源效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习能源效率"><span class="toc-text">¶学习能源效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统设置的分类"><span class="toc-text">¶系统设置的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#训练数据"><span class="toc-text">¶训练数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能计数器"><span class="toc-text">¶性能计数器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验设计"><span class="toc-text">¶实验设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用于训练的应用程序"><span class="toc-text">¶用于训练的应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用于评估的应用程序"><span class="toc-text">¶用于评估的应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分类算法"><span class="toc-text">¶分类算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验评估"><span class="toc-text">¶实验评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#减少能耗开销"><span class="toc-text">¶减少能耗开销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预测间隔和特征选择"><span class="toc-text">¶预测间隔和特征选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法本身的开销"><span class="toc-text">¶方法本身的开销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用不同的分类器"><span class="toc-text">¶使用不同的分类器</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -204,6 +204,20 @@ $$<br>
 <li>SVM：使用径向基函数（RBF）内核的最大边际分类。</li>
 </ul>
 <img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure4.png" title="[20] [20]">
+<h2 id="实验评估"><a class="header-anchor" href="#实验评估">¶</a>实验评估</h2>
+<h4 id="减少能耗开销"><a class="header-anchor" href="#减少能耗开销">¶</a>减少能耗开销</h4>
+<p>论文的实验，主要评估了五种分类算法和使用数据库Oracle的性能，如图5所示，该方法能够显著减少能耗开销。</p>
+<img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure5.png" title="[20] [20]">
+<h4 id="预测间隔和特征选择"><a class="header-anchor" href="#预测间隔和特征选择">¶</a>预测间隔和特征选择</h4>
+<p>该部分评估了不同间隔下该方法的性能，以及选择不同的特征下方法的性能。</p>
+<img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure6.png" title="[20] [20]">
+<img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure7.png" title="[20] [20]">
+<h4 id="方法本身的开销"><a class="header-anchor" href="#方法本身的开销">¶</a>方法本身的开销</h4>
+<p>论文也剖析了该方法各个部分的开销。</p>
+<img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure8.png" title="[20] [20]">
+<h4 id="使用不同的分类器"><a class="header-anchor" href="#使用不同的分类器">¶</a>使用不同的分类器</h4>
+<p>对于不同部分的预测，使用不同的分类器，实验表明，对于使用单一的分类器，有的程序能达到很好的效果，而使用不同的分类器，在有的程序上能达到很好的效果，但是有的程序上，能耗开销会很大。</p>
+<img src="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/Figure9.png" title="[20] [20]">
         
         <br />
         <div id="comment-container">
