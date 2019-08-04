@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帕累托前沿评估"><span class="toc-text">¶帕累托前沿评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测量和建模误差"><span class="toc-text">¶测量和建模误差</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验概述"><span class="toc-text">¶实验概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#平台"><span class="toc-text">¶平台</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帕累托前沿评估"><span class="toc-text">¶帕累托前沿评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测量和建模误差"><span class="toc-text">¶测量和建模误差</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验概述"><span class="toc-text">¶实验概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#平台"><span class="toc-text">¶平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#能耗测量"><span class="toc-text">¶能耗测量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数配置"><span class="toc-text">¶参数配置</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -229,6 +229,12 @@ $$</p>
 <h4 id="平台"><a class="header-anchor" href="#平台">¶</a>平台</h4>
 <p>我们在Cray XC系统上进行实验，如表II所示。我们的运行最多使用86个，专门分配44个核心节点，或总共3,784个核心。我们使用Python编程平台[35]进行相关性分析，拟合模型系数，评估响应，并绘制结果。Nimrod工具包用于协调实验任务。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure4.png">
+<h4 id="能耗测量"><a class="header-anchor" href="#能耗测量">¶</a>能耗测量</h4>
+<p>Cray XC系统具有节点级传感器，用于测量温度，电流和电压。Cray电源管理计数器（pm_counters）提供实时功率和能量测量，以10Hz的频率更新。CrayPAT是一种性能分析工具，它使用性能计数器（包括pm_counters和硬件性能计数器（HWPC））来评估程序行为。它检测程序，在运行时收集指定的计数器，并报告收集的计数器。当程序启动或终止时，也可以直接从Linux sysfs文件夹/sys/cray/pm_counters读取Cray pm_counters。我们使用pm_counters监控所有节点的能耗和功率。为了评估能效，我们使用每焦耳的操作数（例如，Flops/J，Bytes/J，Updates/J）。</p>
+<h4 id="参数配置"><a class="header-anchor" href="#参数配置">¶</a>参数配置</h4>
+<p>表III列出了我们在研究中使用的配置参数和相关范围。这些参数生成具有484种组合的全因子设计。</p>
+<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure5.png">
+
         
         <br />
         <div id="comment-container">
