@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帕累托前沿评估"><span class="toc-text">¶帕累托前沿评估</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帕累托前沿评估"><span class="toc-text">¶帕累托前沿评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测量和建模误差"><span class="toc-text">¶测量和建模误差</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -205,6 +205,14 @@ $$</p>
 <p>$R^2$ 统计量衡量模型与训练数据的拟合程度，$R^2$ 接近100％表示更好的拟合。RMS误差是预测误差或回归残差的标准偏差。它衡量密切观察的数据如何适应模型生成的数据预测。接近零的RMS误差值表示模型预测与观测数据之间的紧密拟合。</p>
 <p>$k$交叉验证方法将数据集划分为$k$个等大小的子集。$k-1$个子集用作模型训练数据，剩余子集是模型测试数据。我们重复这个过程来测试整个数据集的模型精度。我们使用3交叉验证来确认模型不会过度拟合数据的子集。</p>
 <h4 id="帕累托前沿评估"><a class="header-anchor" href="#帕累托前沿评估">¶</a>帕累托前沿评估</h4>
+<p>我们计算观察到的和预测的帕累托前沿之间的RMS误差，但也使用进一步的特定技术来评估预测前沿的准确性。我们使用以下指标评估帕累托前沿准确度：</p>
+<p>（1）重叠点数，即在观察和预测前沿中出现的点数;</p>
+<p>（2）观察前沿上的非重叠点数，按预测前沿距离最近邻居的距离分组;</p>
+<p>（3）预测前沿上的非重叠点数，按观察前沿距离最近邻居的距离分组;</p>
+<p>（4）预测的和观察的每个目标的最小值和最大值（能效或性能）;</p>
+<p>（5）预测的和观察的每个目标的权衡范围与线程和CPU频率处于最大设置时的值相比较。</p>
+<p>我们测量到最近邻居的距离占搜索空间维度的百分比。例如，我们每个节点维度的线程数有4个增量，从4到44，步长为4.从36到40的距离为1/11 = 9％，36到44为2/11 = 18％。此选择可以跨尺寸标准化。</p>
+<h4 id="测量和建模误差"><a class="header-anchor" href="#测量和建模误差">¶</a>测量和建模误差</h4>
 
         
         <br />
