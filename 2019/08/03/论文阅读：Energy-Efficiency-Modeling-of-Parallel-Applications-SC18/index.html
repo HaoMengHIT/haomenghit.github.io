@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">¶模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">¶模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">¶模型评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帕累托前沿评估"><span class="toc-text">¶帕累托前沿评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测量和建模误差"><span class="toc-text">¶测量和建模误差</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验概述"><span class="toc-text">¶实验概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#平台"><span class="toc-text">¶平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#能耗测量"><span class="toc-text">¶能耗测量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数配置"><span class="toc-text">¶参数配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验"><span class="toc-text">¶实验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序kernel测试"><span class="toc-text">¶程序Kernel测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stencil内核"><span class="toc-text">¶Stencil内核</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">¶参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究方法"><span class="toc-text">研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模型预测器"><span class="toc-text">模型预测器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型形式化"><span class="toc-text">模型形式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型评估"><span class="toc-text">模型评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帕累托前沿评估"><span class="toc-text">帕累托前沿评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测量和建模误差"><span class="toc-text">测量和建模误差</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验概述"><span class="toc-text">实验概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#平台"><span class="toc-text">平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#能耗测量"><span class="toc-text">能耗测量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数配置"><span class="toc-text">参数配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验"><span class="toc-text">实验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序Kernel测试"><span class="toc-text">程序Kernel测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Stencil内核"><span class="toc-text">Stencil内核</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
 </div>
     
 </div>
@@ -144,10 +144,8 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
-<p>随着功率限制和成本的增加，能效在高性能计算（HPC）中变得越来越重要。工作负载和系统特性构成了一个复杂的优化搜索空间，其中能效和性能的最佳设置通常不同。因此，我们必须确定性能和能效的权衡选择，以找到它们之间的理想平衡。我们提出了一种创新的统计模型，该模型仅使用用户可控参数准确预测帕累托最优性能和能效折衷选项。我们的方法也可以容忍测量和模型误差。我们使用多个HPC内核研究模型训练和验证，然后探索将模型应用于更复杂的工作负载（包括AMG和LAMMPS）的可行性。我们可以从最少12次运行校准精确模型，预测误差小于10％。我们的结果确定了权衡选项，能够以低于20％的性能损失为代价，将能效提高40％。对于AMG，我们将所需的样品测量时间从13小时减少到74分钟（约90％）。</p>
-<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
-<p>目前，功率限制限制了超级计算机中CPU核心和计算节点的数量。我们必须开发创新方法来预测并行计算的性能和能源使用之间的关系。根据情况，在应用开发和部署中，性能和能效之间的可用权衡选择至关重要。系统资源管理必须通过在运行时正确配置应用程序来最大限度地满足给定功率预算。此外，程序员需要实用的工具来有效地识别和选择权衡选项，以优化其并行应用程序的能源效率。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>随着功率限制和成本的增加，能效在高性能计算（HPC）中变得越来越重要。工作负载和系统特性构成了一个复杂的优化搜索空间，其中能效和性能的最佳设置通常不同。因此，我们必须确定性能和能效的权衡选择，以找到它们之间的理想平衡。我们提出了一种创新的统计模型，该模型仅使用用户可控参数准确预测帕累托最优性能和能效折衷选项。我们的方法也可以容忍测量和模型误差。我们使用多个HPC内核研究模型训练和验证，然后探索将模型应用于更复杂的工作负载（包括AMG和LAMMPS）的可行性。我们可以从最少12次运行校准精确模型，预测误差小于10％。我们的结果确定了权衡选项，能够以低于20％的性能损失为代价，将能效提高40％。对于AMG，我们将所需的样品测量时间从13小时减少到74分钟（约90％）。</p>
+<h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>目前，功率限制限制了超级计算机中CPU核心和计算节点的数量。我们必须开发创新方法来预测并行计算的性能和能源使用之间的关系。根据情况，在应用开发和部署中，性能和能效之间的可用权衡选择至关重要。系统资源管理必须通过在运行时正确配置应用程序来最大限度地满足给定功率预算。此外，程序员需要实用的工具来有效地识别和选择权衡选项，以优化其并行应用程序的能源效率。</p>
 <p>不幸的是，许多因素影响了权衡。这些因素包括应用程序特征，如计算强度，内存和通信访问模式，以及系统因素，如缓存设计，内存和网络带宽。因此，优化这种多目标问题的工具[4]必须搜索大而复杂的空间。</p>
 <p><strong><em>帕累托边界通常代表能源使用与性能之间的权衡选择</em></strong>。因此，可以通过预测帕累托前沿的最佳配置的模型来估计权衡选项。我们提出了一种回归建模技术，可以预测帕累托最优能量效率和性能权衡选项，但不需要完整的遍历搜索空间。</p>
 <p>与现有的基于模型的方法[5]，[6]，[7]，[8]相比，我们的技术具有一些优势，可以提高并行计算的能效。首先，它只需要一组最小的输入变量，超级计算机用户可以自己简单地访问和控制。相比之下，大多数现有模型[5]，[6]建立在几个直接反映能效的运行时测量上，例如计算强度，高速缓存未命中率，停顿周期，存储器访问次数和网络通信量。虽然这些模型提供了有价值的见解，但这些参数对于应用程序用户来说很难控制。获取这些测量值的过程也增加了将这些模型自动化为实用工具的难度。其次，我们的模型在预测的权衡选项中考虑样本测量误差和模型预测误差。第三，大多数现有模型不直接给出帕累托效率配置。</p>
@@ -157,18 +155,11 @@
 <p>（2）一种从少量输入测量中预测能效和性能权衡选项的实用方法;</p>
 <p>（3）准确预测并行应用响应的多目标能效和性能模型;</p>
 <p>（4）在给定测量和/或建模误差的情况下，权衡区方法可改善Pareto优化。</p>
-<h2 id="研究方法"><a class="header-anchor" href="#研究方法">¶</a>研究方法</h2>
-<h4 id="模型预测器"><a class="header-anchor" href="#模型预测器">¶</a>模型预测器</h4>
-<img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png">
-<p>初始步骤选择模型输入参数或预测器，可以准确地模拟我们的响应：系统能效和性能。之前的工作[29]表明系统特性，工作负载特性，并发性，CPU频率缩放和观察到的系统响应之间存在复杂的关系。我们使用表I中的定义来表达这些关系，如等式1和2所示。<br>
-$$<br>
-E(w_n,s_m)=F_e(n_i,c_j,f_k)\tag{1}<br>
-$$</p>
-<p>$$<br>
-P(w_n,s_m)=F_p(n_i,c_j,f_k)\tag{2}<br>
-$$</p>
-<h4 id="模型形式化"><a class="header-anchor" href="#模型形式化">¶</a>模型形式化</h4>
-<p>为了制定多元回归模型，我们首先使用节点数量，核心数量和CPU频率设置作为模型输入来分析一组代表性软件内核的响应。观察到的曲线性能和能量效率响应意味着模型需要多项式项。</p>
+<h2 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h2><h4 id="模型预测器"><a href="#模型预测器" class="headerlink" title="模型预测器"></a>模型预测器</h4><img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure1.png">
+<p>初始步骤选择模型输入参数或预测器，可以准确地模拟我们的响应：系统能效和性能。之前的工作[29]表明系统特性，工作负载特性，并发性，CPU频率缩放和观察到的系统响应之间存在复杂的关系。我们使用表I中的定义来表达这些关系，如等式1和2所示。</p>
+<script type="math/tex; mode=display">
+E(w_n,s_m)=F_e(n_i,c_j,f_k)\tag{1}</script><script type="math/tex; mode=display">
+P(w_n,s_m)=F_p(n_i,c_j,f_k)\tag{2}</script><h4 id="模型形式化"><a href="#模型形式化" class="headerlink" title="模型形式化"></a>模型形式化</h4><p>为了制定多元回归模型，我们首先使用节点数量，核心数量和CPU频率设置作为模型输入来分析一组代表性软件内核的响应。观察到的曲线性能和能量效率响应意味着模型需要多项式项。</p>
 <p>多项式的不灵活性可以极大地影响基本多项式拟合。它可能导致预测响应中的不期望的振荡，或者由小样本子集过度影响的总响应形状。为了最小化这种不灵活性的影响，我们从使用普通最小二乘回归的B样条分段多项式模型开始。我们发现样条在我们的实验中始终优于基本多项式。</p>
 <p>样条函数用于沿一系列点或节点拟合平滑曲线。我们构造了从多项式函数中连接每一对点或样条的曲线。B样条或基本样条函数可改善结的连续性，否则可能会影响模型的连续性。</p>
 <p>我们有几种配置选项可以调整模型的准确性和效率。我们考虑包括样条的多项式度和自由度的选项。增加这些模型参数允许样条曲线拟合更复杂的曲线。我们还考虑了项，线性和非线性项之间的相互作用，转换以减少数据分布偏差的影响，以及采样方法。</p>
@@ -181,39 +172,28 @@ $$</p>
 <p>（6）频率和节点数没有交互项;</p>
 <p>（7）响应的自然对数变换。</p>
 <p>为了通过实验评估模型设置，我们使用迭代方法来评估数据分布和相关性，模型拟合度和系数量值。例如，我们通过实验将模型拟合与CPU频率作为多项式或线性项进行比较，发现线性项选项在我们的研究测试案例中提供了平均RMS误差的轻微改善（2.3％）。我们还通过实验确定了模型欠拟合和过度拟合之间的过渡点处的最优多项式项顺序和B样条自由度。例如，核心数量和频率交互项的近零系数证实我们可以将其从模型中移除而几乎没有影响。</p>
-<p>因此，我们在均匀HPC群集上运行的并行应用的能效和性能统计模型使用公式3和4。<br>
-$$<br>
-log_e(e_\eta)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{3}<br>
-$$</p>
-<p>$$<br>
-log_e(p_\mu)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{4}<br>
-$$</p>
-<p>这些方程基于Wilkinson符号，它被回归分析工具（如MAT LAB，或R和Python编程库）所接受。所使用的运算符&quot;~&quot;表示模型的构成，“+”表示在模型中添加项，“:”表示两项之前的交互关系。</p>
-<p>除了能效和性能率之外，模型还可以基于等式5和6来获取例如总能量和总时间的累积响应。<br>
-$$<br>
-log_e(e_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{5}<br>
-$$</p>
-<p>$$<br>
-log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}<br>
-$$</p>
-<p>我们将自然指数应用于模型预测以反转对数变换。</p>
+<p>因此，我们在均匀HPC群集上运行的并行应用的能效和性能统计模型使用公式3和4。</p>
+<script type="math/tex; mode=display">
+log_e(e_\eta)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{3}</script><script type="math/tex; mode=display">
+log_e(p_\mu)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{4}</script><p>这些方程基于Wilkinson符号，它被回归分析工具（如MAT LAB，或R和Python编程库）所接受。所使用的运算符”~”表示模型的构成，“+”表示在模型中添加项，“:”表示两项之前的交互关系。</p>
+<p>除了能效和性能率之外，模型还可以基于等式5和6来获取例如总能量和总时间的累积响应。</p>
+<script type="math/tex; mode=display">
+log_e(e_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{5}</script><script type="math/tex; mode=display">
+log_e(t_T)\sim bs(n_i)+bs(c_j)+f_k+bs(c_j):f_k+bs(n_i):bs(c_j)\tag{6}</script><p>我们将自然指数应用于模型预测以反转对数变换。</p>
 <p>公式7显示了方程3到6的右侧扩展。每个模型有20个预测项（1个截距，1个线性项，2$\times$3个样条B样条项，1$\times$3个样条B样条$\times$3个样条B- 样条相互作用项，1$\times$3样条B样条$\times$1个线性项。我们收集预测因子和响应训练数据，然后使用最小二乘回归来确定各项系数，$\beta_1$ 到$\beta_{19}$。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure2.png">
-<h4 id="模型评估"><a class="header-anchor" href="#模型评估">¶</a>模型评估</h4>
-<p>为了评估模型，我们使用相关分析，$k$交叉验证，RMS误差和$R^2$统计。我们从许多测量样本中推导出这些量，以便对模型精度进行统计上显着的验证。我们在第V，VI和VII节中的结果表明，一小部分测量数据足以满足模型的系统和工作负载特定系数。</p>
+<h4 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h4><p>为了评估模型，我们使用相关分析，$k$交叉验证，RMS误差和$R^2$统计。我们从许多测量样本中推导出这些量，以便对模型精度进行统计上显着的验证。我们在第V，VI和VII节中的结果表明，一小部分测量数据足以满足模型的系统和工作负载特定系数。</p>
 <p>Spearman相关系数$\rho$是预测因子和响应之间相关性的非参数度量。接近零的值表示弱相关性。当我们选择预测变量时，我们使用此统计量来验证假设。</p>
 <p>$R^2$ 统计量衡量模型与训练数据的拟合程度，$R^2$ 接近100％表示更好的拟合。RMS误差是预测误差或回归残差的标准偏差。它衡量密切观察的数据如何适应模型生成的数据预测。接近零的RMS误差值表示模型预测与观测数据之间的紧密拟合。</p>
 <p>$k$交叉验证方法将数据集划分为$k$个等大小的子集。$k-1$个子集用作模型训练数据，剩余子集是模型测试数据。我们重复这个过程来测试整个数据集的模型精度。我们使用3交叉验证来确认模型不会过度拟合数据的子集。</p>
-<h4 id="帕累托前沿评估"><a class="header-anchor" href="#帕累托前沿评估">¶</a>帕累托前沿评估</h4>
-<p>我们计算观察到的和预测的帕累托前沿之间的RMS误差，但也使用进一步的特定技术来评估预测前沿的准确性。我们使用以下指标评估帕累托前沿准确度：</p>
+<h4 id="帕累托前沿评估"><a href="#帕累托前沿评估" class="headerlink" title="帕累托前沿评估"></a>帕累托前沿评估</h4><p> 我们计算观察到的和预测的帕累托前沿之间的RMS误差，但也使用进一步的特定技术来评估预测前沿的准确性。我们使用以下指标评估帕累托前沿准确度：</p>
 <p>（1）重叠点数，即在观察和预测前沿中出现的点数;</p>
 <p>（2）观察前沿上的非重叠点数，按预测前沿距离最近邻居的距离分组;</p>
 <p>（3）预测前沿上的非重叠点数，按观察前沿距离最近邻居的距离分组;</p>
 <p>（4）预测的和观察的每个目标的最小值和最大值（能效或性能）;</p>
 <p>（5）预测的和观察的每个目标的权衡范围与线程和CPU频率处于最大设置时的值相比较。</p>
 <p>我们测量到最近邻居的距离占搜索空间维度的百分比。例如，我们每个节点维度的线程数有4个增量，从4到44，步长为4.从36到40的距离为1/11 = 9％，36到44为2/11 = 18％。此选择可以跨尺寸标准化。</p>
-<h4 id="测量和建模误差"><a class="header-anchor" href="#测量和建模误差">¶</a>测量和建模误差</h4>
-<p>由于系统的非确定性，性能和功率测量表现出实验误差和噪声。这些测量误差通常是分布的，是由一系列随机因素引起的。正态性测试可以验证我们的功率和性能测量是否正常分布。我们使用Q-Q（分位数 - 分位数）图来直观地比较我们的测量数据分布与标准正态分布。我们使用$t$分布来分析测量置信区间。我们的模型使用的$log_e$变换减轻了正态分布偏差。</p>
+<h4 id="测量和建模误差"><a href="#测量和建模误差" class="headerlink" title="测量和建模误差"></a>测量和建模误差</h4><p>由于系统的非确定性，性能和功率测量表现出实验误差和噪声。这些测量误差通常是分布的，是由一系列随机因素引起的。正态性测试可以验证我们的功率和性能测量是否正常分布。我们使用Q-Q（分位数 - 分位数）图来直观地比较我们的测量数据分布与标准正态分布。我们使用$t$分布来分析测量置信区间。我们的模型使用的$log_e$变换减轻了正态分布偏差。</p>
 <p>模型预测表现出预测误差。因此，当我们确定性能和能效之间的权衡选择时，我们必须考虑测量和预测误差。错误限制内的有效权衡选项位于靠近帕累托前沿的区域，而不是仅直接位于其上。我们引入了权衡区（trade-off zone）的概念，其中包括帕累托前沿附近的所有值，这些值在统计上与前面的值无法区分。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure3.png">
 <p>图1显示了我们构建权衡区的过程：</p>
@@ -225,30 +205,23 @@ $$</p>
 <p>当我们补偿每个轴的误差极限时，权衡区多边形包围可能是帕累托最优的点集。这些要点为能效和性能提供了权衡选择。由于测量和预测的误差限制可能不同，我们为测量和预测的Pareto前沿单独设置误差限制。</p>
 <p>我们的模型仅将测量数据用于响应变量，这提供了两个重要的好处。首先，我们的拟合模型系数不会受到响应测量中随机误差的影响。这意味着我们的回归估计倾向于训练数据的平均值，加上或减去测量误差。其次，我们的模型可用于对看不见的预测数据进行预测，因此我们实际上可以通过少量训练测量来探索大的参数空间。</p>
 <p>通过确保与程序初始化和关闭时间相比总体执行时间较长，并且与系统功率计数器的时间分辨率相比，执行时间较长，我们可以将测量误差水平控制在5％左右。在具有较大测量误差的较少受控环境中，随着更多数据点落入误差限制内，权衡区的大小将增加。搜索空间的完整实验测量扫描将受到增加的测量误差的类似影响。我们使用估计的测量误差和模型误差来评估观察到的和预测的权衡区域之间的对齐或重叠水平。</p>
-<h2 id="实验概述"><a class="header-anchor" href="#实验概述">¶</a>实验概述</h2>
-<h4 id="平台"><a class="header-anchor" href="#平台">¶</a>平台</h4>
-<p>我们在Cray XC系统上进行实验，如表II所示。我们的运行最多使用86个，专门分配44个核心节点，或总共3,784个核心。我们使用Python编程平台[35]进行相关性分析，拟合模型系数，评估响应，并绘制结果。Nimrod工具包用于协调实验任务。</p>
+<h2 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h2><h4 id="平台"><a href="#平台" class="headerlink" title="平台"></a>平台</h4><p>我们在Cray XC系统上进行实验，如表II所示。我们的运行最多使用86个，专门分配44个核心节点，或总共3,784个核心。我们使用Python编程平台[35]进行相关性分析，拟合模型系数，评估响应，并绘制结果。Nimrod工具包用于协调实验任务。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure4.png">
-<h4 id="能耗测量"><a class="header-anchor" href="#能耗测量">¶</a>能耗测量</h4>
-<p>Cray XC系统具有节点级传感器，用于测量温度，电流和电压。Cray电源管理计数器（pm_counters）提供实时功率和能量测量，以10Hz的频率更新。CrayPAT是一种性能分析工具，它使用性能计数器（包括pm_counters和硬件性能计数器（HWPC））来评估程序行为。它检测程序，在运行时收集指定的计数器，并报告收集的计数器。当程序启动或终止时，也可以直接从Linux sysfs文件夹/sys/cray/pm_counters读取Cray pm_counters。我们使用pm_counters监控所有节点的能耗和功率。为了评估能效，我们使用每焦耳的操作数（例如，Flops/J，Bytes/J，Updates/J）。</p>
-<h4 id="参数配置"><a class="header-anchor" href="#参数配置">¶</a>参数配置</h4>
-<p>表III列出了我们在研究中使用的配置参数和相关范围。这些参数生成具有484种组合的全因子设计。</p>
+<h4 id="能耗测量"><a href="#能耗测量" class="headerlink" title="能耗测量"></a>能耗测量</h4><p>Cray XC系统具有节点级传感器，用于测量温度，电流和电压。Cray电源管理计数器（pm_counters）提供实时功率和能量测量，以10Hz的频率更新。CrayPAT是一种性能分析工具，它使用性能计数器（包括pm_counters和硬件性能计数器（HWPC））来评估程序行为。它检测程序，在运行时收集指定的计数器，并报告收集的计数器。当程序启动或终止时，也可以直接从Linux sysfs文件夹/sys/cray/pm_counters读取Cray pm_counters。我们使用pm_counters监控所有节点的能耗和功率。为了评估能效，我们使用每焦耳的操作数（例如，Flops/J，Bytes/J，Updates/J）。</p>
+<h4 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h4><p>表III列出了我们在研究中使用的配置参数和相关范围。这些参数生成具有484种组合的全因子设计。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure5.png">
-<h4 id="实验"><a class="header-anchor" href="#实验">¶</a>实验</h4>
-<p>我们在两个主要阶段进行研究实验：</p>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>我们在两个主要阶段进行研究实验：</p>
 <p>（1）使用程序内核进行模型设计和评估;</p>
 <p>（2）使用应用程序的模型评估。</p>
 <p>程序内科和应用程序都使用混合MPI/OpenMP编程模型。我们配置实验作业，为每个CPU插槽分配一个MPI Rank，为每个CPU核心分配一个OpenMP线程。我们使用Scatter线程放置策略在可用插槽和节点之间统一分发OpenMP线程。对于每个实验，我们收集表III中列出的完整484个样品组合，对于三个程序内核和两个应用程序总共进行2,420次测试。</p>
-<h2 id="程序kernel测试"><a class="header-anchor" href="#程序kernel测试">¶</a>程序Kernel测试</h2>
-<p>本节说明我们可以针对特定计算常用的几个科学内核以低成本准确地预测帕累托最优能量和性能权衡选项。我们选择Parallel Research Kernels（PRK）[1]，这包含着一系列程序，涵盖并行HPC应用程序中遇到的通信、计算和同步的常见模式。PRK具有性能指标报告，这使我们能够专注于功耗属性，以识别能源优化机会。在PRK中可用的混合MPI/OpenMP kernels中，我们专注于以下三个内核：</p>
+<h2 id="程序Kernel测试"><a href="#程序Kernel测试" class="headerlink" title="程序Kernel测试"></a>程序Kernel测试</h2><p>本节说明我们可以针对特定计算常用的几个科学内核以低成本准确地预测帕累托最优能量和性能权衡选项。我们选择Parallel Research Kernels（PRK）[1]，这包含着一系列程序，涵盖并行HPC应用程序中遇到的通信、计算和同步的常见模式。PRK具有性能指标报告，这使我们能够专注于功耗属性，以识别能源优化机会。在PRK中可用的混合MPI/OpenMP kernels中，我们专注于以下三个内核：</p>
 <p>（1）Stencil：一个内核，它执行数据并行模板操作到二维数组;</p>
 <p>（2）Transpose：一个强调通信和内存带宽的内核;</p>
 <p>（3）Nstream：一个易并行内核，它可以计算内存带宽。</p>
 <p><strong>这里我们以Stencil来说明本文方法的操作过程。</strong></p>
-<h4 id="stencil内核"><a class="header-anchor" href="#stencil内核">¶</a>Stencil内核</h4>
-<p>模板的模型响应项是MFlops/J中的能量效率和MFlops/s中的性能。我们使用模板半径2，网格大小400k，并设置迭代，以确保运行时间至少是测量采样频率的10倍。</p>
+<h4 id="Stencil内核"><a href="#Stencil内核" class="headerlink" title="Stencil内核"></a>Stencil内核</h4><p>模板的模型响应项是MFlops/J中的能量效率和MFlops/s中的性能。我们使用模板半径2，网格大小400k，并设置迭代，以确保运行时间至少是测量采样频率的10倍。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure6.png">
-<p>我们评估了几种生成模型训练数据的方法，包括均匀采样，随机采样和拉丁超立方采样。图2显示了我们的11核心数×11频率搜索空间，其中包含均匀或非随机样本、随机样本和拉丁超立方体样本，这些样本从每行和每列中随机选择样本。</p>
+<p>我们评估了几种生成模型训练数据的方法，包括均匀采样，随机采样和拉丁超立方采样。图2显示了我们的11核心数×11频率搜索空间，其中包含均匀或非随机样本、随机样本和拉丁超立方体样本，这些样本从每行和每列中随机选择样本。 </p>
 <p>我们使用RMS误差和 $R^2$ 统计数据评估每种采样方法，如第III-C节所述。我们使用统一采样在我们的测试案例中获得最少的观察结果。<strong>我们的方法需要12个样本或10％的搜索空间进行模型训练（4个核心数 $\times$ 3个频率样本）</strong>。我们的核心数分别为8,20,32和44个核心，频率分别为1.2,1.8和2.2 GHz。我们还在节点数为20,42,64和86的情况下评估模型，总数据集大小为484个样本。</p>
 <img src="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/Figure7.png">
 <p>图3包括95％ $t$-分布置信区间下5个样本平均值的误差条。对于我们的实验，测量误差范围约为5％。我们希望使用我们的模型设置工具将包括一个校准步骤，用于计算每个响应变量的测量置信区间。该策略消除了每个训练样本的样本重复，以计算其置信区间。相反，如果回归结果的统计显着性不在设定限度内，我们会提醒用户。</p>
@@ -259,8 +232,7 @@ $$</p>
 <p>表IV显示了完整的121个观察值和预测值之间的RMS误差，能效为4.8％，性能为4.8％。帕累托前沿的RMS误差为能效效率的5.1％和性能的11.4％，我们按照第III-E节中的步骤3）进行计算。表IV中的Pareto Front部分显示了类似的观察和预测的Pareto点计数，除了一个重叠点（4个线程或0.1 GHz）的9％或一个搜索步骤之外的所有非重叠点。</p>
 <p>表IV还显示了最大核心和线程的 $Baseline$ 性能和能量效率，以及它们沿帕累托前沿的最小值和最大值，$P_{min}$ 和$P_{max}$。</p>
 <p>观察到的和预测的能效增益是相似的（约40％）。性能提升接近20％。观测和模型预测的Pareto前沿提供了一致的视图，核心和频率调整可以提供40％的能效增益，同时对性能的影响最小 。</p>
-<h2 id="参考"><a class="header-anchor" href="#参考">¶</a>参考</h2>
-<p>[1] Parallel Research Kernels. <a href="https://github.com/ParRes/Kernels" target="_blank" rel="noopener">https://github.com/ParRes/Kernels</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] Parallel Research Kernels. <a href="https://github.com/ParRes/Kernels" target="_blank" rel="noopener">https://github.com/ParRes/Kernels</a></p>
 
         
         <br />
