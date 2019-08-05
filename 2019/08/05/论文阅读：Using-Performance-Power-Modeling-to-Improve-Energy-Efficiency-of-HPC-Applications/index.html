@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能和功率建模"><span class="toc-text">¶性能和功率建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建模与节能框架"><span class="toc-text">¶建模与节能框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计数器相关性分析与排序"><span class="toc-text">¶计数器相关性分析与排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#节能策略推荐"><span class="toc-text">¶节能策略推荐</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能和功率建模"><span class="toc-text">¶性能和功率建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建模与节能框架"><span class="toc-text">¶建模与节能框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计数器相关性分析与排序"><span class="toc-text">¶计数器相关性分析与排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#节能策略推荐"><span class="toc-text">¶节能策略推荐</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例研究：性能计数器引导的能源优化"><span class="toc-text">¶案例研究：性能计数器引导的能源优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pmlb-on-systemg"><span class="toc-text">¶PMLB on SystemG</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -188,7 +188,17 @@ $$<br>
 <p>通常，基于运行时和功率模型以及计数器相关性，我们开发了一个基于Web的假设预测系统，用于在理论上预测可能的优化结果，如图3所示，例如，给定应用程序PMLB [15] ，如果TLB_IM的数量减少20％，相关计数器将根据它们与TLB_IM的相关值减少，运行时间减少4.13％，平均节点功率几乎相同，CPU和内存功耗也减少了一点。</p>
 <img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure3.png" title="[20] [20]">
 <p>然后立即出现一个问题，即如何将计数器$r_i$的值减少20％。这需要彻底了解应用程序特征以及影响该特定度量标准的底层架构部分。在[12]中，讨论了几种典型的代码性能模式，并映射到一些可以帮助代码优化的硬件度量。重要的是要意识到像PAPI预设[9]这样的通用性能计数器可能很容易被用户误解为不同的体系结构。用户必须在体系结构手册中查找确切的定义，并了解应用程序特征和底层体系结构单元如何影响计数器。</p>
-
+<h2 id="案例研究：性能计数器引导的能源优化"><a class="header-anchor" href="#案例研究：性能计数器引导的能源优化">¶</a>案例研究：性能计数器引导的能源优化</h2>
+<p>在本节中，我们使用两个科学应用：并行航空航天应用PMLB [15]和并行地震模拟eq3dyna [14]，来讨论在两个功率感知超级计算机Mira，和SystemG上的性能计数器引导的能量优化。</p>
+<h4 id="pmlb-on-systemg"><a class="header-anchor" href="#pmlb-on-systemg">¶</a>PMLB on SystemG</h4>
+<p>图4显示了四个模型的性能计数器排名，使用15个不同的PMLB计数器，SystemG上的问题大小为128x128x128。我们将图2中的排名算法应用于四个模型中的每一个的计数器。将它们从最重要到最小排序，它们是：TLB_IM（指令转换后备缓冲器（TLB）未命中），VEC_INS（向量/ SIMD指令），TLB_DM和L2_ICM。</p>
+<img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure4.png" title="[20] [20]">
+<p>TLB_IM排名最高，其次是VEC_INS。我们使用成对的Spearman相关来分析两个计数器之间的相关性，如下所示：</p>
+<img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure5.png" title="[20] [20]">
+<p>我们发现计数器TLB_IM仅在运行时模型中有贡献，并且它与TLB_DM和L2_ICM相关。然而，VEC_INS在系统功率，CPU功率和存储器功率的模型中有所贡献，并且与任何其他计数器无关。因此，我们专注于对SystemG上的计数器TLB_IM和VEC_INS进行优化。从理论上讲，使用我们的假设预测系统，将TLB_IM的数量减少20％可以使运行时间减少4.13％;将VEC_INS加速20％导致节点功率降低1.85％。</p>
+<p>SystemG上的Linux系统支持两种页面大小，默认为4KB，大页面为2MB。单个2MB大页面只需要一个TLB条目，而等量的内存需要使用4KB页面的512个TLB条目。因此，为性能受TLB未命中约束的应用程序启用此类页面大小可能具有显着的益处。在这里，我们使用libhugetlbfs为应用程序执行启用了2MB页面，以减少TLB未命中。我们还对代码进行了矢量化，并使用编译器选项-ftree-loop-distribution来执行循环分配，以提高大循环体上的缓存性能，并允许进行进一步的循环优化，如矢量化。</p>
+<p>这些优化的结果如图5所示. SystemG每个节点有8个核心。我们观察到应用程序运行时间平均减少了11.23％（图5（a）），系统功率平均增加了0.01％（图5（b））。图5（c）中的CPU功率平均增加了2.13％，图5（d）中的存储器功率平均增加了0.61％。总的来说，这意味着平均节能11.28％。据观察，平均节能百分比（11.28％）大于运行时间改善百分比（11.23％），这意味着减少运行时间和功率会导致更大的节能。</p>
+<img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure6.png" title="[20] [20]">
         
         <br />
         <div id="comment-container">
