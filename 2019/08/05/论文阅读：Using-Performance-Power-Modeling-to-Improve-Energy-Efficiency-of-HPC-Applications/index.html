@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能和功率建模"><span class="toc-text">¶性能和功率建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建模与节能框架"><span class="toc-text">¶建模与节能框架</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能和功率建模"><span class="toc-text">¶性能和功率建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建模与节能框架"><span class="toc-text">¶建模与节能框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计数器相关性分析与排序"><span class="toc-text">¶计数器相关性分析与排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#节能策略推荐"><span class="toc-text">¶节能策略推荐</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -177,6 +177,17 @@ $$<br>
 <h2 id="建模与节能框架"><a class="header-anchor" href="#建模与节能框架">¶</a>建模与节能框架</h2>
 <p>图1是我们基于计数器的建模和节能框架的功能的总图。我们使用MuMMI [16]收集性能计数器以及我们希望关联的四个指标，并将数据上传到MuMMI数据库。所有性能计数器都根据执行的总周期数进行标准化，以便为每个计数器创建性能事件率。接下来，执行Spearman相关和主成分分析（PCA）以识别与四个指标相关的重要计数器。然后，使用等式1和2，基于减少的计数器组和CPU频率，使用非负多元回归分析来生成四个模型中的每一个。我们之前的工作表明运行时和功率模型对于所使用的六种科学应用，预测误差率平均低于7％。MuMMI提供基于Web的建模系统，可根据计数器的数据和MuMMI数据库中的四个指标自动生成运行时和功率模型。</p>
 <img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure1.png" title="[20] [20]">
+<p>在指标的四个模型的基础上，我们实施了一个计数器排名方法，以确定哪些测量计数器做出了重大贡献。然后，这些计数器用于指导应用程序修改，以实现运行时和功耗的减少。</p>
+<h4 id="计数器相关性分析与排序"><a class="header-anchor" href="#计数器相关性分析与排序">¶</a>计数器相关性分析与排序</h4>
+<p>一旦我们获得了运行时、系统功耗、CPU功率和内存功率的模型，我们就会确定四个模型中每个模型的最重要的性能计数器。</p>
+<img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure2.png" title="[20] [20]">
+<p>排名算法如图2所示，其工作原理如下：首先，创建计数器列表，其由具有最高系数百分比的计数器组成。根据运行时间、系统功率、CPU功率和存储器功率的顺序，这些计数器的系数与四个模型的所有系数之和的比率最高。其次，按照相同的顺序，我们从计数器列表中删除无效的计数器（小于1％的计数器）。最后，我们使用成对的Spearman相关性来分析和排序这些计数器之间的相关性，以识别对模型最有效贡献的计数器，以形成最终的计数器列表。进行修剪使得如果具有较高等级的计数器与较低等级的计数器高度相关，则消除具有较低等级的计数器。结果列表的计数器用于指导应用程序修改。</p>
+<h4 id="节能策略推荐"><a class="header-anchor" href="#节能策略推荐">¶</a>节能策略推荐</h4>
+<p>众所周知，性能计数器的值与影响性能和功耗的应用程序的属性相关。许多代码优化仅专注于改进缓存重用以减少应用程序运行时间，因为已知内存访问是大多数体系结构的主要瓶颈。但是，这些努力通常基于来自几次运行的性能数据，而很少考虑数据依赖性，问题大小和/或系统配置。此外，他们倾向于忽视功耗问题。在这项工作中，性能和功耗模型是根据不同的系统配置和问题大小生成的，因此可以广泛了解应用程序对底层架构的使用。这样可以更好地了解应用程序在给定体系结构上的能耗。例如，如果我们将计数器 $r_1$ 和 $r_2$ 作为最重要的计数器，其中 $r_1$ 在运行时模型中占主导地位，而 $r_2$ 在功率模型中占主导地位，并且发现两者都是不相关的，那么我们对应用程序的修改将集中在两个计数器上。通过这种方式，我们的修改不仅可以减少应用程序运行时间，还可以降低功耗。但是，使用通用、功能无意识的性能工具，如gprof，TAU，ScoreP，HPCToolkit，HPM Toolkit和CrayPat，对计数器 $r_2$ 的影响也许完全不被注意。</p>
+<p>请考虑以下事项：假设$r_i$，$r_j$和$r_k$为三个性能计数器，这些计数器对运行时模型（公式1）或功率模型（公式2）（系统、CPU、或内存的功率模型）有着显著的贡献。其中$r_i$被认为是最重要的。$r_i$和$r_j$的相关值为0.9，与$r_k$的相关值为0.6。如果$r_i$的值减少20%，则$r_j$的值降低18%（0.9*20%），$r_k$的值减少12%（0.6 * 20%）。在此假设下，我们使用等式1和2来预测对运行时和功耗的理论影响。</p>
+<p>通常，基于运行时和功率模型以及计数器相关性，我们开发了一个基于Web的假设预测系统，用于在理论上预测可能的优化结果，如图3所示，例如，给定应用程序PMLB [15] ，如果TLB_IM的数量减少20％，相关计数器将根据它们与TLB_IM的相关值减少，运行时间减少4.13％，平均节点功率几乎相同，CPU和内存功耗也减少了一点。</p>
+<img src="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/Figure3.png" title="[20] [20]">
+<p>然后立即出现一个问题，即如何将计数器$r_i$的值减少20％。这需要彻底了解应用程序特征以及影响该特定度量标准的底层架构部分。在[12]中，讨论了几种典型的代码性能模式，并映射到一些可以帮助代码优化的硬件度量。重要的是要意识到像PAPI预设[9]这样的通用性能计数器可能很容易被用户误解为不同的体系结构。用户必须在体系结构手册中查找确切的定义，并了解应用程序特征和底层体系结构单元如何影响计数器。</p>
 
         
         <br />
