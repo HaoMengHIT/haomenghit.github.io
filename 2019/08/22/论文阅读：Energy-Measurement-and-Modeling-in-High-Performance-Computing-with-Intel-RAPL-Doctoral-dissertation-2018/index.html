@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        论文阅读：Energy Measurement and Modeling in High Performance Computing With Intel RAPL (Doctoral Dissertation 2018) - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,120 +116,47 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装问题/">
-                <h3>
-                    PAPI安装问题
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#PAPI" title="PAPI">PAPI</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        论文阅读：Energy Measurement and Modeling in High Performance Computing With Intel RAPL (Doctoral Dissertation 2018)
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装RAPL模块/">
-                <h3>
-                    PAPI安装RAPL模块
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-22 15:50:26</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/RAPL介绍/">
-                <h3>
-                    RAPL介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content no-indent">
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>云计算范式的重大进步使得服务提供商使用云计算平台提供新旧服务，以实现弹性、可扩展性、可用性和成本效益等优势。此外，高性能计算社区到2020年实现E级计算的目标以及科学计算范式中生成和分析的数据的快速增长，为数据中心服务器系统数量的空前增长铺平了道路。例如，CERN现在每年生产、存储和分析大约30PB的和粒子物理相关的数据。社交网络，视频点播和大数据等应用的激增，只会增加数据中心服务器系统总数。如此庞大的耗电量大的服务器增加了数据中心的能源需求，因此HPC，科学计算和云计算的能效现在成为一个大问题。本文中研究了基于服务器的计算系统的能耗，并提出了用于测量、建模和分析这些系统的能效的实用解决方案。</p>
+<p>本文的工作广泛使用和分析了英特尔的运行平均功率限制（RAPL）作为能量测量工具。首先使用RAPL来分析应用程序的性能和能耗。其次，提出了两种策略来模拟计算系统的功耗：对CPU内部组件的功耗进行建模，如指令解码器、L2和L3高速缓存等，并使用操作系统计数器和RAPL对整个系统功耗进行建模。为了模拟功耗，本文使用了基于回归的模型，统计模型以及非线性加法模型。为了验证该发现，本文使用了来自数据中心的实际生产日志以及来自Amazon Elastic Compute Cloud（EC2）的实例。所提出的功率模型能够以可靠的精度预测功耗。第三，本文对RAPL作为功率测量工具进行了广泛的评估，并确定了RAPL在测量开销、准确性、粒度等方面的性能。这一综合分析还揭示了RAPL的一些开放性问题，这些问题可能会削弱其在某些情况下的可用性。本文也确定了相应的解决方案。最后，为了展示RAPL的适用性，本文分析了两个大型图形处理平台的能效：Apache Giraph和Spark的GraphX。</p>
+<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/OpenMP编译成LLVM-IR/">
-                <h3>
-                    OpenMP编译成LLVM IR
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/LLVM-Pass工程建立过程/">
-                <h3>
-                    LLVM Pass工程建立过程
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/2/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -302,12 +233,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
