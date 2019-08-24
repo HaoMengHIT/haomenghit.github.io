@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        如何调整CPU频率 - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cpufreq-set"><span class="toc-text">¶cpufreq-set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-text">¶参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cpufreq-selector"><span class="toc-text">¶cpufreq-selector</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考-v2"><span class="toc-text">¶参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-text">¶注意</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,57 +116,64 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/OpenMP编译成LLVM-IR/">
-                <h3>
-                    OpenMP编译成LLVM IR
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        如何调整CPU频率
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/LLVM-Pass工程建立过程/">
-                <h3>
-                    LLVM Pass工程建立过程
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-24 16:03:43</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#CPU Frequency" title="CPU Frequency">CPU Frequency</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-</div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/3/">&larr; Newer Posts</a>
-    </li>
-    
-    
+    <div class="post-content no-indent">
+        <h2 id="cpufreq-set"><a class="header-anchor" href="#cpufreq-set">¶</a>cpufreq-set</h2>
+<h4 id="参考"><a class="header-anchor" href="#参考">¶</a>参考</h4>
+<ul>
+<li>使用cpufreq给CPU临时调整主频。<a href="http://www.kwx.gd/CentOSApp/CentOS-Cpufreq-Set.html" target="_blank" rel="noopener">http://www.kwx.gd/CentOSApp/CentOS-Cpufreq-Set.html</a></li>
 </ul>
+<h2 id="cpufreq-selector"><a class="header-anchor" href="#cpufreq-selector">¶</a>cpufreq-selector</h2>
+<h4 id="参考-v2"><a class="header-anchor" href="#参考-v2">¶</a>参考</h4>
+<ul>
+<li>cpufreq-selector的安装。<a href="https://bytefreaks.net/tag/cpufreq-selector" target="_blank" rel="noopener">https://bytefreaks.net/tag/cpufreq-selector</a></li>
+<li>ubuntu系统更改CPU频率。 <a href="https://www.zhukun.net/archives/7572" target="_blank" rel="noopener">https://www.zhukun.net/archives/7572</a></li>
+<li>cpufreq-selector参数。<a href="http://manpages.ubuntu.com/manpages/bionic/man1/cpufreq-selector.1.html" target="_blank" rel="noopener">http://manpages.ubuntu.com/manpages/bionic/man1/cpufreq-selector.1.html</a></li>
+</ul>
+<h2 id="注意"><a class="header-anchor" href="#注意">¶</a>注意</h2>
+<p>并不是所有的系统都可以任意调整CPU频率，也就是userspace模式。</p>
+<blockquote>
+<p>This is because your system is using the new driver called <a href="https://www.kernel.org/doc/html/v4.13/admin-guide/pm/intel_pstate.html" target="_blank" rel="noopener"><strong>intel_pstate</strong></a>. There are only two governors available when using this driver: <code>powersave</code> and <code>performance</code>.<br>
+The <code>userspace</code> governor is only available with the older <code>acpi-cpufreq</code> driver (which will be automatically used if you disable <code>intel_pstate</code> at boot time; you then set the governor/frequency with <code>cpupower</code>):</p>
+<ul>
+<li>disable the current driver: add <code>intel_pstate=disable</code> to your kernel boot line</li>
+<li>boot, then load the <code>userspace</code> module: <code>modprobe cpufreq_userspace</code></li>
+<li>set the governor: <code>cpupower frequency-set --governor userspace</code></li>
+<li>set the frequency: <code>cpupower --cpu all frequency-set --freq 800MHz</code></li>
+</ul>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -239,12 +250,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
