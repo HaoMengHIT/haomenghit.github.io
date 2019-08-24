@@ -153,8 +153,19 @@
 <li>Power Plane 0：Power Plane 0 (PP0) 域提供了单个插槽上所有处理器核心的能耗；</li>
 <li>Power Plane 1:  Power Plane 1 (PP1)域提供了插槽上GPU的能耗测量；</li>
 <li>DRAM： DRAM域提供了连接到集成存储器控制器的RAM的能耗测量。</li>
+<li>PSys：英特尔Skylake推出了一个名为PSys的新RAPL域。它监视和控制整个SoC的热量和功率规格，当功耗源既不是CPU也不是GPU时，它特别有用。如下图所示，PSys包括PKG域，系统代理，PCH，eDRAM以及单个插槽SoC上的更多域的功耗。</li>
 </ul>
 <img src="/2019/08/23/RAPL-Interface-介绍/Figure1.png" title="[20] [20]">
+<p>对于多插槽服务器系统，每个套接字都会报告自己的RAPL值。例如，双插槽计算系统对两个PKG都有两个单独的PKG读数，PP0读数，PP1读数等。</p>
+<p>并非所有英特尔架构都存在上图中的所有域。如前所述，支持的RAPL电源域数量因处理器架构而异。下表显示了由不同处理器架构支持的RAPL域的概述。服务器型号不支持PP1，它仅存在于桌面型号中。从Haswell开始，桌面型号也支持DRAM域。Haswell服务器型号不支持PP0和PP1。这意味着只有PKG域是普遍支持的电源域。对于Skylake而言，与PKG不同，PSys需要额外的系统级实现，因此所有Skylake版本都不支持。</p>
+<img src="/2019/08/23/RAPL-Interface-介绍/Figure2.png" title="[20] [20]">
+<p>RAPL能量计数器可以通过32位寄存器的模式指定寄存器（Model-Specific Register，MSR）访问，这些寄存器报告从处理器启动时开始的能量消耗。计数器大约每毫秒更新一次。能耗可以以多种指定模式能量单位进行计算。Sandy Bridge使用15.3微焦耳的能量单位[61]，而Haswell和Skylake使用61微焦耳的单位。在一些CPU架构中，例如Haswell-EP，DRAM单元与CPU能量单元不同。在进行能量计算之前，可以从特定的MSR读取单位。在不同架构的情况下，不同能量单元没有具体含义。</p>
+<p>可以使用内核中的MSR驱动程序直接在Linux上访问MSR。下图显示了一个这样的例子。对于直接MSR访问，必须启用MSR驱动程序，并且必须为驱动程序设置读访问权限。直接从MSR读取RAPL域值需要在读取RAPL域（即PKG，PP0，PP1等）消耗值之前检测CPU模式并读取RAPL能量单位。</p>
+<img src="/2019/08/23/RAPL-Interface-介绍/Figure3.png" title="[20] [20]">
+<p>一旦检测到CPU模式，就可以通过读取相应的“MSR状态”寄存器来读取每个PKG的RAPL域。例如，MSR_PKG_ENERGY_STATUS保存PKG域的能量读数。</p>
+<p>RAPL事件基本上报告了两种类型的事件：静态事件和动态事件。RAPL事件报告的静态事件是热规格，最大和最小功率上限以及时间窗口。来自芯片的RAPL域能量读数如PKG，PP0，PP1或DRAM是RAPL报告的动态事件。</p>
+<p>除了直接读取MSR之外，还可以从sysfs接口、perf事件或通过PAPI库读取RAPL读数。RAPL支持sysfs powercap接口是从Linux内核版本3.13启用的，perf_event_open支持需要Linux内核版本3.14。PAPI库用于收集与性能相关的数据。它与平台无关，它有一个RAPL接口，使用MSR驱动程序报告RAPL值。</p>
+
         
         <br />
         <div id="comment-container">
