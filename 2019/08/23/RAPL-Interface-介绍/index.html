@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        RAPL Interface 介绍 - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rapl-interface"><span class="toc-text">¶RAPL Interface</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,140 +116,56 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/物理CPU和逻辑CPU的区别/">
-                <h3>
-                    物理CPU和逻辑CPU的区别
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#CPU" title="CPU">CPU</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        RAPL Interface 介绍
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装问题/">
-                <h3>
-                    PAPI安装问题
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#PAPI" title="PAPI">PAPI</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-23 23:21:44</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装RAPL模块/">
-                <h3>
-                    PAPI安装RAPL模块
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/RAPL介绍/">
-                <h3>
-                    RAPL介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/OpenMP编译成LLVM-IR/">
-                <h3>
-                    OpenMP编译成LLVM IR
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/LLVM-Pass工程建立过程/">
-                <h3>
-                    LLVM Pass工程建立过程
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-</div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/2/">&larr; Newer Posts</a>
-    </li>
-    
-    
+    <div class="post-content no-indent">
+        <h2 id="rapl-interface"><a class="header-anchor" href="#rapl-interface">¶</a>RAPL Interface</h2>
+<p>RAPL 接口是由英特尔Snady Bridge架构首次引入，并且随后在英特尔架构的后续迭代中不断发展。RAPL背后的动机是暴露不同CPU域的能耗，并根据系统的功率预算限制域（domain）的能耗。在这方面，RAPL提供了两个基本功能：首先，它以高粒度和高采样率提供能耗测量；其次，它允许限制不同CPU组件的平均功率，这实质上限制了CPU的热输出。本文特别关注能量测量功能。</p>
+<p>RAPL支持过个电源域，支持的RAPL域的确切数量取决于处理器架构。在RAPL的上下文中，功率域是用于功率管理的物理上有意义的域（例如，处理器包，DRAM等）。每个电源域执行以下任务：</p>
+<ul>
+<li>测量域的能耗；</li>
+<li>允许在指定的时间窗口内限制该域的功耗；</li>
+<li>监控功率限制的性能影响；</li>
+<li>提供一些其他有用的信息，如能量测量单位、域支持的最小或最大功率。</li>
 </ul>
+<p>下图显示了电源域的层次结构。根据处理器架构，RAPL提供一下电源域的全部或部分：</p>
+<ul>
+<li>Package：包域提供整个CPU插槽（socket）的能耗测量。它包括所有核心（core），集成显卡以及非核组件（最后以及缓存、内存控制器）的能耗；</li>
+<li>Power Plane 0：Power Plane 0 (PP0) 域提供了单个插槽上所有处理器核心的能耗；</li>
+<li>Power Plane 1:  Power Plane 1 (PP1)域提供了插槽上GPU的能耗测量；</li>
+<li>DRAM： DRAM域提供了连接到集成存储器控制器的RAM的能耗测量。</li>
+</ul>
+<img src="/2019/08/23/RAPL-Interface-介绍/Figure1.png" title="[20] [20]">
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -322,12 +242,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
