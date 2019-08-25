@@ -147,10 +147,12 @@
 <h2 id="研究分类"><a class="header-anchor" href="#研究分类">¶</a>研究分类</h2>
 <ul>
 <li>测量运行科学工作负载的计算节点/服务器的功耗；</li>
-<li>计算系统的功率建模。预测计算系统的全系统功耗是数据中心内节能电源管理的基本信息；</li>
+<li>计算系统的功率建模。预测计算系统的全系统功耗是数据中心内节能电源管理的基本信息。现有的功率测量工具（包括RAPL）不能提供完整的系统功耗，而是测量计算系统的有限组件（CPU，内存）的功耗。虽然CPU和内存消耗了大部分能量消耗，但完整的系统功耗是针对数据中心不同级别的能效目标的重要技术输入。</li>
 <li>分析科学计算工作负载的功耗行为以进行功耗优化。</li>
 </ul>
 <img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure1.png" title="[20] [20]">
+<p>提高计算节点能效的方法：</p>
+<img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure4.png" title="[20] [20]">
 <h2 id="系统中功耗占比"><a class="header-anchor" href="#系统中功耗占比">¶</a>系统中功耗占比</h2>
 <p>一些研究已经对数据中心内部的功耗进行了细分 [1,3]，如下图所示：</p>
 <img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure2.png" title="[20] [20]">
