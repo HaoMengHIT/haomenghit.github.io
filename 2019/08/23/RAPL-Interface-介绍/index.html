@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RAPL-Interface"><span class="toc-text">RAPL Interface</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rapl-interface"><span class="toc-text">¶RAPL Interface</span></a></li></ol>
 </div>
     
 </div>
@@ -138,7 +138,8 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="RAPL-Interface"><a href="#RAPL-Interface" class="headerlink" title="RAPL Interface"></a>RAPL Interface</h2><p>RAPL 接口是由英特尔Snady Bridge架构首次引入，并且随后在英特尔架构的后续迭代中不断发展。RAPL背后的动机是暴露不同CPU域的能耗，并根据系统的功率预算限制域（domain）的能耗。在这方面，RAPL提供了两个基本功能：首先，它以高粒度和高采样率提供能耗测量；其次，它允许限制不同CPU组件的平均功率，这实质上限制了CPU的热输出。本文特别关注能量测量功能。</p>
+        <h2 id="rapl-interface"><a class="header-anchor" href="#rapl-interface">¶</a>RAPL Interface</h2>
+<p>RAPL 接口是由英特尔Snady Bridge架构首次引入，并且随后在英特尔架构的后续迭代中不断发展。RAPL背后的动机是暴露不同CPU域的能耗，并根据系统的功率预算限制域（domain）的能耗。在这方面，RAPL提供了两个基本功能：首先，它以高粒度和高采样率提供能耗测量；其次，它允许限制不同CPU组件的平均功率，这实质上限制了CPU的热输出。本文特别关注能量测量功能。</p>
 <p>RAPL支持过个电源域，支持的RAPL域的确切数量取决于处理器架构。在RAPL的上下文中，功率域是用于功率管理的物理上有意义的域（例如，处理器包，DRAM等）。每个电源域执行以下任务：</p>
 <ul>
 <li>测量域的能耗；</li>
