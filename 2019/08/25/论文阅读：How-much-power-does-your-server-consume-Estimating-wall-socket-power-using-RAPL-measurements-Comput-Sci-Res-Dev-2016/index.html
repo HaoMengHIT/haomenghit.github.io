@@ -165,19 +165,19 @@ E=\sum_{t=1}<sup>{N}{(wall_t-f(pkg_t))</sup>2} \tag{1}<br>
 $$</p>
 <p>其中 $N$ 为训练数据的数量， $wall_t$ 为墙上功率， $f(pkg)$ 的定义如下：</p>
 <p>$$<br>
-f(pkg)=\sum_{i=0}^{k-1}{a_i\cdot y_i(pkg)}<br>
+f(pkg)=\sum_{i=0}^{k-1}{a_i\cdot y_i(pkg)} \tag{2}<br>
 $$</p>
 <p>其中 $A=(a_0,a_1,\dots,a_{k-1})$ 是一个 $1\times k$ 的向量。我们的目标是获得一个最优的 $f(x)$ ，使得 $E$ 达到最小。 $E$ 最小则其偏导数为0，那么有</p>
 <p>$$<br>
-\frac{\partial E}{\partial a_j}=\frac{1}{N}\sum_{t=1}^{N}2\left ((wall_t) -\sum_{i=0}^{k-1}a_i\cdot y_i(pkg_t) \right )y_j(pkg_t)<br>
+\frac{\partial E}{\partial a_j}=\frac{1}{N}\sum_{t=1}^{N}2\left ((wall_t) -\sum_{i=0}^{k-1}a_i\cdot y_i(pkg_t) \right )y_j(pkg_t) \tag{3}<br>
 $$</p>
 <p>对该式进行简化，可以得到：</p>
 <p>$$<br>
-\sum_{t=1}^{N}wall_t y_j(pkg_t)=\sum_{t=1}<sup>{N}\sum_{i=0}</sup>{k-1}a_i\cdot y_i(pkg_t)y_j(pkg_t)<br>
+\sum_{t=1}^{N}wall_t y_j(pkg_t)=\sum_{t=1}<sup>{N}\sum_{i=0}</sup>{k-1}a_i\cdot y_i(pkg_t)y_j(pkg_t) \tag{4}<br>
 $$</p>
 <p>用矩阵表示为：</p>
 <p>$$<br>
-A=WY<sup>T(YY</sup>T)^{-1}<br>
+A=WY<sup>T(YY</sup>T)^{-1} \tag{5}<br>
 $$</p>
 <p>其中 $Y$ 是一个 $k\times N$ 的矩阵，$Y_{i,t}=y_i(pkg_t)$ , $W=(wall_0,\dots,wall_t)$ 。我们定义 $y_i(pkg)=pkg^i$ ,这意味着函数$f$由具有 $k$ 项的多项式定义， $A$ 成为从多项式回归得到的系数的向量。我们针对不同阶数的多项式 $k$ 求解上式，其中 $k$ 从1到4变化。</p>
 <p>通过实验表明，线性关系得到的结果最好。</p>
