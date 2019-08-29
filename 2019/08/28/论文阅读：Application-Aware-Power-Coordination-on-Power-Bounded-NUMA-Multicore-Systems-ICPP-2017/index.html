@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">¶功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">¶实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numa多核架构的功率分配问题"><span class="toc-text">¶NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numa系统概述"><span class="toc-text">¶NUMA系统概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#硬件和功率分配"><span class="toc-text">¶硬件和功率分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的资源分配问题"><span class="toc-text">¶功率有限的资源分配问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作负载特征"><span class="toc-text">¶工作负载特征</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NUMA多核架构的功率分配问题"><span class="toc-text">NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#NUMA系统概述"><span class="toc-text">NUMA系统概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#硬件和功率分配"><span class="toc-text">硬件和功率分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的资源分配问题"><span class="toc-text">功率有限的资源分配问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作负载特征"><span class="toc-text">工作负载特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#可扩展性"><span class="toc-text">可扩展性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内存访问强度"><span class="toc-text">内存访问强度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关键组件功率分级（Power-Levels）"><span class="toc-text">关键组件功率分级（Power Levels）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#关键CPU功率级别"><span class="toc-text">关键CPU功率级别</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#关键内存功率级别"><span class="toc-text">关键内存功率级别</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用感知功率协调"><span class="toc-text">应用感知功率协调</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键设计思想"><span class="toc-text">关键设计思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法描述"><span class="toc-text">算法描述</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统设计"><span class="toc-text">系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Coordinator软件系统"><span class="toc-text">Coordinator软件系统</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -144,12 +144,10 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
-<p>功率是限制现代高性能计算机系统的性能和可扩展性的关键因素。将功率视为一阶约束和稀缺系统资源，功率有界计算代表了解决HPC功率挑战的新视角 。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>功率是限制现代高性能计算机系统的性能和可扩展性的关键因素。将功率视为一阶约束和稀缺系统资源，功率有界计算代表了解决HPC功率挑战的新视角 。</p>
 <p>在这项工作中，我们提出了一个应用感知的多维功率分配框架，以支持在支持NUMA的多核系统上的功率有界并行计算。该框架利用多种互补的软件和硬件电源管理机制来管理总功率预算下的插槽、核心和NUMA内存节点之间的功率分配。更重要的是，该框架实现了一种分层功率协调方法，该方法利用应用程序的性能和功率可扩展性来有效地识别理想的功率分配。</p>
 <p>我们描述了框架的设计，并在具有24个内核的支持NUMA的多核系统上评估其性能。实验结果表明，所提出的框架与具有各种功率预算的并行程序的oracle解决方案接近。</p>
-<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
-<p>功率是限制现代高性能计算系统发展的主要因素。在几乎所有级别的HPC系统中，从IC芯片，微处理器，计算节点一直到整个数据中心，存在功率限制，由物理障碍，技术困难或经济负担造成。例如，在较低级别，IC芯片和电子元件必须在其热设计功率下工作，以防止操作失败和系统故障[9];在更高的层次上，数据中心的冷却能力有限，无法消散产生的热量并保持理想的服务器室温[16]。</p>
+<h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>功率是限制现代高性能计算系统发展的主要因素。在几乎所有级别的HPC系统中，从IC芯片，微处理器，计算节点一直到整个数据中心，存在功率限制，由物理障碍，技术困难或经济负担造成。例如，在较低级别，IC芯片和电子元件必须在其热设计功率下工作，以防止操作失败和系统故障[9];在更高的层次上，数据中心的冷却能力有限，无法消散产生的热量并保持理想的服务器室温[16]。</p>
 <p>功率限制计算将功率视为稀缺资源，利用创新技术在强制或自愿功率预算下提高系统性能，对于维持HPC性能增长至关重要。最近主要的利益相关者明确要求即将到来的亿亿次级计算机以20兆瓦的功率预算运行[22]。然而，解决具有挑战性的计算问题和大量存储器密集型问题的需求要求具有更高性能的更大系统。</p>
 <p>智能地协调计算机组件之间的电源是有限计算的关键。为了获得最佳性能，参与的组件必须协同工作并满足应用程序的需求。同时，未使用的组件可以转换到省电状态，允许为激活的组件分配更多功率以获得更好的性能。</p>
 <p>最近几个小组研究了CPU内核之间的功率协调[5,26]。在我们之前的工作中，我们研究了处理器和内存之间的功率协调，并重新发现处理器之间的功率分配对应用程序性能有显着影响[10]。尽管如此，这项研究没有考虑非均匀内存访问（NUMA）的影响，NUMA是现代多进程和多核系统采用的内存系统架构。</p>
@@ -162,22 +160,17 @@
 <li>我们表明，使用多种软件和硬件机制（如协调并发，核心/内存亲缘性和组件功率级别限制）可以在相同的功率预算下显着提高性能。</li>
 <li>我们证明了核心亲缘性对NUMA架构上的功率限制具有相当大的功率和性能影响。</li>
 </ul>
-<h2 id="相关工作"><a class="header-anchor" href="#相关工作">¶</a>相关工作</h2>
-<h4 id="功率有限的高性能计算"><a class="header-anchor" href="#功率有限的高性能计算">¶</a>功率有限的高性能计算</h4>
-<p>在过去的十年中，关注降低功耗和提高能效已成为众多技术创新背后的主要推动力，包括但不限于：多核架构，基于加速器的计算，功率感知组件，功率封顶和智能电源管理运行时系统。回想起来，我们可以将面向功率的计算机系统研究的观点分为三类：功率自觉（Power conscious）[5]，功率 - 性能权衡（power-performance tradeoff）[3]和功率限制（power-bounded）[10,25]。</p>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><h4 id="功率有限的高性能计算"><a href="#功率有限的高性能计算" class="headerlink" title="功率有限的高性能计算"></a>功率有限的高性能计算</h4><p>在过去的十年中，关注降低功耗和提高能效已成为众多技术创新背后的主要推动力，包括但不限于：多核架构，基于加速器的计算，功率感知组件，功率封顶和智能电源管理运行时系统。回想起来，我们可以将面向功率的计算机系统研究的观点分为三类：功率自觉（Power conscious）[5]，功率 - 性能权衡（power-performance tradeoff）[3]和功率限制（power-bounded）[10,25]。</p>
 <p>总体而言，功率限制计算承认不同系统级别的功率预算上限的存在，并探索同时提高性能和满足预算的创新技术。除了利用现有的电源管理技术，如功率感知组件[17]，功率限制[13,7]，线程分配和亲缘性[1,21]，功率限制计算进一步利用硬件过度分配[20]、资源分配[8]和工作量映射[11]提供的机会。</p>
-<h4 id="实现技术"><a class="header-anchor" href="#实现技术">¶</a>实现技术</h4>
-<ul>
+<h4 id="实现技术"><a href="#实现技术" class="headerlink" title="实现技术"></a>实现技术</h4><ul>
 <li>工作负载执行管理：并行应用程序的一个常见特性是大多数应用程序可以具有多个运行时配置，包括MPI进程数，线程数和进程/线程位置[11,5]。即使在具有相同工作负载的同一计算平台上，更改运行时配置也会对系统性能和功耗产生重大影响。</li>
 <li>核心和内存的亲缘性：在多核计算中，数据局部性和内存争用都会影响并行应用程序性能，从而影响系统能力[6,4]。将并行线程绑定到适当的处理器核心和内存模块有可能改善缓存局部性和应用程序性能。硬件亲缘性可以通过内核调用（如sched_setaffinity），系统工具（如taskset和hwloc），运行时环境（如OpenMP和openmpi）或作业调度程序来实现。</li>
 <li>功率预算和功率限额：强制分配功率预算的能力对于有限计算能力至关重要。只有当所有单元都符合自己的功率预算时，功率限制系统才能安全地将可用功率预算安排到那些关键计算单元。功率限额已经在软件，硬件和两者的组合中实现。现有的基于软件的功率预算方法包括动态电压和频率调度（DVFS）[15]，处理器和内存之间的联合功率管理，软件并发限制和线程打包。同时，最新的主要计算机组件如CPU，内存和GPU均支持基于硬件的功率限额功能[13,7,19,14]。对于我们的实现，我们使用RAPL来限制和测量功耗。</li>
 <li>跨组件功率协调：由于系统功率是组件功率的总和，因此有必要在系统组件之间协调功率以最大化应用性能。已经探索了几种方法来协调处理器和存储器之间的节点级的给定功率预算。基于反馈回路的控制理论监控应用程序性能和组件的功率，并使用反馈来决定处理器DVFS和内存功率状态的调整[2,12]。基于剖析的技术从可能的分布子集中收集性能和功率数据，并使用插值来确定最佳的过程和内存功率水平[23,25]。在我们之前的工作[10]中，我们研究了CPU和内存之间功率协调的分类模式，并得出结论：功率有限的调度器应该首先在给定约束功率预算的情况下为内存分配足够的功率。Zhang和Hoffmann [26]提出了一种在线混合协调技术，该技术使用RAPL设置硬件功率封顶，然后迭代地使用二进制搜索在每个维度中找到适当的处理器性能状态，核心数和插槽数。</li>
 </ul>
 <p>本文工作在几个方面区别于以前的节点级研究。首先，它表明最佳功率协调是特定于应用的，并提出有效的应用表征度量以确定跨组件功率协调。其次，我们提出了应用感知策略，根据应用程序的特性决定最优功率和资源配置，而无需在硬件和软件分配空间中进行搜索。第三，我们的策略针对NUMA多核架构，并在内存访问强度的背景下结合核心亲缘性对功率有界计算的影响。我们的工作通过提供节点级构建块来补充现有的集群级功率协调研究。</p>
-<h2 id="numa多核架构的功率分配问题"><a class="header-anchor" href="#numa多核架构的功率分配问题">¶</a>NUMA多核架构的功率分配问题</h2>
-<p>NUMA体系结构在由多个多核处理器组成的现代服务器节点中是典型的。此类系统上的电源协调涉及处理器插槽，每个插槽内的CPU内核以及NUMA内存节点。</p>
-<h4 id="numa系统概述"><a class="header-anchor" href="#numa系统概述">¶</a>NUMA系统概述</h4>
-<p>我们使用能够运行OpenMP/MPI并行应用程序的基于同构多核的NUMA机器来抽象感兴趣的系统。这个抽象机器代表了现代主流同质HPC系统的构建模块。如图1所示，这种机器具有以下主要的架构和电源管理功能。</p>
+<h2 id="NUMA多核架构的功率分配问题"><a href="#NUMA多核架构的功率分配问题" class="headerlink" title="NUMA多核架构的功率分配问题"></a>NUMA多核架构的功率分配问题</h2><p>NUMA体系结构在由多个多核处理器组成的现代服务器节点中是典型的。此类系统上的电源协调涉及处理器插槽，每个插槽内的CPU内核以及NUMA内存节点。</p>
+<h4 id="NUMA系统概述"><a href="#NUMA系统概述" class="headerlink" title="NUMA系统概述"></a>NUMA系统概述</h4><p>我们使用能够运行OpenMP/MPI并行应用程序的基于同构多核的NUMA机器来抽象感兴趣的系统。这个抽象机器代表了现代主流同质HPC系统的构建模块。如图1所示，这种机器具有以下主要的架构和电源管理功能。</p>
 <img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure1.png" title="[20] [20]">
 <ul>
 <li>NUMA架构。该机器将处理器插槽和内存模块分成多个NUMA节点，并通过高速网络连接处理器。虽然每个处理器都可以访问整个共享内存空间，但远程内存访问会比本地内存访问产生明显更高的延迟。同时，来自多个核的当前本地存储器访问可能使内存带宽饱和并引起争用，这导致应用程序性能下降。</li>
@@ -185,21 +178,65 @@
 <li>每核电源管理。每个核心在被激活时，可以按照用户通过每核心DVFS的指示在多个性能状态之间转换。每核心DVFS可能会或可能不会受到处理器功率限制的干扰，具体取决于总处理器功率需求是否超过其上限。如果是，则功率上限设置核心性能状态的上限。</li>
 <li>内存电源管理。每个NUMA存储器节点可以在多个功率电平下运行，例如由RAPL接口指定，每个电平对应于可用的最高存储器带宽。每个NUMA节点在空闲时可以自动转换到睡眠状态。</li>
 </ul>
-<h4 id="硬件和功率分配"><a class="header-anchor" href="#硬件和功率分配">¶</a>硬件和功率分配</h4>
-<p>我们的功率分配框架将功率视为一种资源。对于由多个并发任务（MPI进程或OpenMP线程）组成的给定并行工作负载，我们的框架不仅分配硬件资源，包括执行的处理器插槽和内核的数量，还在同时执行工作负载的参与硬件之间分配功率。</p>
+<h4 id="硬件和功率分配"><a href="#硬件和功率分配" class="headerlink" title="硬件和功率分配"></a>硬件和功率分配</h4><p>我们的功率分配框架将功率视为一种资源。对于由多个并发任务（MPI进程或OpenMP线程）组成的给定并行工作负载，我们的框架不仅分配硬件资源，包括执行的处理器插槽和内核的数量，还在同时执行工作负载的参与硬件之间分配功率。</p>
 <img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure2.png" title="[20] [20]">
-<p>该框架利用表1中的一系列参数俩表示硬件和功率资源。传统的硬件实体包括处理器插槽，内核和内存节点。我们用 $S_k$ 表示 $N$ 个处理器系统上  $k\in{1,\cdots,N}$ 的第 $k$ 个处理器插槽，$C_{k,i}$ 表示 $M$ 核处理器上第 $k$ 个处理器插槽的第 $i$ 个核心，其中 $i\in {1,\cdots,M}$。系统的功率预算表示为 $P_b$。</p>
+<p>该框架利用表1中的一系列参数俩表示硬件和功率资源。传统的硬件实体包括处理器插槽，内核和内存节点。我们用 $S_k$ 表示 $N$ 个处理器系统上  $k\in{1,\cdots,N}$ 的第 $k$ 个处理器插槽，$C_{k,i}$ 表示 $M$ 核处理器上第 $k$ 个处理器插槽的第 $i$ 个核心，其中 $i\in {1,\cdots,M}$。系统的功率预算表示为 $P_b$。  </p>
 <p>给定由并发任务组成的并行工作负载 $W$ ，我们使用亲缘性映射向量 $\overrightarrow{a}$ 来指定分配给其执行的硬件资源： $\overrightarrow{a}=(a_{1,1},\cdots,a_{k,i},\cdots,a_{N,M})$， 其中 $a_{k,i}=0|1$ ，如果工作负载使用第 $k$ 个处理器的第 $i$ 个核心，则 $a_{k,i}= 1$ ，否则为 $a_{k,i} = 0$ 。</p>
 <p>此亲缘性映射向量明确指定处理器插槽和核心的分配，并隐式指定工作负载执行的内存节点分配。例如，在采用节点本地策略作为默认值的NUMA感知操作系统上，分配核心本地的相应存储器节点。此外， $\overrightarrow{a}$ 指定线程并发性和线程核心亲缘性，这是性能和电源管理的重要因素。假设每个核心同时最多执行一个线程，则 $\overrightarrow{a}$ 中的非零项数表示并发性。该假设适用于高性能计算系统的科学程序。为了强制执行硬件分配，我们的框架控制线程并发并设置线程核心关联。</p>
 <p>在功率限制计算的背景下，我们使用功率分布矢量 $\overrightarrow{d}$ 来表示分配给处理器插槽及其各自的NUMA存储节点的功率预算，即， $\overrightarrow{d}=(\overrightarrow{d_{1}},\cdots,\overrightarrow{d_N})$  ，其中 $\overrightarrow{d_k}$  是分配给第 $k$ 个处理器插槽及其相应存储器节点的功率预算。</p>
-<p>在这项工作中，我们不考虑单个内存通道，而是将NUMA内存节点作为最小功率管理单元。考虑到这一点，$\overrightarrow{d_k}$ 可以进一步分配给第 $k$ 个插槽的组成核心和本地存储器节点，即 $\overrightarrow{d_k}=(d_{c_{k,1}},\cdots,d_{c_{k,M}},d_{mem_k})$ ，其中其中 $d_{c_{k,i}}$ 指定分配给第 $i$ 个核心的功率，$d_{mem_k}$ 指定分配给第 $k$ 个处理器插槽本地的存储器节点的功率。$d_{c_k}$ 可以通过单独设置其性能状态 $f_{k,i}$ 直接强制执行，或通过设置整个处理器的功率电平 $l_{p_k}$ 间接强制执行。可以通过设置第 $k$ 个NUMA存储器节点的功率电平 $l_{m_k}$ 来强制执行 $d_{mem_k}$。</p>
+<p>在这项工作中，我们不考虑单个内存通道，而是将NUMA内存节点作为最小功率管理单元。考虑到这一点，$\overrightarrow{d_k}$ 可以进一步分配给第 $k$ 个插槽的组成核心和本地存储器节点，即 $\overrightarrow{d_k}=(d_{c_{k,1}},\cdots,d_{c_{k,M}},d_{mem_k})$ ，其中其中 $d_{c_{k,i}}$ 指定分配给第 $i$ 个核心的功率，$d_{mem_k}$ 指定分配给第 $k$ 个处理器插槽本地的存储器节点的功率。$d_{c_k}$ 可以通过单独设置其性能状态 $f_{k,i}$ 直接强制执行，或通过设置整个处理器的功率电平 $l_{p_k}$ 间接强制执行。可以通过设置第 $k$ 个NUMA存储器节点的功率电平 $l_{m_k}$ 来强制执行 $d_{mem_k}$。 </p>
 <p>在我们的框架中使用这两个向量 $\overrightarrow{a}$ 和 $\overrightarrow{d}$ 来为工作负载执行分配硬件和功率。它们共同确定并行工作负载执行环境配置 $e = {\overrightarrow{a}，\overrightarrow{d}}$。注意，未激活的核心，即 $a_{k,i} = 0$，将转换到其最低功率状态以节省功率。</p>
-<h4 id="功率有限的资源分配问题"><a class="header-anchor" href="#功率有限的资源分配问题">¶</a>功率有限的资源分配问题</h4>
-<p>NUMA多核系统上的功率有限的跨组件功率协调可找到给定并行工作负载的最佳硬件资源分配和相应的功率分配。在数学上，问题可以表述为：</p>
-<p>给定并行工作负载 $W$，NUMA机器 $M$ 和功率预算 $P_b$，找到最佳并行工作负载执行环境配置 $e^* =(a,d)$，使得:  $perf(e^<em>,W,M) \geq perf(e,W,M)$  ，且  $power(e^</em>,W,M)\leq P_b$  。</p>
+<h4 id="功率有限的资源分配问题"><a href="#功率有限的资源分配问题" class="headerlink" title="功率有限的资源分配问题"></a>功率有限的资源分配问题</h4><p>NUMA多核系统上的功率有限的跨组件功率协调可找到给定并行工作负载的最佳硬件资源分配和相应的功率分配。在数学上，问题可以表述为：</p>
+<p>给定并行工作负载 $W$，NUMA机器 $M$ 和功率预算 $P_b$，找到最佳并行工作负载执行环境配置 $e^<em> =(a,d)$，使得:  $perf(e^</em>,W,M) \geq perf(e,W,M)$  ，且  $power(e^*,W,M)\leq P_b$  。 </p>
 <p>我们注意到这个公式概括了多核架构上大多数功率有限的分配问题。从分析上讲，解决这种功率有限的分配问题进一步要求对并行工作负载执行的性能及其与环境配置 $e$ 的变化进行建模，这是一个复杂的问题。幸运的是，近乎最优的解决方案在现实世界中已经足够，并且可以通过应用程序分析和启发式方法的组合来获得这样的解决方案。</p>
-<h2 id="工作负载特征"><a class="header-anchor" href="#工作负载特征">¶</a>工作负载特征</h2>
-<p>为了避免直接建模并行应用程序执行的性能和功耗的困难，我们使用简单实用的模型简化方法。在这种方法中，我们使用三个指标捕获不同工作负载性能和功耗特性的影响：并行可扩展性、内存访问强度和组件的关键功率级别。</p>
+<h2 id="工作负载特征"><a href="#工作负载特征" class="headerlink" title="工作负载特征"></a>工作负载特征</h2><p>为了避免直接建模并行应用程序执行的性能和功耗的困难，我们使用简单实用的模型简化方法。在这种方法中，我们使用三个指标捕获不同工作负载性能和功耗特性的影响：并行可扩展性、内存访问强度和组件的关键功率级别。</p>
+<h4 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h4><p>性能可伸缩性，用并行加速比来衡量，描述了应用程序性能如何随着用于执行工作负载的核心数（ $n$ ）而变化。我们还可以应用类似的概念，功率可扩展性来描述应用程序功耗随 $n$ 的变化。</p>
+<p>如果我们能够以足够的精度估计性能和功率可扩展性，我们可以使用它们在给定的功率预算下找到接近最优的正确核心数 $n$。根据经验， $speedup(n)\propto n$ 仅适用于理想或极度并行应用;对于大多数并行应用， $speedup(n)$ 是 $n$ 的非线性函数。这意味着我们可能需要分析大量执行配置以准确捕获并行应用程序的可伸缩性。</p>
+<p>幸运的是，对于性能和功耗，大多数并行应用程序的可伸缩性可以通过分段线性模型建模，该模型包括若干段，并且每个段通过线性关系近似。如图2所示，为应用SP和FT的功耗和性能可扩展性，我们看到FT可以通过性能和功率的核心数量进行线性扩展，而SP则不然。但是，我们可以使用两个段来估算SP的性能可扩展性，并使用一个段来估算其功率可扩展性。</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure3.png" title="[20] [20]">
+<h4 id="内存访问强度"><a href="#内存访问强度" class="headerlink" title="内存访问强度"></a>内存访问强度</h4><p>虽然可以从可伸缩性确定核n的数量，但核心亲和力和存储器功率将根据应用的存储器访问模式来确定。在这项工作中，我们使用内存访问强度来表征并行工作负载内存访问模式，这反映在本地内存访问带宽，远程内存访问带宽和内存功耗上。</p>
+<p>内存访问强度从三个主要方面影响功率限制调度。首先，内存密集型应用程序的性能对内存功耗分配很敏感。对于内存密集型应用程序，即使内存功率预算略有降低，性能也可能会急剧下降。这与计算密集型应用程序进行了比较，后者的性能随着CPU功率分配而逐渐降低。这种差异部分原因是由于CPU功率范围大于存储器功率的事实。为避免对性能产生不利影响，功率限制分配应确保内存获得足够的功率，尤其是对于内存密集型应用程序。</p>
+<p>其次，内存密集型应用程序需要智能放置激活的核心和核心亲缘性。由于NUMA架构的性质，核心位置和亲缘性会影响内存争用和内存访问成本。一方面，将激活的核心放在同一个插槽上可能会使内存总线饱和并导致内存争用。另一方面，在插槽之间分配激活的核心可以增加具有更长延迟的远程存储器访问。最佳核心亲缘性在内存争用和远程访问之间进行权衡。</p>
+<p>第三，核心布局影响系统功耗; 如果其他未激活的插槽可以转换到睡眠状态，则将激活的核心放置在同一个插槽上会消耗更少的功率。</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure4.png" title="[20] [20]">
+<p>图3显示了核心亲缘性对具有24个核心的双处理器机器上的stream和EP基准测试的功耗和性能的影响，其中stream是内存密集型的，而EP是计算密集型的。为stream分配12个核心，每6个绑定到一个处理器插槽上可以提供最大的加速; 进一步使用更多核心会导致更多功耗而不会提高性能。相比之下，将所有12个内核绑定到一个处理器会带来更差的性能，EP的不同之处在于其性能和功率不随核心亲缘性而变化。</p>
+<h4 id="关键组件功率分级（Power-Levels）"><a href="#关键组件功率分级（Power-Levels）" class="headerlink" title="关键组件功率分级（Power Levels）"></a>关键组件功率分级（Power Levels）</h4><p>为了解决确定激活的核心、处理器和内存模块的电源状态的问题，我们借用了[10]中描述的关键组件功率分级方法。</p>
+<p>文献[10]中的方法考虑了每个应用程序的独特处理器和内存使用模式以及功耗特性，并通过一组功率级别来描述这些特性，这些功率级别反映了激活核心数量、核心性能状态和内存速度的影响 。在这项工作中，我们认为可以激活任意数量的核心，这与[10]不同，其中所有可用核心都必须运行应用程序。这种差异对于NUMA架构和不能很好扩展的应用程序至关重要。</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure5.png" title="[20] [20]">
+<p>如图4所示，我们考虑CPU核心中总共四个关键功率级别，和内存模块的两个关键功率级别。我们注意到这些级别的确切值是特定于应用程序的，但它们的相对顺序在所有应用程序中保持相同。</p>
+<h6 id="关键CPU功率级别"><a href="#关键CPU功率级别" class="headerlink" title="关键CPU功率级别"></a>关键CPU功率级别</h6><ul>
+<li>$P_{cpu，L_1}$ ：CPU功率的上限，其中所有核心被激活并以最高性能状态运行。</li>
+<li>$P_{cpu，L_2}$ ：激活所有核心并以最低性能状态运行时的CPU功率。</li>
+<li>$P_{cpu，L_3}$ ：仅激活一个核心并以最大性能状态运行时的CPU功率。</li>
+<li>$P_{cpu，L_4}$：仅激活一个核心并以最低性能状态运行时的CPU功率。 </li>
+</ul>
+<h6 id="关键内存功率级别"><a href="#关键内存功率级别" class="headerlink" title="关键内存功率级别"></a>关键内存功率级别</h6><ul>
+<li>$P_{mem，L_1}$：内存以最高速度运行以支持所有核心数据时的内存功率上限。</li>
+<li>$P_{mem，L_2}$：当内存支持以最大频率运行的一个核心数据时的内存功率。</li>
+</ul>
+<h2 id="应用感知功率协调"><a href="#应用感知功率协调" class="headerlink" title="应用感知功率协调"></a>应用感知功率协调</h2><h4 id="关键设计思想"><a href="#关键设计思想" class="headerlink" title="关键设计思想"></a>关键设计思想</h4><p>为了快速逼近功率有界跨组件功率协调问题的最优解，我们开发了一种应用感知的分层功率协调方法，遵循以下三种技术：</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure6.png" title="[20] [20]">
+<ul>
+<li>工作负载分类。我们基于并行可扩展性和内存访问强度分析对并行应用程序进行分类，并为每个类别定制功率协调策略。沿着每个表征维度，我们用三个值中的一个标记每个应用程序：低，中和高，这些是我们根据经验确定。例如，如图5所示，EP属于（高并行可伸缩性，低存储强度）的类别。</li>
+<li>搜索空间缩减。我们通过使用一小组数据执行配置来减少工作负载执行配置的搜索空间，这对于提供关键参考数据至关重要，并且很有可能成为最佳解决方案。枢轴执行配置将在第VI节中讨论。</li>
+<li>有序搜索。我们优先考虑执行配置的参数，并使用该顺序来导航搜索过程。换句话说，如果控制旋钮A具有比控制旋钮B更大的性能或功率影响，我们首先确定A的参数。</li>
+</ul>
+<h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h4><p>如图4所示，该算法分四步：</p>
+<ul>
+<li><p>步骤1：确定给定的功率预算是不可接受的、可接受的还是足够的。如果（  $P_b<p_{cpu,l_4} + p_{mem，l_2}$ ），算法返回“功率预算太低”。如果（ $p_b>P_{cpu,L_1} + P_{mem，L_1}$ ）或功率预算足够，则算法将最大功率分配给应用程序可能需要的处理器和内存，并设置从数据库执行配置中学习的线程并发性和亲缘性。此外，该算法可以判断工作负载不需要多少过多的功率预算。否则，如果（ $P_b &gt; P_{cpu,L_4} + P_{mem，L_2}$ ）或功率预算可接受，则算法前进到以下步骤。</p_{cpu,l_4}></p>
+</li>
+<li><p>步骤2：确定处理器内存的功率分配并确定内存功率分配的优先级。由于内存功耗预算会显着影响应用程序性能[10]并且内存功耗通常远低于处理器功耗，因此该算法可确保内存获得足够的预算，以最高内存速度运行以支持激活的核心。具体来说，如果功率预算大到足以激活所有核心，即（ $P_b &gt; P_{cpu,L_2} + P_{mem，L_1}$），算法会将（ $P_{mem，L_1}$ ）分配给内存，即应用程序需要内存的最大功率。否则，它将（ $P_{mem,L_2}$ ）分配给内存。剩余功率预算分配给处理器。</p>
+</li>
+<li>步骤3：确定激活核心的数量以及核心频率。该算法使用两个CPU电源控制旋钮 - 并发和核心速度 - 根据应用程序的特性在核心之间分配处理器能力。如果应用程序是可扩展的，则算法首先尝试激活与功率预算允许的核心数相同的核心，然后尽可能以更高的速度运行核心。理由是并发性可以最好地保留这些应用程序的性能和功效。对于可扩展性较差的应用程序，调度程序首先尝试以最高频率运行激活的核心，然后在功率预算允许的情况下激活更多核心。对于具有中等可伸缩性的应用程序，该算法同时确定目标并发性和核心速度，以匹配应用程序的内存强度和并行可伸缩性。</li>
+<li>步骤4：确定最佳核心亲缘性。默认情况下，调度程序将激活的核心打包到同一个处理器插槽，其中一个线程绑定到一个核心。此启发式方法可有效地用于计算密集型应用程序。此默认亲缘性对于自动将空闲插槽转换为深度睡眠状态的体系结构是有利的。对于内存密集型应用程序，该算法会比较打包核心并在插槽上均匀分布核心，并选择可提供更好性能的核心亲缘性。</li>
+</ul>
+<h2 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h2><h4 id="Coordinator软件系统"><a href="#Coordinator软件系统" class="headerlink" title="Coordinator软件系统"></a>Coordinator软件系统</h4><p>我们构建了一个名为coordinator的原型系统，以支持NUMA多功能系统上的应用感知功率协调。如图6所示，协调器包括数据驱动的执行配置训练和推荐系统、用户界面和应用程序运行器，以及几个帮助工具，以提供用户友好的功率有限计算环境。</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure7.png" title="[20] [20]">
+<ul>
+<li><strong>应用程序运行器</strong>  提供用户界面，将程序和要计算的问题大小以及功率预算作为输入，从推荐器获取并行工作负载执行配置（  $\overrightarrow{a},\overrightarrow{d}$ ），并创建启动作业的作业脚本，通过作业调度程序在功率有限的NUMA多核节点上执行配置（ $\overrightarrow{a},\overrightarrow{d}$ ）。</li>
+<li><strong>配置推荐器</strong> 实现决策引擎，它将元组（程序，问题，功率限制）作为输入，并将并行工作负载执行配置（ $\overrightarrow{a},\overrightarrow{d}$ ）返回给应用程序运行器。</li>
+<li><strong>System Interface Helper</strong> 包括几个定制的系统工具，如功率计读取器，RAPL和DVFS电源控制器，以及性能收集器。这些工具与系统内核，库和并行运行时环境进行交互，以设置执行环境，并自动收集和记录通过协调器管理的作业的性能和电源数据。</li>
+</ul>
 
         
         <br />

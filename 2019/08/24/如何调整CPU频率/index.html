@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cpufreq-set"><span class="toc-text">¶cpufreq-set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-text">¶参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cpufreq-selector"><span class="toc-text">¶cpufreq-selector</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考-v2"><span class="toc-text">¶参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-text">¶注意</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cpufreq-set"><span class="toc-text">cpufreq-set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cpufreq-selector"><span class="toc-text">cpufreq-selector</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考-1"><span class="toc-text">参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li></ol>
 </div>
     
 </div>
@@ -138,23 +138,17 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="cpufreq-set"><a class="header-anchor" href="#cpufreq-set">¶</a>cpufreq-set</h2>
-<h4 id="参考"><a class="header-anchor" href="#参考">¶</a>参考</h4>
-<ul>
+        <h2 id="cpufreq-set"><a href="#cpufreq-set" class="headerlink" title="cpufreq-set"></a>cpufreq-set</h2><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
 <li>使用cpufreq给CPU临时调整主频。<a href="http://www.kwx.gd/CentOSApp/CentOS-Cpufreq-Set.html" target="_blank" rel="noopener">http://www.kwx.gd/CentOSApp/CentOS-Cpufreq-Set.html</a></li>
 </ul>
-<h2 id="cpufreq-selector"><a class="header-anchor" href="#cpufreq-selector">¶</a>cpufreq-selector</h2>
-<h4 id="参考-v2"><a class="header-anchor" href="#参考-v2">¶</a>参考</h4>
-<ul>
+<h2 id="cpufreq-selector"><a href="#cpufreq-selector" class="headerlink" title="cpufreq-selector"></a>cpufreq-selector</h2><h4 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h4><ul>
 <li>cpufreq-selector的安装。<a href="https://bytefreaks.net/tag/cpufreq-selector" target="_blank" rel="noopener">https://bytefreaks.net/tag/cpufreq-selector</a></li>
 <li>ubuntu系统更改CPU频率。 <a href="https://www.zhukun.net/archives/7572" target="_blank" rel="noopener">https://www.zhukun.net/archives/7572</a></li>
 <li>cpufreq-selector参数。<a href="http://manpages.ubuntu.com/manpages/bionic/man1/cpufreq-selector.1.html" target="_blank" rel="noopener">http://manpages.ubuntu.com/manpages/bionic/man1/cpufreq-selector.1.html</a></li>
 </ul>
-<h2 id="注意"><a class="header-anchor" href="#注意">¶</a>注意</h2>
-<p>并不是所有的系统都可以任意调整CPU频率，也就是userspace模式。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>并不是所有的系统都可以任意调整CPU频率，也就是userspace模式。</p>
 <blockquote>
-<p>This is because your system is using the new driver called <a href="https://www.kernel.org/doc/html/v4.13/admin-guide/pm/intel_pstate.html" target="_blank" rel="noopener"><strong>intel_pstate</strong></a>. There are only two governors available when using this driver: <code>powersave</code> and <code>performance</code>.<br>
-The <code>userspace</code> governor is only available with the older <code>acpi-cpufreq</code> driver (which will be automatically used if you disable <code>intel_pstate</code> at boot time; you then set the governor/frequency with <code>cpupower</code>):</p>
+<p>This is because your system is using the new driver called <a href="https://www.kernel.org/doc/html/v4.13/admin-guide/pm/intel_pstate.html" target="_blank" rel="noopener"><strong>intel_pstate</strong></a>. There are only two governors available when using this driver: <code>powersave</code> and <code>performance</code>.<br>The <code>userspace</code> governor is only available with the older <code>acpi-cpufreq</code> driver (which will be automatically used if you disable <code>intel_pstate</code> at boot time; you then set the governor/frequency with <code>cpupower</code>):</p>
 <ul>
 <li>disable the current driver: add <code>intel_pstate=disable</code> to your kernel boot line</li>
 <li>boot, then load the <code>userspace</code> module: <code>modprobe cpufreq_userspace</code></li>

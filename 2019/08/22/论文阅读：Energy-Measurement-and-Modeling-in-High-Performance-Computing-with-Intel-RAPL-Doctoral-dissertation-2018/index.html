@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究分类"><span class="toc-text">¶研究分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统中功耗占比"><span class="toc-text">¶系统中功耗占比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-text">¶参考文献</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究分类"><span class="toc-text">研究分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统中功耗占比"><span class="toc-text">系统中功耗占比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-text">参考文献</span></a></li></ol>
 </div>
     
 </div>
@@ -141,11 +141,9 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
-<p>云计算范式的重大进步使得服务提供商使用云计算平台提供新旧服务，以实现弹性、可扩展性、可用性和成本效益等优势。此外，高性能计算社区到2020年实现E级计算的目标以及科学计算范式中生成和分析的数据的快速增长，为数据中心服务器系统数量的空前增长铺平了道路。例如，CERN现在每年生产、存储和分析大约30PB的和粒子物理相关的数据。社交网络，视频点播和大数据等应用的激增，只会增加数据中心服务器系统总数。如此庞大的耗电量大的服务器增加了数据中心的能源需求，因此HPC，科学计算和云计算的能效现在成为一个大问题。本文中研究了基于服务器的计算系统的能耗，并提出了用于测量、建模和分析这些系统的能效的实用解决方案。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>云计算范式的重大进步使得服务提供商使用云计算平台提供新旧服务，以实现弹性、可扩展性、可用性和成本效益等优势。此外，高性能计算社区到2020年实现E级计算的目标以及科学计算范式中生成和分析的数据的快速增长，为数据中心服务器系统数量的空前增长铺平了道路。例如，CERN现在每年生产、存储和分析大约30PB的和粒子物理相关的数据。社交网络，视频点播和大数据等应用的激增，只会增加数据中心服务器系统总数。如此庞大的耗电量大的服务器增加了数据中心的能源需求，因此HPC，科学计算和云计算的能效现在成为一个大问题。本文中研究了基于服务器的计算系统的能耗，并提出了用于测量、建模和分析这些系统的能效的实用解决方案。</p>
 <p>本文的工作广泛使用和分析了英特尔的运行平均功率限制（RAPL）作为能量测量工具。首先使用RAPL来分析应用程序的性能和能耗。其次，提出了两种策略来模拟计算系统的功耗：对CPU内部组件的功耗进行建模，如指令解码器、L2和L3高速缓存等，并使用操作系统计数器和RAPL对整个系统功耗进行建模。为了模拟功耗，本文使用了基于回归的模型，统计模型以及非线性加法模型。为了验证该发现，本文使用了来自数据中心的实际生产日志以及来自Amazon Elastic Compute Cloud（EC2）的实例。所提出的功率模型能够以可靠的精度预测功耗。第三，本文对RAPL作为功率测量工具进行了广泛的评估，并确定了RAPL在测量开销、准确性、粒度等方面的性能。这一综合分析还揭示了RAPL的一些开放性问题，这些问题可能会削弱其在某些情况下的可用性。本文也确定了相应的解决方案。最后，为了展示RAPL的适用性，本文分析了两个大型图形处理平台的能效：Apache Giraph和Spark的GraphX。</p>
-<h2 id="研究分类"><a class="header-anchor" href="#研究分类">¶</a>研究分类</h2>
-<ul>
+<h2 id="研究分类"><a href="#研究分类" class="headerlink" title="研究分类"></a>研究分类</h2><ul>
 <li>测量运行科学工作负载的计算节点/服务器的功耗。获取计算节点的功率消耗是有益的，它有助于确定精确的能源支出，从而为系统分配适当的能源预算。此外，有助于适当地设置功率限制以最佳地利用定价变化（例如，当每小时电价较低时设置高功率限制，反之亦然）。</li>
 <li>计算系统的功率建模。预测计算系统的全系统功耗是数据中心内节能电源管理的基本信息。现有的功率测量工具（包括RAPL）不能提供完整的系统功耗，而是测量计算系统的有限组件（CPU，内存）的功耗。虽然CPU和内存消耗了大部分能量消耗，但完整的系统功耗是针对数据中心不同级别的能效目标的重要技术输入。</li>
 <li>分析科学计算工作负载的功耗行为以进行功耗优化。</li>
@@ -153,14 +151,12 @@
 <img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure1.png" title="[20] [20]">
 <p>提高计算节点能效的方法：</p>
 <img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure4.png" title="[20] [20]">
-<h2 id="系统中功耗占比"><a class="header-anchor" href="#系统中功耗占比">¶</a>系统中功耗占比</h2>
-<p>一些研究已经对数据中心内部的功耗进行了细分 [1,3]，如下图所示：</p>
+<h2 id="系统中功耗占比"><a href="#系统中功耗占比" class="headerlink" title="系统中功耗占比"></a>系统中功耗占比</h2><p>一些研究已经对数据中心内部的功耗进行了细分 [1,3]，如下图所示：</p>
 <img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure2.png" title="[20] [20]">
 <p>Orgerie等人[2] 进一步提供典型服务器内部功耗的细分：CPU消耗约37.6％，内存消耗16.9％，磁盘消耗5.6％，PCI插槽消耗23.5％，主板和风扇消耗剩余的16.4％功率（见下图）。</p>
 <img src="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/Figure3.png" title="[20] [20]">
-<h2 id="参考文献"><a class="header-anchor" href="#参考文献">¶</a>参考文献</h2>
-<p>[1] M. Dayarathna, Y. Wen, and R. Fan. Data center energy consumption modeling: A survey. IEEE Communications Surveys Tutorials, 18(1):732–794, Firstquarter 2016.</p>
-<p>[2] J. Shuja, K. Bilal, S. A. Madani, M. Othman, R. Ranjan, P. Balaji, and S. U. Khan. Survey of techniques and architectures for designing energy-efficient data centers. IEEE Systems Journal, 10(2):507–519, June 2016.</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] M. Dayarathna, Y. Wen, and R. Fan. Data center energy consumption modeling: A survey. IEEE Communications Surveys Tutorials, 18(1):732–794, Firstquarter 2016.</p>
+<p>[2] J. Shuja, K. Bilal, S. A. Madani, M. Othman, R. Ranjan, P. Balaji, and S. U. Khan. Survey of techniques and architectures for designing energy-efficient data centers. IEEE Systems Journal, 10(2):507–519, June 2016. </p>
 <p>[3] Anne-Cecile Orgerie, Marcos Dias de Assuncao, and Laurent Lefevre. A survey on techniques for improving the energy efficiency of large-scale distributed systems. ACM Comput. Surv., 46(4):47:1–47:31, March 2014.</p>
 
         
