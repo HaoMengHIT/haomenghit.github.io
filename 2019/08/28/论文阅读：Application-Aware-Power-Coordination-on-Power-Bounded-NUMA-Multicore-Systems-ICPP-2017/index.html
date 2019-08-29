@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">¶功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">¶实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numa多核架构的功率分配问题"><span class="toc-text">¶NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numa系统概述"><span class="toc-text">¶NUMA系统概述</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">¶功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">¶实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numa多核架构的功率分配问题"><span class="toc-text">¶NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numa系统概述"><span class="toc-text">¶NUMA系统概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#硬件和功率分配"><span class="toc-text">¶硬件和功率分配</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -180,8 +180,15 @@
 <p>我们使用能够运行OpenMP/MPI并行应用程序的基于同构多核的NUMA机器来抽象感兴趣的系统。这个抽象机器代表了现代主流同质HPC系统的构建模块。如图1所示，这种机器具有以下主要的架构和电源管理功能。</p>
 <img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure1.png" title="[20] [20]">
 <ul>
-<li></li>
+<li>NUMA架构。该机器将处理器插槽和内存模块分成多个NUMA节点，并通过高速网络连接处理器。虽然每个处理器都可以访问整个共享内存空间，但远程内存访问会比本地内存访问产生明显更高的延迟。同时，来自多个核的当前本地存储器访问可能使内存带宽饱和并引起争用，这导致应用程序性能下降。</li>
+<li>处理器电源管理。所有处理器都支持电源监控和硬件功率限额。例如，英特尔处理器提供RAPL接口，用户可以使用该接口监控处理器Package，内核和DRAM域的功耗。此外，RAPL允许用户在每个域上设置上限。RAPL采用多个控制旋钮来强制执行处理器功率上限，包括内核的DVFS（P状态），电源状态（C状态）和时钟限制（T状态）。通过在一个或多个控制旋钮上设置上限，RAPL可以成功地限制上限内的整个处理器功耗。</li>
+<li>每核电源管理。每个核心在被激活时，可以按照用户通过每核心DVFS的指示在多个性能状态之间转换。每核心DVFS可能会或可能不会受到处理器功率限制的干扰，具体取决于总处理器功率需求是否超过其上限。如果是，则功率上限设置核心性能状态的上限。</li>
+<li>内存电源管理。每个NUMA存储器节点可以在多个功率电平下运行，例如由RAPL接口指定，每个电平对应于可用的最高存储器带宽。每个NUMA节点在空闲时可以自动转换到睡眠状态。</li>
 </ul>
+<h4 id="硬件和功率分配"><a class="header-anchor" href="#硬件和功率分配">¶</a>硬件和功率分配</h4>
+<p>我们的功率分配框架将功率视为一种资源。对于由多个并发任务（MPI进程或OpenMP线程）组成的给定并行工作负载，我们的框架不仅分配硬件资源，包括执行的处理器插槽和内核的数量，还在同时执行工作负载的参与硬件之间分配功率。</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure1.png" title="[20] [20]">
+<p>该框架利用表1中的一系列参数俩表示硬件和功率资源。传统的硬件实体包括处理器插槽，内核和内存节点。我们用 $S_k$ 表示 $N$ 个处理器系统上  $k\in{1,\cdots,N}$ 的第 $k$ 个处理器插槽，$C_{k,i}$ 表示 $M$ 核处理器上第 $k$ 个处理器插槽的第 $i$ 个核心，其中 $i\in {1,\cdots,M}$。系统的功率预算表示为 $P_b$。</p>
 
         
         <br />
