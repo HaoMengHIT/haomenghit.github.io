@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">¶功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">¶实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numa多核架构的功率分配问题"><span class="toc-text">¶NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numa系统概述"><span class="toc-text">¶NUMA系统概述</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -163,6 +163,25 @@
 <li>我们证明了核心亲缘性对NUMA架构上的功率限制具有相当大的功率和性能影响。</li>
 </ul>
 <h2 id="相关工作"><a class="header-anchor" href="#相关工作">¶</a>相关工作</h2>
+<h4 id="功率有限的高性能计算"><a class="header-anchor" href="#功率有限的高性能计算">¶</a>功率有限的高性能计算</h4>
+<p>在过去的十年中，关注降低功耗和提高能效已成为众多技术创新背后的主要推动力，包括但不限于：多核架构，基于加速器的计算，功率感知组件，功率封顶和智能电源管理运行时系统。回想起来，我们可以将面向功率的计算机系统研究的观点分为三类：功率自觉（Power conscious）[5]，功率 - 性能权衡（power-performance tradeoff）[3]和功率限制（power-bounded）[10,25]。</p>
+<p>总体而言，功率限制计算承认不同系统级别的功率预算上限的存在，并探索同时提高性能和满足预算的创新技术。除了利用现有的电源管理技术，如功率感知组件[17]，功率限制[13,7]，线程分配和亲缘性[1,21]，功率限制计算进一步利用硬件过度分配[20]、资源分配[8]和工作量映射[11]提供的机会。</p>
+<h4 id="实现技术"><a class="header-anchor" href="#实现技术">¶</a>实现技术</h4>
+<ul>
+<li>工作负载执行管理：并行应用程序的一个常见特性是大多数应用程序可以具有多个运行时配置，包括MPI进程数，线程数和进程/线程位置[11,5]。即使在具有相同工作负载的同一计算平台上，更改运行时配置也会对系统性能和功耗产生重大影响。</li>
+<li>核心和内存的亲缘性：在多核计算中，数据局部性和内存争用都会影响并行应用程序性能，从而影响系统能力[6,4]。将并行线程绑定到适当的处理器核心和内存模块有可能改善缓存局部性和应用程序性能。硬件亲缘性可以通过内核调用（如sched_setaffinity），系统工具（如taskset和hwloc），运行时环境（如OpenMP和openmpi）或作业调度程序来实现。</li>
+<li>功率预算和功率限额：强制分配功率预算的能力对于有限计算能力至关重要。只有当所有单元都符合自己的功率预算时，功率限制系统才能安全地将可用功率预算安排到那些关键计算单元。功率限额已经在软件，硬件和两者的组合中实现。现有的基于软件的功率预算方法包括动态电压和频率调度（DVFS）[15]，处理器和内存之间的联合功率管理，软件并发限制和线程打包。同时，最新的主要计算机组件如CPU，内存和GPU均支持基于硬件的功率限额功能[13,7,19,14]。对于我们的实现，我们使用RAPL来限制和测量功耗。</li>
+<li>跨组件功率协调：由于系统功率是组件功率的总和，因此有必要在系统组件之间协调功率以最大化应用性能。已经探索了几种方法来协调处理器和存储器之间的节点级的给定功率预算。基于反馈回路的控制理论监控应用程序性能和组件的功率，并使用反馈来决定处理器DVFS和内存功率状态的调整[2,12]。基于剖析的技术从可能的分布子集中收集性能和功率数据，并使用插值来确定最佳的过程和内存功率水平[23,25]。在我们之前的工作[10]中，我们研究了CPU和内存之间功率协调的分类模式，并得出结论：功率有限的调度器应该首先在给定约束功率预算的情况下为内存分配足够的功率。Zhang和Hoffmann [26]提出了一种在线混合协调技术，该技术使用RAPL设置硬件功率封顶，然后迭代地使用二进制搜索在每个维度中找到适当的处理器性能状态，核心数和插槽数。</li>
+</ul>
+<p>本文工作在几个方面区别于以前的节点级研究。首先，它表明最佳功率协调是特定于应用的，并提出有效的应用表征度量以确定跨组件功率协调。其次，我们提出了应用感知策略，根据应用程序的特性决定最优功率和资源配置，而无需在硬件和软件分配空间中进行搜索。第三，我们的策略针对NUMA多核架构，并在内存访问强度的背景下结合核心亲缘性对功率有界计算的影响。我们的工作通过提供节点级构建块来补充现有的集群级功率协调研究。</p>
+<h2 id="numa多核架构的功率分配问题"><a class="header-anchor" href="#numa多核架构的功率分配问题">¶</a>NUMA多核架构的功率分配问题</h2>
+<p>NUMA体系结构在由多个多核处理器组成的现代服务器节点中是典型的。此类系统上的电源协调涉及处理器插槽，每个插槽内的CPU内核以及NUMA内存节点。</p>
+<h4 id="numa系统概述"><a class="header-anchor" href="#numa系统概述">¶</a>NUMA系统概述</h4>
+<p>我们使用能够运行OpenMP/MPI并行应用程序的基于同构多核的NUMA机器来抽象感兴趣的系统。这个抽象机器代表了现代主流同质HPC系统的构建模块。如图1所示，这种机器具有以下主要的架构和电源管理功能。</p>
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure1.png" title="[20] [20]">
+<ul>
+<li></li>
+</ul>
 
         
         <br />
