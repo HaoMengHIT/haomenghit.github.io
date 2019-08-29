@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meng Hao&#39;s Homepage">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        论文阅读：Application-Aware Power Coordination on Power Bounded NUMA Multicore Systems (ICPP 2017) - Meng Hao&#39;s Homepage
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Meng Hao</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        论文阅读：Application-Aware Power Coordination on Power Bounded NUMA Multicore Systems (ICPP 2017)
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-28 22:03:24</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#ICPP" title="ICPP">ICPP</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>功率是限制现代高性能计算机系统的性能和可扩展性的关键因素。将功率视为一阶约束和稀缺系统资源，功率有界计算代表了解决HPC功率挑战的新视角 。</p>
+<p>在这项工作中，我们提出了一个应用感知的多维功率分配框架，以支持在支持NUMA的多核系统上的功率有界并行计算。该框架利用多种互补的软件和硬件电源管理机制来管理总功率预算下的插槽、核心和NUMA内存节点之间的功率分配。更重要的是，该框架实现了一种分层功率协调方法，该方法利用应用程序的性能和功率可扩展性来有效地识别理想的功率分配。</p>
+<p>我们描述了框架的设计，并在具有24个内核的支持NUMA的多核系统上评估其性能。实验结果表明，所提出的框架与具有各种功率预算的并行程序的oracle解决方案接近。</p>
+<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
+<p>功率是限制现代高性能计算系统发展的主要因素。在几乎所有级别的HPC系统中，从IC芯片，微处理器，计算节点一直到整个数据中心，存在功率限制，由物理障碍，技术困难或经济负担造成。例如，在较低级别，IC芯片和电子元件必须在其热设计功率下工作，以防止操作失败和系统故障[9];在更高的层次上，数据中心的冷却能力有限，无法消散产生的热量并保持理想的服务器室温[16]。</p>
+<p>功率限制计算将功率视为稀缺资源，利用创新技术在强制或自愿功率预算下提高系统性能，对于维持HPC性能增长至关重要。最近主要的利益相关者明确要求即将到来的亿亿次级计算机以20兆瓦的功率预算运行[22]。然而，解决具有挑战性的计算问题和大量存储器密集型问题的需求要求具有更高性能的更大系统。</p>
+<p>智能地协调计算机组件之间的电源是有限计算的关键。为了获得最佳性能，参与的组件必须协同工作并满足应用程序的需求。同时，未使用的组件可以转换到省电状态，允许为激活的组件分配更多功率以获得更好的性能。</p>
+<p>最近几个小组研究了CPU内核之间的功率协调[5,26]。在我们之前的工作中，我们研究了处理器和内存之间的功率协调，并重新发现处理器之间的功率分配对应用程序性能有显着影响[10]。尽管如此，这项研究没有考虑非均匀内存访问（NUMA）的影响，NUMA是现代多进程和多核系统采用的内存系统架构。</p>
+<p>将NUMA架构整合到功率有限的计算中，为降低功耗、提高性能或实现两者提供了新的机会。但是，NUMA多核系统上的有效功率协调可能具有挑战性。首先，每个应用程序都有其独特的工作负载特性，如计算内存访问率，本地/远程内存访问和并发配置文件，随后会从每个组件创建特定的电源需求。其次，应用程序工作量，系统资源和功率分配之间存在复杂的关系。有效的功率分配模式必须完全评估系统主要部分之间的交互，并在正确的时间为正确的组件分配适当的功率。</p>
+<p>为了解决上述挑战，我们提出了一个多功能电源协调框架，该框架在基于NUMA的多核系统上实现了应用感知功率有界计算。该框架专注于并行应用程序，使用轻量级分析来获得应用程序的电源性能特性和可伸缩性。基于所获得的信息和给定的功率预算，该框架在处理器核和存储器节点之间分配可用功率，并确定参与核和各个NUMA节点的亲缘度。</p>
+<p>总的来说，这项工作做出了以下贡献：</p>
+<ul>
+<li>我们提出了一种实用的应用感知功率协调方法和实现。此方法可快速确定为NUMA多核系统上的应用程序提供（接近）最佳性能的硬件和电源分配。</li>
+<li>我们展示了包括功率和性能可扩展性以及存储器访问强度的应用特性指示在功率有界系统上引导跨组件功率协调。</li>
+<li>我们表明，使用多种软件和硬件机制（如协调并发，核心/内存亲缘性和组件功率级别限制）可以在相同的功率预算下显着提高性能。</li>
+<li>我们证明了核心亲缘性对NUMA架构上的功率限制具有相当大的功率和性能影响。</li>
+</ul>
+<h2 id="相关工作"><a class="header-anchor" href="#相关工作">¶</a>相关工作</h2>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/HaoMengHIT">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.researchgate.net/profile/Meng_Hao3">Meng Hao&#39;s ResearchGate</a></span>
+        <span>/</span>
+        
+        <span><a href="http://www.hit.edu.cn/">Harbin Institute of Technology</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --!>
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
