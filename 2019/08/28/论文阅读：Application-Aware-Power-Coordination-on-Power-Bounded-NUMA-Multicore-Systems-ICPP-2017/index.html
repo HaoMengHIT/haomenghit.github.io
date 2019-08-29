@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">¶功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">¶实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numa多核架构的功率分配问题"><span class="toc-text">¶NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numa系统概述"><span class="toc-text">¶NUMA系统概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#硬件和功率分配"><span class="toc-text">¶硬件和功率分配</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的高性能计算"><span class="toc-text">¶功率有限的高性能计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现技术"><span class="toc-text">¶实现技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numa多核架构的功率分配问题"><span class="toc-text">¶NUMA多核架构的功率分配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numa系统概述"><span class="toc-text">¶NUMA系统概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#硬件和功率分配"><span class="toc-text">¶硬件和功率分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#功率有限的资源分配问题"><span class="toc-text">¶功率有限的资源分配问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作负载特征"><span class="toc-text">¶工作负载特征</span></a></li></ol>
 </div>
     
 </div>
@@ -192,7 +192,14 @@
 <p>给定由并发任务组成的并行工作负载 $W$ ，我们使用亲缘性映射向量 $\overrightarrow{a}$ 来指定分配给其执行的硬件资源： $\overrightarrow{a}=(a_{1,1},\cdots,a_{k,i},\cdots,a_{N,M})$， 其中 $a_{k,i}=0|1$ ，如果工作负载使用第 $k$ 个处理器的第 $i$ 个核心，则 $a_{k,i}= 1$ ，否则为 $a_{k,i} = 0$ 。</p>
 <p>此亲缘性映射向量明确指定处理器插槽和核心的分配，并隐式指定工作负载执行的内存节点分配。例如，在采用节点本地策略作为默认值的NUMA感知操作系统上，分配核心本地的相应存储器节点。此外， $\overrightarrow{a}$ 指定线程并发性和线程核心亲缘性，这是性能和电源管理的重要因素。假设每个核心同时最多执行一个线程，则 $\overrightarrow{a}$ 中的非零项数表示并发性。该假设适用于高性能计算系统的科学程序。为了强制执行硬件分配，我们的框架控制线程并发并设置线程核心关联。</p>
 <p>在功率限制计算的背景下，我们使用功率分布矢量 $\overrightarrow{d}$ 来表示分配给处理器插槽及其各自的NUMA存储节点的功率预算，即， $\overrightarrow{d}=(\overrightarrow{d_{1}},\cdots,\overrightarrow{d_N})$  ，其中 $\overrightarrow{d_k}$  是分配给第 $k$ 个处理器插槽及其相应存储器节点的功率预算。</p>
-<p>在这项工作中，我们不考虑单个内存通道，而是将NUMA内存节点作为最小功率管理单元。考虑到这一点，$\overrightarrow{d_k}$ 可以进一步分配给第 $k$ 个插槽的组成核心和本地存储器节点，即 $\overrightarrow{d_k}=(d_{c_{k,1}},\cdots,d_{c_{k,M}},d_{mem_k})$ ，其中</p>
+<p>在这项工作中，我们不考虑单个内存通道，而是将NUMA内存节点作为最小功率管理单元。考虑到这一点，$\overrightarrow{d_k}$ 可以进一步分配给第 $k$ 个插槽的组成核心和本地存储器节点，即 $\overrightarrow{d_k}=(d_{c_{k,1}},\cdots,d_{c_{k,M}},d_{mem_k})$ ，其中其中 $d_{c_{k,i}}$ 指定分配给第 $i$ 个核心的功率，$d_{mem_k}$ 指定分配给第 $k$ 个处理器插槽本地的存储器节点的功率。$d_{c_k}$ 可以通过单独设置其性能状态 $f_{k,i}$ 直接强制执行，或通过设置整个处理器的功率电平 $l_{p_k}$ 间接强制执行。可以通过设置第 $k$ 个NUMA存储器节点的功率电平 $l_{m_k}$ 来强制执行 $d_{mem_k}$。</p>
+<p>在我们的框架中使用这两个向量 $\overrightarrow{a}$ 和 $\overrightarrow{d}$ 来为工作负载执行分配硬件和功率。它们共同确定并行工作负载执行环境配置 $e = {\overrightarrow{a}，\overrightarrow{d}}$。注意，未激活的核心，即 $a_{k,i} = 0$，将转换到其最低功率状态以节省功率。</p>
+<h4 id="功率有限的资源分配问题"><a class="header-anchor" href="#功率有限的资源分配问题">¶</a>功率有限的资源分配问题</h4>
+<p>NUMA多核系统上的功率有限的跨组件功率协调可找到给定并行工作负载的最佳硬件资源分配和相应的功率分配。在数学上，问题可以表述为：</p>
+<p>给定并行工作负载 $W$，NUMA机器 $M$ 和功率预算 $P_b$，找到最佳并行工作负载执行环境配置 $e^* =(a,d)$，使得： $perf(e^<em>,W,M)\geq perf(e,W,M)$ ，且$power(e^</em>,W,M)\leq P_b$ 。</p>
+<p>我们注意到这个公式概括了多核架构上大多数功率有限的分配问题。从分析上讲，解决这种功率有限的分配问题进一步要求对并行工作负载执行的性能及其与环境配置 $e$ 的变化进行建模，这是一个复杂的问题。幸运的是，近乎最优的解决方案在现实世界中已经足够，并且可以通过应用程序分析和启发式方法的组合来获得这样的解决方案。</p>
+<h2 id="工作负载特征"><a class="header-anchor" href="#工作负载特征">¶</a>工作负载特征</h2>
+<p>为了避免直接建模并行应用程序执行的性能和功耗的困难，我们使用简单实用的模型简化方法。在这种方法中，我们使用三个指标捕获不同工作负载性能和功耗特性的影响：并行可扩展性、内存访问强度和组件的关键功率级别。</p>
 
         
         <br />
