@@ -187,8 +187,12 @@
 </ul>
 <h4 id="硬件和功率分配"><a class="header-anchor" href="#硬件和功率分配">¶</a>硬件和功率分配</h4>
 <p>我们的功率分配框架将功率视为一种资源。对于由多个并发任务（MPI进程或OpenMP线程）组成的给定并行工作负载，我们的框架不仅分配硬件资源，包括执行的处理器插槽和内核的数量，还在同时执行工作负载的参与硬件之间分配功率。</p>
-<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure1.png" title="[20] [20]">
+<img src="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/Figure2.png" title="[20] [20]">
 <p>该框架利用表1中的一系列参数俩表示硬件和功率资源。传统的硬件实体包括处理器插槽，内核和内存节点。我们用 $S_k$ 表示 $N$ 个处理器系统上  $k\in{1,\cdots,N}$ 的第 $k$ 个处理器插槽，$C_{k,i}$ 表示 $M$ 核处理器上第 $k$ 个处理器插槽的第 $i$ 个核心，其中 $i\in {1,\cdots,M}$。系统的功率预算表示为 $P_b$。</p>
+<p>给定由并发任务组成的并行工作负载 $W$ ，我们使用亲缘性映射向量 $\overrightarrow{a}$ 来指定分配给其执行的硬件资源： $\overrightarrow{a}=(a_{1,1},\cdots,a_{k,i},\cdots,a_{N,M})$， 其中 $a_{k,i}=0|1$ ，如果工作负载使用第 $k$ 个处理器的第 $i$ 个核心，则 $a_{k,i}= 1$ ，否则为 $a_{k,i} = 0$ 。</p>
+<p>此亲缘性映射向量明确指定处理器插槽和核心的分配，并隐式指定工作负载执行的内存节点分配。例如，在采用节点本地策略作为默认值的NUMA感知操作系统上，分配核心本地的相应存储器节点。此外， $\overrightarrow{a}$ 指定线程并发性和线程核心亲缘性，这是性能和电源管理的重要因素。假设每个核心同时最多执行一个线程，则 $\overrightarrow{a}$ 中的非零项数表示并发性。该假设适用于高性能计算系统的科学程序。为了强制执行硬件分配，我们的框架控制线程并发并设置线程核心关联。</p>
+<p>在功率限制计算的背景下，我们使用功率分布矢量 $\overrightarrow{d}$ 来表示分配给处理器插槽及其各自的NUMA存储节点的功率预算，即， $\overrightarrow{d}=(\overrightarrow{d_{1}},\cdots,\overrightarrow{d_N})$  ，其中 $\overrightarrow{d_k}$  是分配给第 $k$ 个处理器插槽及其相应存储器节点的功率预算。</p>
+<p>在这项工作中，我们不考虑单个内存通道，而是将NUMA内存节点作为最小功率管理单元。考虑到这一点，$\overrightarrow{d_k}$ 可以进一步分配给第 $k$ 个插槽的组成核心和本地存储器节点，即 $\overrightarrow{d_k}=(d_{c_{k,1}},\cdots,d_{c_{k,M}},d_{mem_k})$ ，其中</p>
 
         
         <br />
