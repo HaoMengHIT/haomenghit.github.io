@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动机和方法"><span class="toc-text">¶动机和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#研究动机"><span class="toc-text">¶研究动机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算特征"><span class="toc-text">¶计算特征</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动机和方法"><span class="toc-text">¶动机和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#研究动机"><span class="toc-text">¶研究动机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算特征"><span class="toc-text">¶计算特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建模：问题的形式化和技术"><span class="toc-text">¶建模：问题的形式化和技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验结果"><span class="toc-text">¶实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实验测试平台"><span class="toc-text">¶实验测试平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型训练计算"><span class="toc-text">¶模型训练计算</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -165,6 +165,24 @@
 <img src="/2019/08/30/论文阅读：Predicting-Optimal-Power-Allocation-for-CPU-and-DRAM-Domains-IPDPSW-2015/Figure1.png" title="[20] [20]">
 <img src="/2019/08/30/论文阅读：Predicting-Optimal-Power-Allocation-for-CPU-and-DRAM-Domains-IPDPSW-2015/Figure2.png" title="[20] [20]">
 <h4 id="计算特征"><a class="header-anchor" href="#计算特征">¶</a>计算特征</h4>
+<p>为了开发能够捕获计算对CPU和DRAM域上不同功率限制的敏感度的模型，我们需要首先捕获应用程序如何与底层硬件子组件交互并执行底层硬件子组件的低级细节。为此，我们利用在PEBIL [15]之上开发的一套应用程序分析工具，这是一个用于x86 / Linux的二进制工具包。PEBIL将应用程序二进制文件作为输入;它反汇编二进制，分析它，并可以进行插桩。在PEBIL之上编写的工具可以对应用程序二进制文件执行静态和动态分析。</p>
+<p>在PEBIL之上编写的静态分析工具产生关于程序的近似结构（例如，函数和循环）以及在这些结构内发生的操作的信息。该工具还记录那些控制结构内的操作类（例如，存储器和浮动操作）的类型和大小。静态分析工具记录每个块中存储器操作数的平均大小，并测量寄存器或存储器定义与其使用之间的指令数（即数据依赖性）。</p>
+<p>为了收集有关应用程序内数据移动的详细信息，内存特征描述工具，一个在PEBIL之上编写的动态分析工具，应用程序中的每个内存访问，并管理要即时处理的地址流以进行估计各种数据运动相关度量（例如，重用距离，不同循环的工作集大小和高速缓存命中率）。另一个动态分析工具保存应用程序控制单元的访问计数信息（例如，基本块访问计数）。当与静态指令混合信息结合时，访问计数信息提供有关应用程序指令构成的详细信息。</p>
+<p>静态和动态工具收集的信息可以组合在一起，以识别大型应用程序中的计算阶段[27]，并<strong>构建我们称之为每个已识别阶段的计算签名</strong>。<strong>计算签名包括应用程序以指令混合和计数形式所需的操作，数据位置属性，捕获应用程序与内存子系统交互的指标，如缓存命中率，加载和存储操作等</strong>。</p>
+<h4 id="建模：问题的形式化和技术"><a class="header-anchor" href="#建模：问题的形式化和技术">¶</a>建模：问题的形式化和技术</h4>
+<p>如公式1所示，我们的目标是开发一个函数 $f$ ，其输入是一组硬件参数（功率上限）和应用程序特征度量 $x_1,\cdots,x_n$ ，其输出 $y$ 是对计算性能影响的一些度量。</p>
+<p>$$<br>
+y=f(x_1,\cdots,x_n)\tag{1}<br>
+$$</p>
+<p>在这项工作中，我们使用Cubist [22]，这是一种基于规则的机器学习技术，来估计方程1中的 $y$。Cubist模型由一系列线性回归模型组成; 预测基于在树的终端/叶节点处找到的线性模型。叶子的路径或终端节点的选择基于中间节点处的规则，这些规则也基于线性模型[19]。与其他形式的基于树的方法（如梯度增强）不同，Cubist模型易于解释。Cubist模型还能够封装预测变量（或输入）变量之间复杂的非线性关系。例如，中间规则可以识别和分离跨越缓存层次结构边界的工作集大小的功率上限带来的性能差异。</p>
+<p>为避免过度拟合，我们采用了两种技术。首先，我们将经验样本划分为非重叠的训练和测试集。该模型在训练子集上训练并在测试集上验证。其次，我们使用10倍交叉验证来生成模型。在k倍交叉验证中（在我们的例子中，k = 10），训练数据集被随机分成大小相等的k个子集。然后构造k个不同的模型，每个模型使用k个分区的（k-1）作为训练输入，使得k个集合中的1个可以用于模型验证。然后根据验证集验证每个k模型，并选择产生最小误差的模型。</p>
+<h2 id="实验结果"><a class="header-anchor" href="#实验结果">¶</a>实验结果</h2>
+<p>本节首先描述我们用于收集训练数据的实验系统。然后，我们描述了一组用于收集训练和测试数据的基准测试，然后讨论了我们的模型在测试数据集和迷你应用程序上的准确性。</p>
+<h4 id="实验测试平台"><a class="header-anchor" href="#实验测试平台">¶</a>实验测试平台</h4>
+<p>我们的测试系统包括一个双插槽服务器，配备两个8核2.9GHz Intel Xeon E5-2690（SandyBridge）处理器和64GB DDR3内存。在系统上禁用同时多线程（SMT）和Turbo-boost。</p>
+<p>最近的Intel处理器上提供的RAPL（运行平均功率限制）[8]可以为CPU和DRAM子系统收集（建模）功率测量（RAPL文档将这些子系统称为“域”）。RAPL还允许用户在这些域上设置功率限制，并且底层硬件基础架构强制执行这些功率限制。在我们基于Sandybridge的测试系统中，RAPL公开了四个功率层 - Package（PKG），Power Plane 0（PP0），Power Plane 1（PP1）和DRAM。我们使用英特尔的Governor工具[1]来强制执行PKG和DRAM域的功率上限。我们还依靠Power Governor工具进行DRAM和CPU功率测量。我们每秒测量5个功率样本，根据我们的经验，这只会产生微不足道的开销。</p>
+<p><strong>虽然我们的重点是使用英特尔处理器，但其他芯片制造商也在其处理器中启用了功率封顶（例如 AMD [3]和IBM [6]，[5]）。本文提出的方法也应适用于这些架构。</strong></p>
+<h4 id="模型训练计算"><a class="header-anchor" href="#模型训练计算">¶</a>模型训练计算</h4>
 
         
         <br />
