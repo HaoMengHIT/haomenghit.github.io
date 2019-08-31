@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Q-Q图？"><span class="toc-text">什么是Q-Q图？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何创建Q-Q图？"><span class="toc-text">如何创建Q-Q图？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是q-q图？"><span class="toc-text">¶什么是Q-Q图？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何创建q-q图？"><span class="toc-text">¶如何创建Q-Q图？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">¶参考</span></a></li></ol>
 </div>
     
 </div>
@@ -138,10 +138,12 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="什么是Q-Q图？"><a href="#什么是Q-Q图？" class="headerlink" title="什么是Q-Q图？"></a>什么是Q-Q图？</h2><p>Q-Q图（Quantile-Quantile Plots）是一种散点图，横坐标为某一样本的分位数，纵坐标为另一样本的分位数，横坐标与纵坐标组成的散点图代表同一个累计概率所对应的分位数。分位数是某些值低于该分位数的值，例如，中位数是一个分位数，其中50%的数据低于该点，50%高于该点。Q-Q图的目的是确定两组数据是否来自同一分布。在Q-Q图上绘制45度角;如果两个数据集来自共同分布，则这些点将落在该参考线上。</p>
+        <h2 id="什么是q-q图？"><a class="header-anchor" href="#什么是q-q图？">¶</a>什么是Q-Q图？</h2>
+<p>Q-Q图（Quantile-Quantile Plots）是一种散点图，横坐标为某一样本的分位数，纵坐标为另一样本的分位数，横坐标与纵坐标组成的散点图代表同一个累计概率所对应的分位数。分位数是某些值低于该分位数的值，例如，中位数是一个分位数，其中50%的数据低于该点，50%高于该点。Q-Q图的目的是确定两组数据是否来自同一分布。在Q-Q图上绘制45度角;如果两个数据集来自共同分布，则这些点将落在该参考线上。</p>
 <img src="/2019/08/04/Q-Q图介绍/Figure1.png">
 <p>上图显示了水平轴上理论正态分布的分位数。它与y轴上的一组数据进行比较。这种特殊类型的Q-Q图称为常规Q-Q图。这些点没有聚集在45度线上，实际上遵循曲线，表明样本数据不是正态分布的。</p>
-<h2 id="如何创建Q-Q图？"><a href="#如何创建Q-Q图？" class="headerlink" title="如何创建Q-Q图？"></a>如何创建Q-Q图？</h2><p>示例问题：以下数据是否来自正态分布？</p>
+<h2 id="如何创建q-q图？"><a class="header-anchor" href="#如何创建q-q图？">¶</a>如何创建Q-Q图？</h2>
+<p>示例问题：以下数据是否来自正态分布？</p>
 <p>7.19, 6.31, 5.89, 4.5, 3.77, 4.25, 5.19, 5.79, 6.79.</p>
 <p>（1） 步骤1：将数据从小到大排序。</p>
 <p>3.77， 4.25，4.50，5.19，5.89，5.79，6.31，6.79，7.19</p>
@@ -150,25 +152,35 @@
 <p>（3）步骤3：在该步骤中找到每个段的z值（截止点）。这些段是区域，因此请参考z表（或使用软件）获取每个段的z值。</p>
 <p>z值为：</p>
 <ul>
-<li><p>10% = -1.28</p>
+<li>
+<p>10% = -1.28</p>
 </li>
-<li><p>20% = -0.84</p>
+<li>
+<p>20% = -0.84</p>
 </li>
-<li><p>30% = -0.52</p>
+<li>
+<p>30% = -0.52</p>
 </li>
-<li><p>40% = -0.25</p>
+<li>
+<p>40% = -0.25</p>
 </li>
-<li><p>50% = 0</p>
+<li>
+<p>50% = 0</p>
 </li>
-<li><p>60% = 0.25</p>
+<li>
+<p>60% = 0.25</p>
 </li>
-<li><p>70% = 0.52</p>
+<li>
+<p>70% = 0.52</p>
 </li>
-<li><p>80% = 0.84</p>
+<li>
+<p>80% = 0.84</p>
 </li>
-<li><p>90% = 1.28</p>
+<li>
+<p>90% = 1.28</p>
 </li>
-<li><p>100% = 3.0</p>
+<li>
+<p>100% = 3.0</p>
 </li>
 </ul>
 <img src="/2019/08/04/Q-Q图介绍/Figure3.png">
@@ -180,7 +192,8 @@
 <p>此示例使用标准正态分布，但如果认为你的数据可能来自不同的正态分布（即具有不同均值和标准偏差的分布），那么你可以使用它。</p>
 <p>对于许多统计测试来说，正态性假设是一个重要的假设；假设你是从正态分布的人群中取样的。正态Q-Q图是评价正态性的一种方法。但是，你不必使用正态分布作为数据的比较；你可以使用任何连续分布作为比较（例如威布尔分布或均匀分布），只要你可以计算分位数。</p>
 </blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] Q-Q Plots: Simple Definition &amp; Example.  <a href="https://www.statisticshowto.datasciencecentral.com/q-q-plots" target="_blank" rel="noopener">https://www.statisticshowto.datasciencecentral.com/q-q-plots</a></p>
+<h2 id="参考"><a class="header-anchor" href="#参考">¶</a>参考</h2>
+<p>[1] Q-Q Plots: Simple Definition &amp; Example.  <a href="https://www.statisticshowto.datasciencecentral.com/q-q-plots" target="_blank" rel="noopener">https://www.statisticshowto.datasciencecentral.com/q-q-plots</a></p>
 
         
         <br />
