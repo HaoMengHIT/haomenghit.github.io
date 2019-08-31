@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        论文阅读：Predicting Optimal Power Allocation for CPU and DRAM Domains (IPDPSW 2015) - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,158 +116,50 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-30</div>
-        <div class="post-info">
-            <a href="/2019/08/30/论文阅读：Predicting-Optimal-Power-Allocation-for-CPU-and-DRAM-Domains-IPDPSW-2015/">
-                <h3>
-                    论文阅读：Predicting Optimal Power Allocation for CPU and DRAM Domains (IPDPSW 2015)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#IPDPS" title="IPDPS">IPDPS</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        论文阅读：Predicting Optimal Power Allocation for CPU and DRAM Domains (IPDPSW 2015)
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-28</div>
-        <div class="post-info">
-            <a href="/2019/08/28/论文阅读：Application-Aware-Power-Coordination-on-Power-Bounded-NUMA-Multicore-Systems-ICPP-2017/">
-                <h3>
-                    论文阅读：Application-Aware Power Coordination on Power Bounded NUMA Multicore Systems (ICPP 2017)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#ICPP" title="ICPP">ICPP</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-30 12:02:17</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#IPDPS" title="IPDPS">IPDPS</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-27</div>
-        <div class="post-info">
-            <a href="/2019/08/27/论文阅读：Performance-and-Energy-Analysis-of-OpenMP-runtime-systems-with-dense-linear-algebra-algorithms-WAMCA-2017/">
-                <h3>
-                    论文阅读：Performance and Energy Analysis of OpenMP Runtime Systems With Dense Linear Algebra Algorithms (WAMCA 2017)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content no-indent">
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>功率输送和成本所带来的限制将成为下一代高性能计算（HPC）系统开发的关键设计障碍。为了弥补这些障碍，已经提出了对过度供应的计算系统施加功率限制（或上限）以保持在物理（和财务）功率限制内的解决方案。不知情的功率封顶（power capping）可以显着影响性能，功率封顶的成功在很大程度上取决于在计算节点的各个子系统上分配给定功率预算的智能程度。由于不同的计算对各种系统组件提出了截然不同的要求，因此在进行功率分配决策以减少性能下降时必须考虑这些需求的变化。给定目标功率限制，本文中提出的基于模型的方法考虑了计算特定属性，指导CPU和DRAM域的功率分配以最大化性能。我们的方法是准确的，可以预测功率上限分配方案对来自实际应用的不同类型计算的性能影响，绝对平均误差小于6％。</p>
+<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
+<p>电力成本和供电限制限制了大规模高性能计算（HPC）系统的扩展。未来的HPC系统很可能会过度配置并且功率受限，无法在严格的功率限制内运行[9]，[18]，[23];即，并非系统的所有组件都能以最大功率消耗运行。</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-26</div>
-        <div class="post-info">
-            <a href="/2019/08/26/论文阅读：Impact-of-parallel-programming-models-and-CPUs-clock-frequency-on-energy-consumption-of-HPC-systems-AICCSA-2011/">
-                <h3>
-                    论文阅读：Impact of Parallel Programming Models and CPUs Clock Frequency on Energy Consumption of HPC Systems (AICCSA 2011)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-25</div>
-        <div class="post-info">
-            <a href="/2019/08/25/论文阅读：How-much-power-does-your-server-consume-Estimating-wall-socket-power-using-RAPL-measurements-Comput-Sci-Res-Dev-2016/">
-                <h3>
-                    论文阅读：How Much Power Does Your Server Consume? Estimating Wall Socket Power Using RAPL Measurements (Comput Sci Res Dev 2016)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-24</div>
-        <div class="post-info">
-            <a href="/2019/08/24/强化学习介绍/">
-                <h3>
-                    强化学习介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#强化学习" title="强化学习">强化学习</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    
-    <li class="next">
-        <a href="/page/2/">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
 
     </div>
 </div>
@@ -340,12 +236,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
