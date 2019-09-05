@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meng Hao&#39;s Homepage">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        论文阅读：Energy-Aware High-Performance Computing: Survey of State-of-the-Art Tools, Techniques, and Environments (综述， Scientific Programming 19) - Meng Hao&#39;s Homepage
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Meng Hao</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        论文阅读：Energy-Aware High-Performance Computing: Survey of State-of-the-Art Tools, Techniques, and Environments (综述， Scientific Programming 19)
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-09-04 10:21:54</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>本论文介绍了能量感知高性能计算（HPC）的最新技术，特别是系统和设备类型，优化指标和能量/功率控制方法的方法识别和分类。系统类型包括单个设备，集群，网格和云，同时考虑设备类型包括CPU，GPU，多处理器和混合系统。优化目标包括各种指标组合，如执行时间，能耗和温度，并考虑强加的功率限制。控制方法包括调度，DVFS / DFS / DCT，功能封顶与程序化API，如英特尔RAPL，NVIDIA NVML，以及应用程序优化和混合方法。我们讨论用于能源/电源管理的工具和API以及用于预测的工具和环境和/或者模拟现代HPC系统中的能量/功耗。最后，讨论了编程实例，即在特定工作中使用的应用和基准。根据我们的评估，我们确定了一套开放区域以及有关现代HPC系统方法和工具的重要最新问题，这些方法和工具允许进行能量感知处理。</p>
+<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
+<p>在当今的高性能计算（HPC）系统中，对能量和功率的考虑起着越来越重要的作用。新的集群系统设计为在不超过20兆瓦的功率[1]达到百亿亿次级的性能。除了TOP500（<a href="https://www.top500.org/lists/top500/%EF%BC%89%E4%BB%A5%E6%80%A7%E8%83%BD%E4%B8%BA%E5%AF%BC%E5%90%91%E7%9A%84%E6%8E%92%E5%90%8D%EF%BC%8CGreen500%EF%BC%88https://www.top500.org/green500/%EF%BC%89%E5%88%97%E8%A1%A8%E6%8C%89%E6%AF%8F%E7%93%A6%E7%89%B9%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%8F%E5%8F%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%90%8D%E3%80%82GPU%E7%9A%84%E5%B9%BF%E6%B3%9B%E9%87%87%E7%94%A8%E6%9C%89%E5%8A%A9%E4%BA%8E%E6%8F%90%E9%AB%98%E5%8F%AF%E5%9C%A8%E6%AD%A4%E7%B1%BB%E7%B3%BB%E7%BB%9F%E4%B8%8A%E9%AB%98%E6%95%88%E8%BF%90%E8%A1%8C%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%99%E4%B8%80%E6%AF%94%E7%8E%87%E3%80%82%E8%BF%99%E7%A7%8D%E6%B7%B7%E5%90%88%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E7%BC%96%E7%A8%8B%E5%92%8C%E5%B9%B6%E8%A1%8C%E5%B7%B2%E7%BB%8F%E6%88%90%E4%B8%BA%E8%8E%B7%E5%BE%97%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6%EF%BC%8C%E4%BD%86%E5%9C%A8%E4%BD%BF%E7%94%A8%E5%A4%9A%E6%A0%B8%E5%92%8C%E5%A4%9A%E6%A0%B8%E7%8E%AF%E5%A2%83%E6%97%B6%E4%B9%9F%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8C%91%E6%88%98%E3%80%82%E5%9C%A8%E5%8A%9F%E7%8E%87%E5%92%8C%E8%83%BD%E9%87%8F%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95%E6%96%B9%E9%9D%A2%EF%BC%8C%E9%99%A4%E4%BA%86%E8%B0%83%E5%BA%A6%E4%B9%8B%E5%A4%96%EF%BC%8CDVFS/DFS/DCT%E5%92%8C%E5%8A%9F%E7%8E%87%E5%B0%81%E9%A1%B6API%E5%B7%B2%E7%BB%8F%E5%8F%AF%E7%94%A8%E4%BA%8E%E7%A7%BB%E5%8A%A8%E3%80%81%E5%8F%B0%E5%BC%8F%E6%9C%BA%E5%92%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BA%BF%E8%B7%AF%E7%9A%84CPU%E5%92%8CGPU%E3%80%82%E5%8A%9F%E7%8E%87%E5%B0%81%E9%A1%B6%E7%8E%B0%E5%9C%A8%E4%B9%9F%E5%8F%AF%E7%94%A8%E4%BA%8E%E9%9B%86%E7%BE%A4%E7%9A%84%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E4%BE%8B%E5%A6%82Slurm%E4%B8%AD%E5%85%81%E8%AE%B8%E5%85%B3%E9%97%AD%E7%A9%BA%E9%97%B2%E8%8A%82%E7%82%B9%EF%BC%8C%E5%9C%A8%E9%9C%80%E8%A6%81%E6%97%B6%E5%86%8D%E6%AC%A1%E5%90%AF%E5%8A%A8%E8%BF%99%E4%BA%9B%E8%8A%82%E7%82%B9%EF%BC%8C%E5%85%81%E8%AE%B8%E6%88%91%E4%BB%AC%E8%AE%BE%E7%BD%AE%E9%80%9A%E8%BF%87DVFS%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8A%9F%E7%8E%87%E4%B8%8A%E9%99%90%5B2%5D%E3%80%82%E5%AF%B9%E4%BA%8E%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%EF%BC%8C%E8%AF%B8%E5%A6%82%E6%89%A7%E8%A1%8C%E6%97%B6%E9%97%B4%E3%80%81%E8%83%BD%E9%87%8F%E3%80%81%E5%8A%9F%E7%8E%87%E5%92%8C%E6%B8%A9%E5%BA%A6%E7%9A%84%E5%BA%A6%E9%87%8F%E5%9C%A8%E5%90%84%E7%A7%8D%E4%B8%8A%E4%B8%8B%E6%96%87%E5%92%8C%E5%90%84%E7%A7%8D%E7%BB%84%E5%90%88%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%82%E9%9C%80%E8%A6%81%E5%AF%B9%E8%AF%A5%E9%A2%86%E5%9F%9F%E7%9A%84%E5%8F%AF%E8%83%BD%E6%80%A7%E3%80%81%E6%9C%BA%E5%88%B6%E3%80%81%E5%B7%A5%E5%85%B7%E5%92%8C%E7%BB%93%E6%9E%9C%E8%BF%9B%E8%A1%8C%E6%8C%81%E7%BB%AD%E5%92%8C%E5%BD%BB%E5%BA%95%E7%9A%84%E5%88%86%E6%9E%90%EF%BC%8C%E4%BB%A5%E7%A1%AE%E5%AE%9A%E5%BD%93%E5%89%8D%E5%92%8C%E6%9C%AA%E6%9D%A5%E7%9A%84%E6%8C%91%E6%88%98%EF%BC%8C%E8%BF%99%E6%98%AF%E8%BF%99%E9%A1%B9%E5%B7%A5%E4%BD%9C%E7%9A%84%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87%E3%80%82" target="_blank" rel="noopener">https://www.top500.org/lists/top500/）以性能为导向的排名，Green500（https://www.top500.org/green500/）列表按每瓦特性能对每台计算机进行排名。GPU的广泛采用有助于提高可在此类系统上高效运行的应用程序的这一比率。这种混合系统中的编程和并行已经成为获得高性能的必要条件，但在使用多核和多核环境时也是一个挑战。在功率和能量控制方法方面，除了调度之外，DVFS/DFS/DCT和功率封顶API已经可用于移动、台式机和服务器线路的CPU和GPU。功率封顶现在也可用于集群的作业管理系统，例如Slurm中允许关闭空闲节点，在需要时再次启动这些节点，允许我们设置通过DVFS使用的功率上限[2]。对于各种应用，诸如执行时间、能量、功率和温度的度量在各种上下文和各种组合中使用。需要对该领域的可能性、机制、工具和结果进行持续和彻底的分析，以确定当前和未来的挑战，这是这项工作的主要目标。</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/HaoMengHIT">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.researchgate.net/profile/Meng_Hao3">Meng Hao&#39;s ResearchGate</a></span>
+        <span>/</span>
+        
+        <span><a href="http://www.hit.edu.cn/">Harbin Institute of Technology</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --!>
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
