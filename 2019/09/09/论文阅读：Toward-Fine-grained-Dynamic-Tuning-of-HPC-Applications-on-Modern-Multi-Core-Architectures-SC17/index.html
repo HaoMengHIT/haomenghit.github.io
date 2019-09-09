@@ -11,7 +11,7 @@
 
     <title>
         
-        PAPI安装问题 - Meng Hao&#39;s Homepage
+        论文阅读：Toward Fine-Grained Dynamic Tuning of HPC Applications on Modern Multi-Core Architectures (SC17) - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法"><span class="toc-text">¶解决方法</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li></ol>
 </div>
     
 </div>
@@ -120,18 +120,21 @@
 
 <div class="post-container">
     <div class="post-title">
-        PAPI安装问题
+        论文阅读：Toward Fine-Grained Dynamic Tuning of HPC Applications on Modern Multi-Core Architectures (SC17)
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2019-07-31 20:11:42</span></span>
+        <span class="attr">Post：<span>2019-09-09 10:22:30</span></span>
         
         <span class="attr">Tags：/
         
-        <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
+        <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
         <span>/</span>
         
-        <a class="tag" href="/tags/#PAPI" title="PAPI">PAPI</a>
+        <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#SC" title="SC">SC</a>
         <span>/</span>
         
         
@@ -141,10 +144,23 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h3 id="解决方法"><a class="header-anchor" href="#解决方法">¶</a>解决方法</h3>
-<p>It seems kernel didn’t let me access to performance events because of security reasons. You have to set that.<br>
-(由于安全原因，似乎内核不允许访问性能事件,必须对它进行设置)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c 'echo -1 &gt;/proc/sys/kernel/perf_event_paranoid'</span><br></pre></td></tr></table></figure>
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>人们一致认为，百亿亿次级系统应在20MW的功率范围内运行。因此，如果要实现这样的系统，节能仍然被认为是最关键的限制因素。</p>
+<p>到目前为止，大多数关于该主题的研究都集中在功率封顶和动态功率管理等策略上。虽然这些方法可以降低功耗，但我们认为它们可能不足以达到E级能效目标。因此，我们的目标是采用嵌入式系统的技术，其中能效始终是基本目标。</p>
+<p>嵌入式系统中使用的成功节能技术是将细粒度自动调谐与动态电压和频率调整相结合。在本文中，我们将类似的技术应用于实际的HPC应用程序。我们在HPC群集上的实验结果表明，与基线配置相比，这种方法可节省高达20％的能量，而性能损失可忽略不计。</p>
+<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
+<p>为了提高能效，硬件供应商越来越多地采用嵌入式系统的技术。诸如去耦频域，动态电压和频率调节（DVFS），超低功耗状态以及融合CPU和FPGA的概念等特性表明了HPC和嵌入式系统正在融合的趋势。例如，最新一代的英特尔至强CPU不仅通过采用额外的内核或更宽的寄存器来提高性能，而且还包含一系列用户可控的开关[16,19,28]。访问这些开关使用户能够影响CPU的能量特性。在Haswell-EP和后续架构中，程序员可以操纵单个核心频率和非核心频率，即将核心连接到存储器控制器的环的频率[16]。这些用户可控制的硬件开关是嵌入式系统中节约能源的有效来源，而且它们越来越多地涌入HPC，这就引出了如何利用它们来提高能效的问题。</p>
+<p>为了回答这个问题，我们研究了嵌入式系统，其中代码级的细粒度自动调谐与用户可控开关紧密集成已得到广泛研究。一个例子是System-Scenarios [10]，其中创建了高度调整的系统配置，以便将底层硬件架构映射到应用程序行为。其他示例包括自我感知计算系统[18]和基于观察 - 决定 - 行为原则的系统[29]，其中系统监视器为给定行为选择最佳硬件和软件配置。</p>
+<p>无论采用何种方法，共同点都是平衡多种约束（如性能和能量）的任务。虽然这些方法中的一些被证明在嵌入式系统或其他领域中是成功的，但很少有应用于典型的HPC应用。因此，由于基本目标不同，无法保证这种方法在性能优先的环境中起作用。嵌入式系统通常在实时处理所需的期限限制下工作，而在HPC中，必须最小化解决方案的时间。</p>
+<p>在本文中，我们将细粒度自动调整与用户可控制的硬件开关和线程相结合，并将此技术应用于单个计算节点上的真实HPC应用程序。该应用程序反复求解弹性波方程，以创建地球地下的地震图像。它主要受存储器限制，这使其成为具有去耦频域的CPU节能的良好候选者，其中核心频率可以按比例缩小以节省能量。</p>
+<p>为了评估我们的方法，我们针对以下三个目标调整我们的应用：能量，能量延迟乘积（EDP）和能量延迟乘积平方（ED2P）。我们的总体结果显示，与参考实现相比，节能高达20％，运行时间仅增加3％。</p>
+<p>因此，我们在本文中的主要贡献是：</p>
+<ul>
+<li>我们实施并测试了一种受嵌入式系统启发的节能方法，该方法将单粒度自动调谐的优势与用户可控制的硬件交换机结合在一个计算节点上的实际HPC应用中。</li>
+<li>我们提供实验结果，并将参考实施与静态和动态调整的版本进行比较。</li>
+<li>我们评估了我们的方法在能源性能权衡方面的可行性。</li>
+<li>我们提供了启用和不启用AVX2矢量化的测试应用程序的能量结果。</li>
+</ul>
 
         
         <br />
