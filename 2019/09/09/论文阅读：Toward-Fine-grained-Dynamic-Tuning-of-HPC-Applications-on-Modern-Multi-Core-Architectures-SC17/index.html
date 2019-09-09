@@ -208,6 +208,9 @@
 <p>根据用户选择的调优目标，Python工具生成适当的编译标志，包括必要的预处理器指令。然后重新编译代码，最终结果是动态调整的代码版本。整个工作流程如图2所示。清单3显示了每个预处理器指令内的内容。</p>
 <img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure6.png" title="[20] [20]">
 <img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure5.png" title="[20] [20]">
+<p>出于实验评估的目的，我们创建了三个版本的代码，我们将其称为：reference，static和dynamic。前一版本只是代码的默认生产版本，即不应用自动调整。当使用测试系统的所有24个内核执行参考实现时，核心以2.5GHz运行，而非核心频率为3.0GHz。</p>
+<p>Static是指静态调整的代码版本。为了完整起见，使用穷举搜索算法对以下三个调整向量执行静态调整：核心频率，非核心频率和OpenMP线程数。在本文的其余部分，我们将使用以下表示法表示不同的系统配置：core |uncore | thread。因此，1.7 | 2.2 | 24对应于核心频率为1.7GHz，非核心频率为2.2GHz并且线程数为24的系统配置。</p>
+
         
         <br />
         <div id="comment-container">
