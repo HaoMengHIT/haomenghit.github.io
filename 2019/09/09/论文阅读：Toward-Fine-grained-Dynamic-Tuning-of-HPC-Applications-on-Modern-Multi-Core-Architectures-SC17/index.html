@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#autotuners"><span class="toc-text">¶Autotuners</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hpc中的dvfs"><span class="toc-text">¶HPC中的DVFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地震波传播"><span class="toc-text">¶地震波传播</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#弹性动力波方程"><span class="toc-text">¶弹性动力波方程</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#autotuners"><span class="toc-text">¶Autotuners</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hpc中的dvfs"><span class="toc-text">¶HPC中的DVFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地震波传播"><span class="toc-text">¶地震波传播</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#弹性动力波方程"><span class="toc-text">¶弹性动力波方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用openmp实现多核并行化"><span class="toc-text">¶使用OpenMP实现多核并行化</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -192,6 +192,14 @@
 <p>弹性动力波方程（1）及其源项 $f_i$ 在许多计算复杂的应用中构成了重要的支柱，例如先进的三维成像和地球地下的反演[27]。如果我们考虑各向同性弹性介质（2），$\Omega \subset \mathbb{R}^3$ ，由密度，$ρ$ 和Lamé参数 $λ$ 和 $μ$ 参数化，那么对于任何 $(x，t) ∈(Ω，T)$，其中 $T$ 是在时间间隔内，以 $Ω$ 传播的弹性波由下面的弹性动力波方程控制</p>
 <img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure2.png" title="[20] [20]">
 <p>用于计算弹性波的常用数值框架是3D笛卡尔网格上的交错网格显式有限差分方法。与其他[6,13]不同，我们采用标准的八阶16点模板进行空间近似，使用二阶模板进行时间近似。</p>
+<h4 id="使用openmp实现多核并行化"><a class="header-anchor" href="#使用openmp实现多核并行化">¶</a>使用OpenMP实现多核并行化</h4>
+<p>应用程序的主要计算流程可以分为两部分，如清单1所示。为简洁起见，未显示负责初始化组件的循环，例如压力和速度。但是，在这些循环中采用了第一次触摸（first touch）[38]来最小化与非统一内存访问相关的性能问题。</p>
+<img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure3.png" title="[20] [20]">
+<p>如（1）所示，微分器必须在计算速度（ $v_i$ ）和应力场（ $σ_{ij}$）之前计算，如清单1所示。单次迭代中的内核具有数据依赖性，以及各个迭代之间的循环携带依赖性。总共，每次迭代计算25个不同的内核。清单2显示了用于计算 $x$ 方向速度的源代码。所有内核都类似于典型的模板计算，使得它们适合使用OpenMP进行共享内存并行化[35,36]。我们应用roofline模型[41]来更好地理解不同内核的性能界限。<strong><em>这需要通过将FLOPS的数量除以字节数来计算操作强度（OI）</em></strong>。微分器内核的OI为0.167，而速度和应力场的OI为0.250。当三个应力场核心在同一存储区域上迭代时，它们被融合以提高性能。各自的OI是0.286。</p>
+<p>***我们对此应用程序调优的直觉是，对于低OI的程序内核，降低核心频率并增加非核心频率；对于高OI的程序内核，增加核心频率并降低非核心频率。挑战在于找到能效和性能下降之间的最佳关键点。***这需要仔细调整。</p>
+<p>我们为波传播应用选择了三种不同的输入尺寸： $512^3$ （小）， $768^3$ （中）和 $1024^3$（大）。这允许突出作为不同输入尺寸的函数的能量性能比。选择中等大小的输入是由于其内存对齐不良，导致AVX2矢量化代码的预期性能更差。所有计算都以单精度执行，因为这是足够的。</p>
+<img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure4.png" title="[20] [20]">
+<p>图1显示了使用24个核心和中等输入大小时参考实现的所有内核的运行时间。由于不利的内存访问，最慢的内核沿 $z$ 方向计算，导致循环迭代之间的步幅较大。</p>
 
         
         <br />
