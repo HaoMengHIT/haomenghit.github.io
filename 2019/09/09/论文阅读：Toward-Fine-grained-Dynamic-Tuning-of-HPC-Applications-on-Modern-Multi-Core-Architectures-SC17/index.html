@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#autotuners"><span class="toc-text">¶Autotuners</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hpc中的dvfs"><span class="toc-text">¶HPC中的DVFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地震波传播"><span class="toc-text">¶地震波传播</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#弹性动力波方程"><span class="toc-text">¶弹性动力波方程</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -176,6 +176,22 @@
 <h4 id="报告能效"><a class="header-anchor" href="#报告能效">¶</a>报告能效</h4>
 <p>报告HPC能效的适当指标是一个备受争议的话题。一些研究人员更愿意报告能量（焦耳），而另一些研究人员更喜欢功率（瓦特）。但是，两者都是静态指标，无法捕捉能耗-性能权衡。能量延迟积（ $ED^n$ ）[11]是一种广泛使用的评估功率和性能的指标。该度量使用正整数 $n$ 将能量积 $E$ 与电路延迟 $D$ 相关联。简单来说，较低的EDP值表示功率更有效地转换为性能。因子 $n$ 表示性能的相对重要性，它通常设置为1,2或3，值更高表示更重视性能。</p>
 <h2 id="相关工作"><a class="header-anchor" href="#相关工作">¶</a>相关工作</h2>
+<p>能效是一个多元化的研究领域，从用于大型数据中心的功率降低技术到用于暂存内存的分析能量模型。这里我们只讨论HPC系统中自动调优器或DVFS调整的讨论，因为我们的工作重点是应用于实际HPC应用的能耗-性能权衡。</p>
+<h4 id="autotuners"><a class="header-anchor" href="#autotuners">¶</a>Autotuners</h4>
+<p>自动调优技术广泛应用于计算密集型应用程序和库[40]，但也用于其他应用程序域[3]。我们提供了最新的和值得注意的自动调优框架和库。</p>
+<p>Active Harmony [37]是一个自动调优框架，为调整应用程序提供特定于域的语言（DSL）。它执行离线和在线调整[39]，但需要修改源代码。目前尚不清楚是否支持DVFS调优。</p>
+<p>Periscope Tuning Framework（PTF）[34]是一个静态自动调优器，支持用户插件执行高效调优。它提供了一个执行DVFS的插件，并计划在不久的将来引入动态调整。MATE [26]和ELASTIC [24]自动调整器是唯一执行动态调整的调查框架，尽管仅限于MPI过程。与我们的方法相比，这是一种更粗粒度的方法。</p>
+<p>目前已经提出了几种多目标自动调优器[1,14,21]。在这些系统中，用户指定多个调整目标，例如性能，能量，资源利用率或解决时间。据我们所知，目前可用的任何一个都不支持在现代HPC集群上使用DVFS进行多目标动态调整。</p>
+<h4 id="hpc中的dvfs"><a class="header-anchor" href="#hpc中的dvfs">¶</a>HPC中的DVFS</h4>
+<p>大量研究调查了在HPC环境中使用DVFS。一些专注于不同的能源性能指标[7]，而另一些则为功率性能权衡提供了分析框架[4]。许多研究还探讨了功率/能量分析[9]和测量[31]的前景。以下研究将DVFS应用于大型集群上的一个或多个HPC应用程序。</p>
+<p>Freeh等人[8]通过在由单核CPU组成的十个节点上使用来自NAS并行基准测试套件的应用程序，研究了HPC中的能量 - 时间权衡。他们发现，运行时增加3％可以在单个节点上将CPU的能耗降低20％。但是，目前尚不清楚这种结果将如何转化为现代多核CPU。</p>
+<p>Li等人[22,23]开发了一个运行时库来探索Dynamic Concurrency Throttling或DVFS可能有益的区域。选择NAS并行基准测试套件中的MPI + OpenMP应用程序以及ASC Sequoia基准测试套件中的两个基于AMG的代理应用程序来评估他们的方法。其他运行时库，例如Cicotti等人的库[5]，也在代理应用程序上对能源效率进行评估。与这些方法相比，我们使用核心和非核心频率已经线程数的动态调整，在实际HPC应用程序中找到最佳能量-性能权衡。此外，我们的能源监控以更高的分辨率进行。这提供了更准确的结果，并进一步深入了解HPC应用的能耗成本。</p>
+<h2 id="地震波传播"><a class="header-anchor" href="#地震波传播">¶</a>地震波传播</h2>
+<p>本节描述管理我们的应用程序的计算构建块以及关键实现细节。</p>
+<h4 id="弹性动力波方程"><a class="header-anchor" href="#弹性动力波方程">¶</a>弹性动力波方程</h4>
+<p>弹性动力波方程（1）及其源项 $f_i$ 在许多计算复杂的应用中构成了重要的支柱，例如先进的三维成像和地球地下的反演[27]。如果我们考虑各向同性弹性介质（2），$\Omega \subset \mathbb{R}^3$ ，由密度，$ρ$ 和Lamé参数 $λ$ 和 $μ$ 参数化，那么对于任何 $(x，t) ∈(Ω，T)$，其中 $T$ 是在时间间隔内，以 $Ω$ 传播的弹性波由下面的弹性动力波方程控制</p>
+<img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure2.png" title="[20] [20]">
+<p>用于计算弹性波的常用数值框架是3D笛卡尔网格上的交错网格显式有限差分方法。与其他[6,13]不同，我们采用标准的八阶16点模板进行空间近似，使用二阶模板进行时间近似。</p>
 
         
         <br />
