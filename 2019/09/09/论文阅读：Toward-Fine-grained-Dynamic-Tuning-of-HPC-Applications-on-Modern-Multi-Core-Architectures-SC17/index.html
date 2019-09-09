@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a></li></ol>
 </div>
     
 </div>
@@ -173,6 +173,10 @@
 <p>最近基于英特尔Haswell、Broadwell和Skylake架构的CPU除了提供传统的核心频率扩展外，还提供用户访问非核心频率调整（UFS）的功能。此外，这些CPU允许更改单个内核的频率，提供精细的粒度级别。对于Haswell CPU，每个内核的转换延迟为20μs。然而，由于存在切换窗口，实际切换时间实际上可达500μs。我们的测量表明，核心转换延迟均匀分布在100-600μs之间，证实了[16]的发现。我们发现UFS的转换延迟接近20μs，这与[12]中给出的数字相同。</p>
 <p>通过基于温度、工作负载和空闲核心的数量监视启发式，CPU可以自动地将核心和非核心频率增加到超过其基频。这被称为睿频加速（turbo boost）[17]，并且频率可以增加到最大超频。但是，AVX2矢量化代码使用消耗更多功率的AVX2单元，如果CPU以其基频运行，则会超过热设计功耗（TDP）。在这种情况下，CPU会忽略高于可保证频率的请求。表1显示了在我们的实验中使用的CPU在有和没有AVX2的不同turbo频率。为了用户选择的核心和非核心频率之间的可重复性和相关性，我们仅在保证频率的范围内运行。</p>
 <img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure1.png" title="[20] [20]">
+<h4 id="报告能效"><a class="header-anchor" href="#报告能效">¶</a>报告能效</h4>
+<p>报告HPC能效的适当指标是一个备受争议的话题。一些研究人员更愿意报告能量（焦耳），而另一些研究人员更喜欢功率（瓦特）。但是，两者都是静态指标，无法捕捉能耗-性能权衡。能量延迟积（ $ED^n$ ）[11]是一种广泛使用的评估功率和性能的指标。该度量使用正整数 $n$ 将能量积 $E$ 与电路延迟 $D$ 相关联。简单来说，较低的EDP值表示功率更有效地转换为性能。因子 $n$ 表示性能的相对重要性，它通常设置为1,2或3，值更高表示更重视性能。</p>
+<h2 id="相关工作"><a class="header-anchor" href="#相关工作">¶</a>相关工作</h2>
+
         
         <br />
         <div id="comment-container">
