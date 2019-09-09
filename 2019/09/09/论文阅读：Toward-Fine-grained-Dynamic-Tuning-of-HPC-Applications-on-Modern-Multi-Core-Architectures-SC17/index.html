@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#autotuners"><span class="toc-text">¶Autotuners</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hpc中的dvfs"><span class="toc-text">¶HPC中的DVFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地震波传播"><span class="toc-text">¶地震波传播</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#弹性动力波方程"><span class="toc-text">¶弹性动力波方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用openmp实现多核并行化"><span class="toc-text">¶使用OpenMP实现多核并行化</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究介绍"><span class="toc-text">¶研究介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#现有的自动调优"><span class="toc-text">¶现有的自动调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户可控的硬件开关"><span class="toc-text">¶用户可控的硬件开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报告能效"><span class="toc-text">¶报告能效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关工作"><span class="toc-text">¶相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#autotuners"><span class="toc-text">¶Autotuners</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hpc中的dvfs"><span class="toc-text">¶HPC中的DVFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地震波传播"><span class="toc-text">¶地震波传播</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#弹性动力波方程"><span class="toc-text">¶弹性动力波方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用openmp实现多核并行化"><span class="toc-text">¶使用OpenMP实现多核并行化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#细粒度动态自动调优"><span class="toc-text">¶细粒度动态自动调优</span></a></li></ol>
 </div>
     
 </div>
@@ -199,8 +199,15 @@
 <p>***我们对此应用程序调优的直觉是，对于低OI的程序内核，降低核心频率并增加非核心频率；对于高OI的程序内核，增加核心频率并降低非核心频率。挑战在于找到能效和性能下降之间的最佳关键点。***这需要仔细调整。</p>
 <p>我们为波传播应用选择了三种不同的输入尺寸： $512^3$ （小）， $768^3$ （中）和 $1024^3$（大）。这允许突出作为不同输入尺寸的函数的能量性能比。选择中等大小的输入是由于其内存对齐不良，导致AVX2矢量化代码的预期性能更差。所有计算都以单精度执行，因为这是足够的。</p>
 <img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure4.png" title="[20] [20]">
-<p>图1显示了使用24个核心和中等输入大小时参考实现的所有内核的运行时间。由于不利的内存访问，最慢的内核沿 $z$ 方向计算，导致循环迭代之间的步幅较大。</p>
-
+<p>图1显示了使用24个核心和中等输入大小时参考实现的所有内核的运行时间。由于不合适内存访问，最慢的内核沿 $z$ 方向计算，导致循环迭代之间的步幅较大。</p>
+<h2 id="细粒度动态自动调优"><a class="header-anchor" href="#细粒度动态自动调优">¶</a>细粒度动态自动调优</h2>
+<p>图1没有显示哪个系统配置为各个内核提供了最佳性能，也没有显示给定调优目标的最佳系统配置。为了充分利用DVFS提供的功能，我们需要单独调整每个内核。当前的静态自动调优器并没有为我们提供这种级别的粒度，即使他们这样做，只有细粒度自动调优也是不够的。此外，还需要一个可以为每个内核应用最佳系统配置的运行时系统。据我们所知，目前还没有这种具有完整端到端管道的工具链。</p>
+<p>为了解决这个问题，我们开发了一个自定义调优设置，让我们可以调整每个内核。我们的方法主要包括使用C ++预处理程序指令，它们封装每个内核，允许单独调整它。除了在每个指令中启用硬件调优之外，我们还同时记录每个内核的运行时和时间戳。时间戳稍后用作基于FPGA的能量测量基础设施的偏移量，在第6节中有更详细的描述。</p>
+<p>使用C ++预处理程序指令意味着我们避免更改实际的代码库，这很重要，因为此工作中的应用程序是在日常生产中。它还允许我们通过在编译时传递适当的参数来方便地访问不同的代码版本。</p>
+<p>对于实际的调整，我们使用一个小的bash脚本来遍历所需的调优向量。然后将调整结果存储到磁盘。调整完成后，生成的数据集将被提供给Python后处理工具，后者充当推荐系统。Python工具的任务是自动为每个单独的内核找到线程、核心和非核心频率的最佳组合。此外，与其他版本的代码相比，它还计算能源-性能权衡。</p>
+<p>根据用户选择的调优目标，Python工具生成适当的编译标志，包括必要的预处理器指令。然后重新编译代码，最终结果是动态调整的代码版本。整个工作流程如图2所示。清单3显示了每个预处理器指令内的内容。</p>
+<img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure6.png" title="[20] [20]">
+<img src="/2019/09/09/论文阅读：Toward-Fine-grained-Dynamic-Tuning-of-HPC-Applications-on-Modern-Multi-Core-Architectures-SC17/Figure5.png" title="[20] [20]">
         
         <br />
         <div id="comment-container">
