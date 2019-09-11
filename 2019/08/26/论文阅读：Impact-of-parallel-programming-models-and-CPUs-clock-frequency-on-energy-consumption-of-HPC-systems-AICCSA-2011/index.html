@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究内容"><span class="toc-text">研究内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#能耗度量"><span class="toc-text">能耗度量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向的编程模型"><span class="toc-text">面向的编程模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#研究方法"><span class="toc-text">研究方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平台的能耗范围"><span class="toc-text">平台的能耗范围</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验结果"><span class="toc-text">实验结果</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究内容"><span class="toc-text">¶研究内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#能耗度量"><span class="toc-text">¶能耗度量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向的编程模型"><span class="toc-text">¶面向的编程模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#研究方法"><span class="toc-text">¶研究方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平台的能耗范围"><span class="toc-text">¶平台的能耗范围</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验结果"><span class="toc-text">¶实验结果</span></a></li></ol>
 </div>
     
 </div>
@@ -141,19 +141,26 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>能耗已成为高性能计算（HPC）领域的最大挑战之一。超级计算机在运营期间产生的能源成本与采购类似。因此，除了对环境的影响外，能量是HPC的限制因素。</p>
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>能耗已成为高性能计算（HPC）领域的最大挑战之一。超级计算机在运营期间产生的能源成本与采购类似。因此，除了对环境的影响外，能量是HPC的限制因素。</p>
 <p>我们的研究旨在降低计算机系统的能耗，以运行并行HPC应用程序。在本文中，我们分析了共享存储器（OpenMP）和消息传递（MPI）的并行编程范例的可能影响，以及系统在CPU的不同时钟频率下的行为。</p>
 <p>结果表明，编程模型对计算机系统的能耗有重要影响。发现时钟频率降低对执行时间，能量效率和最大功耗的影响不仅取决于应用类型，还取决于其在特定编程模型中的实现。我们认为在选择并行编程模型时要考虑的另一个标准是对能耗的影响。</p>
-<h2 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h2><p>我们的研究旨在降低计算机系统的能耗，以运行并行HPC应用程序。通过这种方式，我们希望为经济，环境和社会因素做出贡献。在本文中，我们分析了共享内存和消息传递的并行编程范例的可能影响，以及它们在CPU的不同时钟频率下呈现的行为。具体来说，我们使用OpenMP（共享内存并行编程模型）和MPI（消息传递编程模型）实现NAS并行基准测试，在双核处理器的双插槽服务器上运行。本文中提出的实验的重点仅限于计算节点，而不是互连网络。</p>
+<h2 id="研究内容"><a class="header-anchor" href="#研究内容">¶</a>研究内容</h2>
+<p>我们的研究旨在降低计算机系统的能耗，以运行并行HPC应用程序。通过这种方式，我们希望为经济，环境和社会因素做出贡献。在本文中，我们分析了共享内存和消息传递的并行编程范例的可能影响，以及它们在CPU的不同时钟频率下呈现的行为。具体来说，我们使用OpenMP（共享内存并行编程模型）和MPI（消息传递编程模型）实现NAS并行基准测试，在双核处理器的双插槽服务器上运行。本文中提出的实验的重点仅限于计算节点，而不是互连网络。</p>
 <p>结果表明，编程模型对计算机系统的能耗有重要影响。结果发现，时钟频率降低对执行时间，能效和最大功率的影响不仅取决于应用类型，还取决于其在特定编程模型中的实现。我们相信这项研究可能是该地区未来工作的重要起点。</p>
-<h4 id="能耗度量"><a href="#能耗度量" class="headerlink" title="能耗度量"></a>能耗度量</h4><p>功率是计算机消耗电能的速率。瓦特（W）是功率单位，相当于1焦耳/秒（1 J / s）。能量是计算机随时间消耗的总电能量，以焦耳或瓦特小时（Wh）为单位。</p>
+<h4 id="能耗度量"><a class="header-anchor" href="#能耗度量">¶</a>能耗度量</h4>
+<p>功率是计算机消耗电能的速率。瓦特（W）是功率单位，相当于1焦耳/秒（1 J / s）。能量是计算机随时间消耗的总电能量，以焦耳或瓦特小时（Wh）为单位。</p>
 <p>测量能效的最常用指标是Green500使用的指标：每瓦性能（MFLOPS / W）。但是，也有其他指标。例如，Sun Microsystems定义了度量SWaP（Space，Wattage和Performance），它考虑了空间的测量来计算计算机的能量效率。</p>
 <p>通常，HPC平台中的工作旨在降低能耗但不降低功率。能耗与系统消耗的总电力成本有关。但是，计算机系统的最大功率决定了电气基础设施和冷却设备的容量。因此，我们决定在我们的实验中包括功率测量。</p>
-<h4 id="面向的编程模型"><a href="#面向的编程模型" class="headerlink" title="面向的编程模型"></a>面向的编程模型</h4><p>共享内存的OpenMP，和分布式内存的MPI。</p>
-<h4 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h4><p>该方法利用电表来测量整个计算节点的能耗，利用<code>cpufreq-selector</code>来改变相应核心的频率，具体指令为<code>cpufreq-selector -c 0 -f 1000000</code>,该指令表示将核心0的频率修改为1GHz。</p>
-<h4 id="平台的能耗范围"><a href="#平台的能耗范围" class="headerlink" title="平台的能耗范围"></a>平台的能耗范围</h4><p>我们进行了实验来量化程序运行对并行系统能耗的影响。测量在空闲状态下研究的系统的能量消耗，即仅运行操作系统的过程。我们还测量了平台在最高CPU时钟频率下针对不同NAS并行基准测试的最大峰值功率。我们确定了基准测试的问题大小，以便满足执行的主要内存要求，并且永远不会发生内存交换。</p>
+<h4 id="面向的编程模型"><a class="header-anchor" href="#面向的编程模型">¶</a>面向的编程模型</h4>
+<p>共享内存的OpenMP，和分布式内存的MPI。</p>
+<h4 id="研究方法"><a class="header-anchor" href="#研究方法">¶</a>研究方法</h4>
+<p>该方法利用电表来测量整个计算节点的能耗，利用<code>cpufreq-selector</code>来改变相应核心的频率，具体指令为<code>cpufreq-selector -c 0 -f 1000000</code>,该指令表示将核心0的频率修改为1GHz。</p>
+<h4 id="平台的能耗范围"><a class="header-anchor" href="#平台的能耗范围">¶</a>平台的能耗范围</h4>
+<p>我们进行了实验来量化程序运行对并行系统能耗的影响。测量在空闲状态下研究的系统的能量消耗，即仅运行操作系统的过程。我们还测量了平台在最高CPU时钟频率下针对不同NAS并行基准测试的最大峰值功率。我们确定了基准测试的问题大小，以便满足执行的主要内存要求，并且永远不会发生内存交换。</p>
 <p>服务器在空闲状态下消耗大约117W，最大峰值功率约为221W。也就是说，服务器接近空闲状态能耗的两倍。也就是说，服务器能够使空闲状态能耗几乎翻倍。这些结果证明了软件改变平台功耗的高容量，证明了其研究的重要性。</p>
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>通过更改CPU频率，能耗降低的结果如下：</p>
+<h2 id="实验结果"><a class="header-anchor" href="#实验结果">¶</a>实验结果</h2>
+<p>通过更改CPU频率，能耗降低的结果如下：</p>
 <img src="/2019/08/26/论文阅读：Impact-of-parallel-programming-models-and-CPUs-clock-frequency-on-energy-consumption-of-HPC-systems-AICCSA-2011/Figure1.png" title="[20] [20]">
 <p>性能损失的结果如下：</p>
 <img src="/2019/08/26/论文阅读：Impact-of-parallel-programming-models-and-CPUs-clock-frequency-on-energy-consumption-of-HPC-systems-AICCSA-2011/Figure2.png" title="[20] [20]">

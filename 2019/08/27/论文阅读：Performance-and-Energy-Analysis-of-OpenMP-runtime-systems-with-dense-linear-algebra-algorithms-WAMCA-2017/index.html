@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li></ol>
 </div>
     
 </div>
@@ -141,7 +141,8 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在本文中，我们通过非统一内存访问（NUMA）平台分析五个OpenMP运行时系统的性能和能耗。我们还选择了三种CPU级优化或技术来评估它们对运行时系统的影响：处理器具有Turbo Boost和C-States，以及通过Linux CPUFreq governor的CPU动态电压和频率调整。我们提出了一个实验研究，在性能和能耗方面，在密集线性代数算法（Cholesky，LU和QR）的三个主要内核上表征OpenMP运行时系统。我们的实验结果表明，OpenMP运行时系统可以被视为一种新的能量杠杆，Turbo Boost以及C-States会显着影响性能和能量。CPUFreq调控器在禁用Turbo Boost时受到的影响更大，因为两次优化都会因CPU热限制而降低性能。与使用GNU C编译器（GCC）libGOMP运行时的原始PLASMA算法相比，来自libKOMP的并发写扩展的LU分解实现了高达63％的性能增益和29％的能量降低。</p>
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>在本文中，我们通过非统一内存访问（NUMA）平台分析五个OpenMP运行时系统的性能和能耗。我们还选择了三种CPU级优化或技术来评估它们对运行时系统的影响：处理器具有Turbo Boost和C-States，以及通过Linux CPUFreq governor的CPU动态电压和频率调整。我们提出了一个实验研究，在性能和能耗方面，在密集线性代数算法（Cholesky，LU和QR）的三个主要内核上表征OpenMP运行时系统。我们的实验结果表明，OpenMP运行时系统可以被视为一种新的能量杠杆，Turbo Boost以及C-States会显着影响性能和能量。CPUFreq调控器在禁用Turbo Boost时受到的影响更大，因为两次优化都会因CPU热限制而降低性能。与使用GNU C编译器（GCC）libGOMP运行时的原始PLASMA算法相比，来自libKOMP的并发写扩展的LU分解实现了高达63％的性能增益和29％的能量降低。</p>
 
         
         <br />
