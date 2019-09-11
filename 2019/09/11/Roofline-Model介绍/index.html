@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meng Hao&#39;s Homepage">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Roofline Model介绍 - Meng Hao&#39;s Homepage
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Meng Hao</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">¶概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#roofline-model"><span class="toc-text">¶Roofline Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-text">¶分析</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Ever tried. Ever failed. No matter. Try again. Fail again. Fail better. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Roofline Model介绍
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-09-11 15:28:28</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Roofline" title="Roofline">Roofline</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>来源：<a href="http://cuckoohash.org/posts/roofline/" target="_blank" rel="noopener">http://cuckoohash.org/posts/roofline/</a></p>
+<p>参考论文  <a href="https://dl.acm.org/citation.cfm?id=1498785" target="_blank" rel="noopener">Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures</a></p>
+<h2 id="概念"><a class="header-anchor" href="#概念">¶</a>概念</h2>
+<p>我们知道，一个计算任务 (小到矩阵乘法、大到神经网络的训练) 的性能表现，取决于<strong>任务</strong>本身的特性以及<strong>计算平台</strong>的指标。</p>
+<p>计算平台的主要指标有两个：<strong>算力</strong>和<strong>带宽</strong>。算力即每秒峰值浮点运算次数 (Peak Flops/sec)；带宽即每秒峰值内存数据存取量 (Peak Memory Bandwidth)，单位是 Byte/sec。</p>
+<p>计算任务相应的主要指标则是<strong>运算量</strong>(单位是 Flops) 和<strong>访存量</strong>(单位是 Bytes)。</p>
+<h4 id="roofline-model"><a class="header-anchor" href="#roofline-model">¶</a>Roofline Model</h4>
+<p>给定一个计算任务和平台，我们最关心的指标是，任务在该平台上的每秒浮点运算次数 (Attainable Flops/sec)。如果不存在内存带宽的限制，那么任务的理想性能显然是计算平台的算力。 但是在很多情况下，内存访问会成为瓶颈，这时计算任务的性能就达不到平台的峰值算力了。</p>
+<p>为了考虑访存对性能的影响，作者首先定义了 <strong>Operational Intensity</strong> (运算强度) 为运算量和访存量的比值 (Flops/byte)，即单位内存访问用于多少次浮点计算。一个任务的运算强度越大，内存使用效率越高。</p>
+<p>Roofline Model 提出了一个非常简单的模型来计算任务的每秒浮点运算次数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Attainable Flops/sec = Min(Peak Flops/sec, Peak Memory Bandwidth * Operational Intensity)</span><br></pre></td></tr></table></figure>
+<p>如果以运算强度为横轴、每秒浮点运算次数为纵轴画图，我们可以得到一条与计算平台相关的折线，即所谓的 Roofline。算力决定屋顶的高度，带宽决定屋檐的斜率。所有在这个平台上运行的计算任务能够达到的性能都处于屋顶的下方。</p>
+<img src="/2019/09/11/Roofline-Model介绍/Figure1.png" title="[20] [20]">
+<h4 id="分析"><a class="header-anchor" href="#分析">¶</a>分析</h4>
+<p>由图 1(a) 可见，「屋顶」把瓶颈划分为两个区域：</p>
+<ul>
+<li>Memory-bound: 当任务的运算强度小于平台的运算强度上限 (算力与带宽的比值) 时，任务的性能受限于内存带宽。此时平台带宽越大，或者任务的运算强度越大，任务性能越好。</li>
+<li>Compute-bound: 当任务的运算强度大于平台的上限时，性能受限于算力。此时平台算力越高，任务性能越好。</li>
+</ul>
+<p>作者提出，Roofline Model 可以对如何优化当前计算任务的性能提供参考。我们可以把可能的优化手段分成两类：</p>
+<ul>
+<li>提高算力
+<ul>
+<li>指令集并行：循环展开、SIMD 指令</li>
+<li>平衡不同类型浮点运算的数量，使得编译器可以最大程度利用乘积累加运算指令 (Fused multiply-add)</li>
+</ul>
+</li>
+<li>提高带宽
+<ul>
+<li>在循环中使用单位步长访问数组，以利用硬件 Prefetching 的特性</li>
+<li>在 NUMA 系统里利用内存的 Affinity</li>
+<li>使用软件 Prefetching</li>
+</ul>
+</li>
+</ul>
+<p>在同一个平台上，计算任务的运算强度不同，其性能瓶颈的类型也不同。对于 Memory-bound 的任务，优化内存带宽更加有效；而对于 Compute-bound 的任务，则应该优化算力。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/HaoMengHIT">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.researchgate.net/profile/Meng_Hao3">Meng Hao&#39;s ResearchGate</a></span>
+        <span>/</span>
+        
+        <span><a href="http://www.hit.edu.cn/">Harbin Institute of Technology</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --!>
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
