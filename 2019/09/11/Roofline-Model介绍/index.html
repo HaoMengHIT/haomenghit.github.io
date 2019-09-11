@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">¶概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#roofline-model"><span class="toc-text">¶Roofline Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-text">¶分析</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">¶概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#roofline-model"><span class="toc-text">¶Roofline Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-text">¶分析</span></a></li></ol>
 </div>
     
 </div>
@@ -144,14 +144,14 @@
 <p>我们知道，一个计算任务 (小到矩阵乘法、大到神经网络的训练) 的性能表现，取决于<strong>任务</strong>本身的特性以及<strong>计算平台</strong>的指标。</p>
 <p>计算平台的主要指标有两个：<strong>算力</strong>和<strong>带宽</strong>。算力即每秒峰值浮点运算次数 (Peak Flops/sec)；带宽即每秒峰值内存数据存取量 (Peak Memory Bandwidth)，单位是 Byte/sec。</p>
 <p>计算任务相应的主要指标则是<strong>运算量</strong>(单位是 Flops) 和<strong>访存量</strong>(单位是 Bytes)。</p>
-<h4 id="roofline-model"><a class="header-anchor" href="#roofline-model">¶</a>Roofline Model</h4>
+<h2 id="roofline-model"><a class="header-anchor" href="#roofline-model">¶</a>Roofline Model</h2>
 <p>给定一个计算任务和平台，我们最关心的指标是，任务在该平台上的每秒浮点运算次数 (Attainable Flops/sec)。如果不存在内存带宽的限制，那么任务的理想性能显然是计算平台的算力。 但是在很多情况下，内存访问会成为瓶颈，这时计算任务的性能就达不到平台的峰值算力了。</p>
 <p>为了考虑访存对性能的影响，作者首先定义了 <strong>Operational Intensity</strong> (运算强度) 为运算量和访存量的比值 (Flops/byte)，即单位内存访问用于多少次浮点计算。一个任务的运算强度越大，内存使用效率越高。</p>
 <p>Roofline Model 提出了一个非常简单的模型来计算任务的每秒浮点运算次数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Attainable Flops/sec = Min(Peak Flops/sec, Peak Memory Bandwidth * Operational Intensity)</span><br></pre></td></tr></table></figure>
 <p>如果以运算强度为横轴、每秒浮点运算次数为纵轴画图，我们可以得到一条与计算平台相关的折线，即所谓的 Roofline。算力决定屋顶的高度，带宽决定屋檐的斜率。所有在这个平台上运行的计算任务能够达到的性能都处于屋顶的下方。</p>
 <img src="/2019/09/11/Roofline-Model介绍/Figure1.png" title="[20] [20]">
-<h4 id="分析"><a class="header-anchor" href="#分析">¶</a>分析</h4>
+<h2 id="分析"><a class="header-anchor" href="#分析">¶</a>分析</h2>
 <p>由图 1(a) 可见，「屋顶」把瓶颈划分为两个区域：</p>
 <ul>
 <li>Memory-bound: 当任务的运算强度小于平台的运算强度上限 (算力与带宽的比值) 时，任务的性能受限于内存带宽。此时平台带宽越大，或者任务的运算强度越大，任务性能越好。</li>
