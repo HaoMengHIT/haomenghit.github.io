@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        论文阅读：Matching Application Signatures for Performance Predictions Using a Single Execution (IPDPS15) - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">¶摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#研究背景"><span class="toc-text">¶研究背景</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,162 +116,51 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-22</div>
-        <div class="post-info">
-            <a href="/2019/08/22/论文阅读：Energy-Measurement-and-Modeling-in-High-Performance-Computing-with-Intel-RAPL-Doctoral-dissertation-2018/">
-                <h3>
-                    论文阅读：Energy Measurement and Modeling in High Performance Computing With Intel RAPL (Doctoral Dissertation 2018)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        论文阅读：Matching Application Signatures for Performance Predictions Using a Single Execution (IPDPS15)
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-05</div>
-        <div class="post-info">
-            <a href="/2019/08/05/论文阅读：Using-Performance-Power-Modeling-to-Improve-Energy-Efficiency-of-HPC-Applications/">
-                <h3>
-                    论文阅读：Using Performance-Power Modeling to Improve Energy Efficiency of HPC Applications （IEEE Computer 2016）
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Journal" title="Journal">Journal</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-09-25 15:18:29</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#IPDPS" title="IPDPS">IPDPS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Performance Modeling" title="Performance Modeling">Performance Modeling</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-04</div>
-        <div class="post-info">
-            <a href="/2019/08/04/Pareto最优相关介绍/">
-                <h3>
-                    Pareto最优相关介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#统计学" title="统计学">统计学</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content no-indent">
+        <h2 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h2>
+<p>基于小规模运行对大问题规模和处理器的性能预测可用于多种目的，包括可扩展性预测，并有助于最小化用于构建性能模型的训练数据所需的时间。在本文中，我们提出了一个预测框架，该框架与执行签名相匹配，以使用单个小规模应用程序执行来预测HPC应用程序的性能。我们的框架提取应用程序的执行签名，并进行不同应用程序阶段的自动识别。不同阶段的应用程序签名与存储在Kernel数据库中的参考Kernel的执行配置文件相匹配。然后，将参考Kernel的性能用于预测应用程序不同阶段的性能。对于没有匹配上的程序阶段，我们的框架对应用程序中的循环和函数执行静态分析，以提供预测范围。我们通过三个大型应用程序对我们框架中的技术进行了验证，所用的应用程序包括GTC，用于湍流模拟的单元内粒子代码，Sweep3d（3D中子传输应用程序）和SMG2000（多网格求解器）。可以证明我们的预测范围在大多数情况下是准确的。</p>
+<h2 id="研究背景"><a class="header-anchor" href="#研究背景">¶</a>研究背景</h2>
+<p>并行应用程序的性能表征和预测至关重要，并且长期以来已用于各种目的，包括可伸缩性研究[1]，确定性能瓶颈[2]，对未来系统的预测[3]以及调整应用程序和算法[4]。进行性能预测的常用方法是针对不同的处理器和问题大小执行或基准测试应用程序，观察包括执行时间在内的执行profile数据，并采用曲线拟合和机器学习技术将观察到的执行profile数据映射到性能模型[5] – [7]。然后，可以将性能模型用于预测新问题大小和处理器数量的性能。在许多现有策略中，在受控条件下执行大量基准测试，以合理的准确性获得性能预测，从而导致模型的训练时间较长。</p>
+<p>限制构建用于预测的性能模型所需的基准数量将有助于最小化执行基准测试和建模过程所需的时间。此外，在某些受限环境中，基准测试的运行和结果受到隐式限制。例如，在一些大型超级计算机系统中，应用程序开发人员在特殊队列（称为debug queue）的少量处理器上以小问题大小执行其应用程序，以进行开发、调优和调试，然后在具有大量处理器的队列（production queues）上进行大规模生产。</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-04</div>
-        <div class="post-info">
-            <a href="/2019/08/04/Q-Q图介绍/">
-                <h3>
-                    Q-Q图介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#统计学" title="统计学">统计学</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-03</div>
-        <div class="post-info">
-            <a href="/2019/08/03/论文阅读：Energy-Efficiency-Modeling-of-Parallel-Applications-SC18/">
-                <h3>
-                    论文阅读：Energy Efficiency Modeling of Parallel Applications (SC18)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SC" title="SC">SC</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-02</div>
-        <div class="post-info">
-            <a href="/2019/08/02/论文阅读：Energy-dfficient-Application-Resource-Scheduling-using-Machine-Learning-Classifiers-ICPP18/">
-                <h3>
-                    论文阅读：Energy-Dfficient Application Resource Scheduling Using Machine Learning Classifiers (ICPP18)
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Energy Modeling" title="Energy Modeling">Energy Modeling</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#ICPP" title="ICPP">ICPP</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/3/">&larr; Newer Posts</a>
-    </li>
-    
-    
-    <li class="next">
-        <a href="/page/5/">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
 
     </div>
 </div>
@@ -344,12 +237,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
