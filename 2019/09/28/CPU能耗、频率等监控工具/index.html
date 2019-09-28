@@ -11,7 +11,7 @@
 
     <title>
         
-        Meng Hao&#39;s Homepage
+        CPU能耗、频率等监控工具 - Meng Hao&#39;s Homepage
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>HOME</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -112,120 +116,49 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 432px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装问题/">
-                <h3>
-                    PAPI安装问题
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#PAPI" title="PAPI">PAPI</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        CPU能耗、频率等监控工具
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/PAPI安装RAPL模块/">
-                <h3>
-                    PAPI安装RAPL模块
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-09-28 15:40:44</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#CPU Frequency" title="CPU Frequency">CPU Frequency</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-31</div>
-        <div class="post-info">
-            <a href="/2019/07/31/RAPL介绍/">
-                <h3>
-                    RAPL介绍
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RAPL" title="RAPL">RAPL</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content no-indent">
+        <ol>
+<li>
+<p>Linux CPU实时监控mpstat命令详解。 <a href="https://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858775.html" target="_blank" rel="noopener">https://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858775.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mpstat  -P ALL 2</span><br><span class="line"></span><br><span class="line">19:43:58     CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest   %idle</span><br><span class="line">19:43:59     all    0.00    0.00    0.04    0.00    0.00    0.00    0.00    0.00   99.96</span><br><span class="line">19:43:59       0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00</span><br><span class="line">19:43:59       1    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00</span><br><span class="line">.......</span><br><span class="line">19:43:59      13    0.99    0.00    0.00    0.00    0.00    0.00    0.00    0.00   99.01</span><br><span class="line">19:43:59      14    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00</span><br><span class="line">19:43:59      15    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li>s-tui 用于监控计算机的终端UI。 <a href="https://linux.cn/article-10467-1.html" target="_blank" rel="noopener">https://linux.cn/article-10467-1.html</a></li>
+</ol>
+<img src="/2019/09/28/CPU能耗、频率等监控工具/s-tui.png" title="[20] [20]">
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/OpenMP编译成LLVM-IR/">
-                <h3>
-                    OpenMP编译成LLVM IR
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-07-29</div>
-        <div class="post-info">
-            <a href="/2019/07/29/LLVM-Pass工程建立过程/">
-                <h3>
-                    LLVM Pass工程建立过程
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#LLVM" title="LLVM">LLVM</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/5/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -302,12 +235,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
